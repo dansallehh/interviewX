@@ -1,0 +1,3091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="carbon">
+  <title>SQL Beginner Assessment &amp; Live Supervision</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Carbon) */
+      --background: #ffffff;
+      --surface-container-low: #f4f4f4;
+      --surface-container: #f4f4f4;
+      --surface-container-high: #e0e0e0;
+
+      /* Ink */
+      --on-surface: #161616;
+      --on-surface-variant: #525252;
+
+      /* Rules */
+      --outline: #8d8d8d;
+      --outline-variant: #e0e0e0;
+
+      /* Accents */
+      --primary: #0f62fe;
+      --on-primary: #ffffff;
+      --primary-container: #d0e2ff;
+      --on-primary-container: #161616;
+      --secondary: #6f6f6f;
+      --tertiary: #198038;
+      --error: #da1e28;
+      --on-error: #ffffff;
+
+      /* Semantic additions */
+      --positive: #198038;
+      --positive-container: #defbe6;
+      --warning: #7d5d00;
+      --warning-container: #fcf4d6;
+      --error-container: #fff1f1;
+      --focus: #0f62fe;
+
+      /* Data series */
+      --data-1: #0f62fe;
+      --data-2: #6929c4;
+      --data-3: #005d5d;
+      --data-4: #9f1853;
+      --data-context: #8d8d8d;
+
+      /* Fonts */
+      --font-headline: 'IBM Plex Sans', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-label: 'IBM Plex Mono', monospace;
+
+      /* Shape */
+      --rounded: 0.125rem;
+      --rounded-lg: 0.25rem;
+      --rounded-full: 0.75rem;
+
+      /* Style effects */
+      --shadow-1: 0 2px 6px rgb(0 0 0 / 0.1);
+      --shadow-2: 0 4px 12px rgb(0 0 0 / 0.12);
+      --rule: 1px solid var(--outline-variant);
+      --field-rule: 1px solid var(--outline);
+      --indicator: 2px solid var(--primary);
+      --notif-rule: 3px solid var(--primary);
+
+      /* Type scale (Focused Tool) */
+      --display-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
+      --headline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+      --body-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+      --label-size: 0.75rem;
+
+      /* Spacing scale (4pt base) */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .app-shell {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-lg);
+    }
+    .app-shell * { min-width: 0; }
+
+    /* Header & Top Mode Switcher */
+    .masthead {
+      display: grid;
+      gap: var(--space-md);
+      border-bottom: var(--rule);
+      padding-bottom: var(--space-md);
+    }
+
+    .masthead-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: end;
+    }
+
+    .headline {
+      font-family: var(--font-headline);
+      font-size: var(--display-size);
+      font-weight: 300;
+      letter-spacing: 0;
+      line-height: 1.15;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .headline strong { font-weight: 600; }
+
+    .subtitle {
+      margin: var(--space-xs) 0 0 0;
+      font-size: var(--body-size);
+      color: var(--on-surface-variant);
+      max-width: 65ch;
+    }
+
+    .label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--on-surface-variant);
+      display: block;
+    }
+
+    .session-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: end;
+      justify-content: flex-end;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      min-width: 210px;
+      flex: 1 1 210px;
+    }
+
+    .field-label {
+      font-size: var(--label-size);
+      font-family: var(--font-label);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--on-surface-variant);
+    }
+
+    .carbon-input {
+      height: 40px;
+      background-color: var(--surface-container-low);
+      border: 0;
+      border-bottom: var(--field-rule);
+      border-radius: var(--rounded);
+      padding: 0 var(--space-md);
+      font-size: var(--body-size);
+      color: var(--on-surface);
+      width: 100%;
+      transition: background-color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
+    }
+    .carbon-input:hover {
+      background-color: var(--surface-container-high);
+    }
+    .carbon-input:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 0;
+      border-bottom-color: var(--primary);
+    }
+
+    /* Buttons (Carbon: square corners, left-aligned label, 40px in rows) */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--space-sm);
+      min-height: 44px;
+      height: 44px;
+      padding: var(--space-sm) var(--space-lg) var(--space-sm) var(--space-md);
+      border-radius: 0;
+      font-size: 0.875rem;
+      font-weight: 400;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-align: left;
+      white-space: nowrap;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .btn-row-height {
+      min-height: 40px;
+      height: 40px;
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background-color: color-mix(in srgb, var(--primary), var(--on-surface) 22%);
+    }
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+    .btn-ghost {
+      background-color: transparent;
+      color: var(--primary);
+      padding-right: var(--space-md);
+    }
+    .btn-ghost:hover:not(:disabled) {
+      background-color: var(--surface-container);
+    }
+    .btn-danger-outline {
+      background-color: transparent;
+      color: var(--error);
+      border-color: var(--error);
+      padding-right: var(--space-md);
+    }
+    .btn-danger-outline:hover:not(:disabled) {
+      background-color: var(--error-container);
+    }
+    .btn-danger-armed {
+      background-color: var(--error);
+      color: var(--on-error);
+      border-color: var(--error);
+      padding-right: var(--space-md);
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Mode Bar / Tabs */
+    .mode-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      border-bottom: var(--rule);
+    }
+
+    .tab-strip {
+      display: flex;
+      align-items: stretch;
+      gap: var(--space-md);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      padding: var(--space-sm) var(--space-md);
+      min-height: 44px;
+      font-size: 0.9375rem;
+      font-weight: 400;
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      transition: color var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+    }
+    .tab-btn:hover {
+      color: var(--on-surface);
+      background-color: var(--surface-container-low);
+    }
+    .tab-btn.is-active {
+      color: var(--on-surface);
+      font-weight: 600;
+      border-bottom: var(--indicator);
+    }
+
+    .mode-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-xs);
+    }
+
+    /* Tags (24px pill) */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      height: 24px;
+      padding: 0 var(--space-sm);
+      border-radius: var(--rounded-full);
+      font-size: 0.75rem;
+      font-weight: 400;
+      background-color: var(--surface-container-high);
+      color: var(--on-surface);
+      white-space: nowrap;
+    }
+    .tag-blue {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+    .tag-green {
+      background-color: var(--positive-container);
+      color: var(--positive);
+    }
+    .tag-amber {
+      background-color: var(--warning-container);
+      color: var(--warning);
+    }
+    .tag-red {
+      background-color: var(--error-container);
+      color: var(--error);
+    }
+
+    /* Main Workspace Grid: Asymmetric 320px Rail + Fluid Main */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 310px minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    /* Left Rail */
+    .rail {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .layer {
+      background-color: var(--surface-container);
+      border-radius: 0;
+      padding: var(--space-md);
+    }
+    .layer .layer {
+      background-color: var(--surface-container-high);
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: var(--rule);
+      padding-bottom: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+
+    .panel-title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--on-surface);
+    }
+
+    /* Progress bar */
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background-color: var(--surface-container-high);
+      margin-top: var(--space-xs);
+    }
+    .progress-fill {
+      height: 100%;
+      background-color: var(--primary);
+      transition: width var(--dur-short) var(--ease-out);
+    }
+
+    /* Question Side Nav */
+    .q-nav-list {
+      display: grid;
+      gap: 0;
+      margin-top: var(--space-sm);
+    }
+
+    .q-nav-item {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-top: var(--rule);
+      border-left: 2px solid transparent;
+      padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-md);
+      min-height: 52px;
+      cursor: pointer;
+      text-align: left;
+      display: grid;
+      gap: var(--space-xs);
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+    .q-nav-item:first-child { border-top: 0; }
+    .q-nav-item:hover {
+      background-color: var(--surface-container-high);
+    }
+    .q-nav-item.is-active {
+      background-color: var(--background);
+      border-left: var(--indicator);
+    }
+
+    .q-nav-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-xs);
+    }
+
+    .q-nav-code {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--on-surface);
+    }
+    .q-nav-item.is-active .q-nav-code {
+      color: var(--primary);
+    }
+
+    .q-nav-title {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--on-surface);
+      line-height: 1.3;
+    }
+    .q-nav-item.is-active .q-nav-title {
+      font-weight: 600;
+    }
+
+    /* Schema Quick Reference */
+    .schema-list {
+      display: grid;
+      gap: 0;
+    }
+    .schema-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding: var(--space-xs) 0;
+      border-top: var(--rule);
+      font-size: 0.8125rem;
+    }
+    .schema-row:first-child { border-top: 0; }
+    .schema-col-name {
+      font-family: var(--font-label);
+      font-weight: 500;
+      color: var(--on-surface);
+    }
+    .schema-col-type {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+    }
+
+    /* Main Content Column */
+    .main-col {
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    /* Challenge Card */
+    .challenge-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-md);
+      border-bottom: var(--rule);
+      padding-bottom: var(--space-md);
+    }
+
+    .challenge-title {
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 300;
+      margin: var(--space-xs) 0 0 0;
+      line-height: 1.2;
+    }
+    .challenge-title strong { font-weight: 600; }
+
+    .challenge-prompt {
+      margin: var(--space-md) 0 0 0;
+      font-size: var(--body-size);
+      color: var(--on-surface);
+      max-width: 70ch;
+    }
+
+    .code-inline {
+      font-family: var(--font-label);
+      font-size: 0.875em;
+      background-color: var(--surface-container-high);
+      padding: 0.1em 0.35em;
+      border-radius: var(--rounded);
+      color: var(--on-surface);
+    }
+
+    .hint-drawer {
+      margin-top: var(--space-md);
+      background-color: var(--surface-container-high);
+      border-left: var(--notif-rule);
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.875rem;
+      color: var(--on-surface);
+    }
+
+    /* SQL Editor Area */
+    .editor-panel {
+      background-color: var(--surface-container);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .editor-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .token-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      align-items: center;
+    }
+
+    .token-chip {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      background-color: var(--background);
+      color: var(--on-surface);
+      border: var(--rule);
+      padding: 0.25rem 0.5rem;
+      min-height: 32px;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .token-chip:hover {
+      background-color: var(--primary-container);
+      border-color: var(--primary);
+    }
+
+    .sql-textarea {
+      width: 100%;
+      min-height: 138px;
+      background-color: var(--background);
+      color: var(--on-surface);
+      border: var(--rule);
+      border-bottom: 2px solid var(--outline);
+      padding: var(--space-md);
+      font-family: var(--font-label);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      resize: vertical;
+      tab-size: 2;
+      transition: border-color var(--dur-micro) var(--ease-out);
+    }
+    .sql-textarea:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 0;
+      border-bottom-color: var(--primary);
+    }
+
+    .editor-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-top: var(--space-xs);
+    }
+
+    .action-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    /* Notification Strip */
+    .notif {
+      background-color: var(--surface-container);
+      border-left: 3px solid var(--primary);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-md);
+      font-size: 0.875rem;
+    }
+    .notif-success {
+      background-color: var(--positive-container);
+      border-left-color: var(--positive);
+    }
+    .notif-error {
+      background-color: var(--error-container);
+      border-left-color: var(--error);
+    }
+    .notif-warn {
+      background-color: var(--warning-container);
+      border-left-color: var(--warning);
+    }
+
+    /* Data Tables (Carbon: zebra gray 10, gray 20 header, no vertical lines, numeric right-aligned mono) */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border-top: var(--rule);
+      border-bottom: var(--rule);
+      background-color: var(--background);
+    }
+
+    .carbon-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      text-align: left;
+    }
+
+    .carbon-table th {
+      background-color: var(--surface-container-high);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--rule);
+      white-space: nowrap;
+    }
+
+    .carbon-table td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--rule);
+      color: var(--on-surface);
+      vertical-align: top;
+    }
+
+    .carbon-table tbody tr:nth-child(even) {
+      background-color: var(--surface-container-low);
+    }
+    .carbon-table tbody tr:hover {
+      background-color: var(--surface-container-high);
+    }
+    .carbon-table tbody tr.row-inserted {
+      background-color: var(--primary-container);
+    }
+
+    .num-col {
+      text-align: right !important;
+      font-family: var(--font-label);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mono-cell {
+      font-family: var(--font-label);
+      font-size: 0.8125rem;
+    }
+
+    /* Supervisor Mode Specific Styles */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    .kpi-tile {
+      background-color: var(--surface-container);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-xs);
+    }
+    .kpi-tile.key-tile {
+      border-bottom: var(--indicator);
+    }
+
+    .key-value {
+      font-family: var(--font-label);
+      font-weight: 300;
+      font-size: 1.75rem;
+      line-height: 1.15;
+      color: var(--on-surface);
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+
+    .code-box {
+      background-color: var(--background);
+      border: var(--rule);
+      padding: var(--space-md);
+      font-family: var(--font-label);
+      font-size: 0.8125rem;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+      min-height: 92px;
+      margin: 0;
+    }
+
+    .rubric-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .rubric-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm) 0;
+      border-top: var(--rule);
+      cursor: pointer;
+    }
+    .rubric-item:first-child { border-top: 0; }
+    .rubric-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--primary);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .rubric-text {
+      display: grid;
+      gap: 2px;
+      font-size: 0.875rem;
+    }
+    .rubric-sub {
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+    }
+
+    .notes-textarea {
+      width: 100%;
+      min-height: 84px;
+      background-color: var(--background);
+      border: 0;
+      border-bottom: var(--field-rule);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.875rem;
+      color: var(--on-surface);
+      resize: vertical;
+    }
+
+    .preview-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .is-hidden { display: none !important; }
+
+    @media (max-width: 960px) {
+      .workspace-grid {
+        grid-template-columns: 1fr;
+      }
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .app-shell {
+        padding: var(--space-sm);
+      }
+      .masthead-top {
+        grid-template-columns: 1fr;
+      }
+      .session-controls {
+        justify-content: flex-start;
+      }
+      .tab-strip {
+        width: 100%;
+        overflow-x: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Masthead -->
+    <header class="masthead">
+      <div class="masthead-top">
+        <div>
+          <span class="label">Technical Interview Workbench &middot; Beginner SQL</span>
+          <h1 class="headline">SQL Candidate Assessment &amp; <strong>Live Supervision</strong></h1>
+          <p class="subtitle">
+            Interactive relational query console on the <code class="code-inline">employees</code> table for entry-level technical evaluation, live output inspection, and structured rubric scoring.
+          </p>
+        </div>
+
+        <div class="session-controls">
+          <div class="field-group">
+            <label class="field-label" for="candidate-name-input">Candidate Name</label>
+            <input id="candidate-name-input" type="text" class="carbon-input" placeholder="e.g. Nurul Aina" oninput="handleCandidateNameChange(this.value)">
+          </div>
+          <button id="btn-reset-db" type="button" class="btn btn-row-height btn-danger-outline" onclick="handleResetDatabase(this)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 8a5.5 5.5 0 1 1 1.61 3.89" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+              <path d="M2.5 4.5V8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+            </svg>
+            <span>Reset Database</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mode Switcher Bar -->
+      <div class="mode-bar">
+        <div class="tab-strip" role="tablist" aria-label="Workspace View Mode">
+          <button id="tab-candidate" type="button" role="tab" aria-selected="true" class="tab-btn is-active" onclick="switchMode('candidate')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="2" y="2.5" width="12" height="11" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M4.5 6.5L6.5 8.25L4.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/>
+              <path d="M8 10H11.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/>
+            </svg>
+            <span>Candidate Focus Mode</span>
+          </button>
+          <button id="tab-supervisor" type="button" role="tab" aria-selected="false" class="tab-btn" onclick="switchMode('supervisor')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 12.5H14" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M4 10V6.5M8 10V3.5M12 10V5" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+            <span>Supervisor &amp; Evaluator Panel</span>
+          </button>
+        </div>
+
+        <div class="mode-meta">
+          <span id="badge-db-rows" class="tag tag-blue">employees: 9 rows</span>
+          <span id="badge-submitted-count" class="tag">0 / 5 submitted</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace Grid -->
+    <div class="workspace-grid">
+      <!-- Left Navigation & Schema Rail -->
+      <aside class="rail" aria-label="Challenges and Table Schema">
+        <!-- Question Navigator -->
+        <section class="layer">
+          <div class="panel-head">
+            <h2 class="panel-title">Assessment Modules</h2>
+            <span id="rail-progress-label" class="label">0 / 5</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div id="rail-progress-fill" class="progress-fill" style="width: 0%;"></div>
+          </div>
+          <nav id="question-nav" class="q-nav-list" aria-label="SQL Questions Q1 to Q5"></nav>
+        </section>
+
+        <!-- Schema Summary -->
+        <section class="layer">
+          <div class="panel-head">
+            <h2 class="panel-title">Table: <code class="code-inline">employees</code></h2>
+            <span class="label">5 Columns</span>
+          </div>
+          <div class="schema-list">
+            <div class="schema-row">
+              <span class="schema-col-name">id</span>
+              <span class="schema-col-type">INTEGER (PK)</span>
+            </div>
+            <div class="schema-row">
+              <span class="schema-col-name">name</span>
+              <span class="schema-col-type">VARCHAR</span>
+            </div>
+            <div class="schema-row">
+              <span class="schema-col-name">department</span>
+              <span class="schema-col-type">VARCHAR</span>
+            </div>
+            <div class="schema-row">
+              <span class="schema-col-name">salary</span>
+              <span class="schema-col-type">NUMERIC</span>
+            </div>
+            <div class="schema-row">
+              <span class="schema-col-name">city</span>
+              <span class="schema-col-type">VARCHAR</span>
+            </div>
+          </div>
+          <div style="margin-top: var(--space-md);">
+            <button id="btn-jump-preview" type="button" class="btn btn-secondary btn-row-height" style="width: 100%;" onclick="scrollToTablePreview()">
+              <span>Inspect Sample Data</span>
+            </button>
+          </div>
+        </section>
+      </aside>
+
+      <!-- Main Column -->
+      <main class="main-col">
+        <!-- CANDIDATE FOCUS VIEW -->
+        <div id="view-candidate" class="main-col">
+          <!-- Question Prompt Card -->
+          <section class="layer">
+            <div class="challenge-head">
+              <div>
+                <span id="q-category-label" class="label">Question 1 of 5 &middot; Basic SELECT</span>
+                <h2 id="q-title" class="challenge-title">Display all columns and rows from <strong>employees</strong></h2>
+              </div>
+              <div class="action-group">
+                <span id="q-status-tag" class="tag">Not Attempted</span>
+                <button id="btn-toggle-hint" type="button" class="btn btn-ghost btn-row-height" onclick="toggleHint()">
+                  <span>Show Hint</span>
+                </button>
+              </div>
+            </div>
+
+            <p id="q-prompt-text" class="challenge-prompt"></p>
+            <div id="q-hint-box" class="hint-drawer is-hidden"></div>
+          </section>
+
+          <!-- Interactive SQL Console -->
+          <section class="editor-panel">
+            <div class="editor-header">
+              <label for="sql-editor" class="label">SQL Query Console (Ctrl+Enter or Cmd+Enter to run)</label>
+              <div class="token-bar" aria-label="Quick SQL Keyword Inserts">
+                <button type="button" class="token-chip" data-token="SELECT " onclick="insertTokenFromEl(this)">SELECT</button>
+                <button type="button" class="token-chip" data-token="FROM employees" onclick="insertTokenFromEl(this)">FROM employees</button>
+                <button type="button" class="token-chip" data-token="WHERE " onclick="insertTokenFromEl(this)">WHERE</button>
+                <button type="button" class="token-chip" data-token="ORDER BY salary DESC" onclick="insertTokenFromEl(this)">ORDER BY salary DESC</button>
+                <button type="button" class="token-chip" data-token="COUNT(*)" onclick="insertTokenFromEl(this)">COUNT(*)</button>
+                <button type="button" class="token-chip" data-token="INSERT INTO employees " onclick="insertTokenFromEl(this)">INSERT INTO</button>
+              </div>
+            </div>
+
+            <textarea id="sql-editor" class="sql-textarea" spellcheck="false" autocomplete="off" placeholder="Write your SQL statement here, e.g. SELECT * FROM employees;" oninput="handleEditorInput(this.value)"></textarea>
+
+            <div class="editor-actions">
+              <div class="action-group">
+                <button id="btn-run-query" type="button" class="btn btn-primary btn-row-height" onclick="runCandidateQuery()">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4 3L13 8L4 13V3Z" fill="currentColor"/>
+                  </svg>
+                  <span>Run Query</span>
+                </button>
+                <button id="btn-submit-answer" type="button" class="btn btn-secondary btn-row-height" onclick="submitCandidateAnswer()">
+                  <span>Save &amp; Submit Answer</span>
+                </button>
+                <button id="btn-clear-editor" type="button" class="btn btn-ghost btn-row-height" onclick="clearEditor()">
+                  <span>Clear</span>
+                </button>
+              </div>
+
+              <div class="action-group">
+                <button id="btn-prev-q" type="button" class="btn btn-ghost btn-row-height" onclick="navigateQuestion(-1)">Previous</button>
+                <button id="btn-next-q" type="button" class="btn btn-ghost btn-row-height" onclick="navigateQuestion(1)">Next Question</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Query Execution Output -->
+          <section id="output-section" class="layer">
+            <div class="panel-head">
+              <h3 class="panel-title">Query Result Output</h3>
+              <span id="output-meta" class="label">Ready</span>
+            </div>
+            <div id="output-banner" class="notif">
+              <span>Write a SQL query above and click <strong>Run Query</strong> to inspect live results from <code class="code-inline">employees</code>.</span>
+            </div>
+            <div id="output-table-container" class="table-wrap is-hidden" style="margin-top: var(--space-md);"></div>
+          </section>
+
+          <!-- Interactive Live Table Preview (Candidate Reference) -->
+          <section id="live-table-section" class="layer">
+            <div class="preview-toolbar">
+              <div>
+                <h3 class="panel-title">Live Table Preview: <code class="code-inline">employees</code></h3>
+                <span class="label" style="margin-top: 2px;">Inspect current rows, spelling, and column types anytime</span>
+              </div>
+              <div class="action-group">
+                <div class="field-group" style="min-width: 190px;">
+                  <label class="field-label" for="table-filter-input">Filter Preview</label>
+                  <input id="table-filter-input" type="text" class="carbon-input" placeholder="Search name, dept, city…" oninput="renderLiveTablePreview()">
+                </div>
+                <button id="btn-toggle-preview" type="button" class="btn btn-ghost btn-row-height" style="align-self: end;" onclick="togglePreviewBody()">
+                  <span>Hide Table</span>
+                </button>
+              </div>
+            </div>
+            <div id="live-table-body" class="table-wrap"></div>
+          </section>
+        </div>
+
+        <!-- SUPERVISOR & EVALUATOR VIEW -->
+        <div id="view-supervisor" class="main-col is-hidden">
+          <!-- KPI Summary Strip -->
+          <section class="kpi-grid" aria-label="Candidate Assessment Summary Metrics">
+            <div class="kpi-tile key-tile">
+              <span class="label">Assessment Progress</span>
+              <span id="kpi-submitted" class="key-value">0 / 5</span>
+              <span class="rubric-sub">Submitted questions</span>
+            </div>
+            <div class="kpi-tile">
+              <span class="label">Auto-Check Match</span>
+              <span id="kpi-passed" class="key-value">0 / 5</span>
+              <span class="rubric-sub">Output verified against target</span>
+            </div>
+            <div class="kpi-tile">
+              <span class="label">Rubric Score</span>
+              <span id="kpi-rubric" class="key-value">0 / 20</span>
+              <span class="rubric-sub">Criteria checked across Q1–Q5</span>
+            </div>
+            <div class="kpi-tile">
+              <span class="label">Hints Opened</span>
+              <span id="kpi-hints" class="key-value">0 / 5</span>
+              <span class="rubric-sub">Candidate independence gauge</span>
+            </div>
+          </section>
+
+          <!-- Active Question Supervision Panel -->
+          <section class="layer">
+            <div class="challenge-head">
+              <div>
+                <span id="sup-q-label" class="label">Supervising Question 1 of 5</span>
+                <h2 id="sup-q-title" class="challenge-title">Basic SELECT</h2>
+              </div>
+              <div class="action-group">
+                <span id="sup-autocheck-tag" class="tag">Not Tested</span>
+                <button id="btn-sup-run-ref" type="button" class="btn btn-secondary btn-row-height" onclick="runReferenceInConsole()">
+                  <span>Run Reference Answer</span>
+                </button>
+                <button id="btn-sup-compare" type="button" class="btn btn-primary btn-row-height" onclick="toggleCompareHighlight()">
+                  <span>Compare Query</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Side-by-Side Candidate vs Reference SQL -->
+            <div class="compare-grid" style="margin-top: var(--space-md);">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xs);">
+                  <span class="label">Candidate Latest Query</span>
+                  <span id="sup-cand-status" class="label">No input yet</span>
+                </div>
+                <pre id="sup-cand-sql" class="code-box">(No SQL written yet)</pre>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xs);">
+                  <span class="label">Reference Solution Query</span>
+                  <span class="label">Expected Pattern</span>
+                </div>
+                <pre id="sup-ref-sql" class="code-box"></pre>
+              </div>
+            </div>
+
+            <!-- Automated Comparison Diagnostic -->
+            <div id="sup-compare-banner" class="notif" style="margin-top: var(--space-md);">
+              <span id="sup-compare-text">Click <strong>Compare Query</strong> to inspect syntax clauses, quote usage, and output parity.</span>
+            </div>
+
+            <!-- Reference Preview Result (when supervisor runs reference query) -->
+            <div id="sup-ref-output-wrap" class="is-hidden" style="margin-top: var(--space-md);">
+              <div class="panel-head">
+                <h3 class="panel-title">Reference Output Preview</h3>
+                <button type="button" class="btn btn-ghost btn-row-height" onclick="hideRefOutput()">Close Preview</button>
+              </div>
+              <div id="sup-ref-output-table" class="table-wrap"></div>
+            </div>
+          </section>
+
+          <!-- Scoring & Observation Rubric Checklist -->
+          <section class="layer">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Observation &amp; Scoring Rubric (Q<span id="sup-rubric-qnum">1</span>)</h3>
+                <span class="rubric-sub">Verify SQL fundamentals, clause order, and beginner syntax hygiene</span>
+              </div>
+              <span id="sup-q-rubric-score" class="tag tag-blue">0 / 4 Criteria</span>
+            </div>
+
+            <div id="sup-rubric-list" class="rubric-list"></div>
+
+            <div style="margin-top: var(--space-md); display: grid; gap: var(--space-xs);">
+              <label class="field-label" for="sup-notes-input">Interviewer Observation Notes (Q<span id="sup-notes-qnum">1</span>)</label>
+              <textarea id="sup-notes-input" class="notes-textarea" placeholder="Record verbal reasoning, hesitation on syntax, or follow-up observations…" oninput="handleSupervisorNote(this.value)"></textarea>
+            </div>
+          </section>
+
+          <!-- Overall Candidate Summary & Export -->
+          <section class="layer">
+            <div class="panel-head">
+              <div>
+                <h3 class="panel-title">Session Evaluation Summary</h3>
+                <span class="rubric-sub">All 5 SQL challenges at a glance</span>
+              </div>
+              <div class="action-group">
+                <button id="btn-export-report" type="button" class="btn btn-primary btn-row-height" onclick="exportEvaluationReport()">
+                  <span>Export Evaluation (.txt)</span>
+                </button>
+                <button id="btn-reset-all" type="button" class="btn btn-danger-outline btn-row-height" onclick="handleResetSession(this)">
+                  <span>Reset Entire Session</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="carbon-table">
+                <thead>
+                  <tr>
+                    <th>Module</th>
+                    <th>Topic</th>
+                    <th>Status</th>
+                    <th>Output Check</th>
+                    <th class="num-col">Rubric</th>
+                    <th>Hint Used</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="sup-summary-tbody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    // =========================================================================
+    // 1. INITIAL DATASET & ASSESSMENT QUESTIONS
+    // =========================================================================
+    const INITIAL_EMPLOYEES = [
+      { id: 1, name: `Aisyah Rahman`, department: `Finance`, salary: 4800, city: `Kuala Lumpur` },
+      { id: 2, name: `Daniel Tan`, department: `IT`, salary: 5200, city: `George Town` },
+      { id: 3, name: `Farah Nadia`, department: `HR`, salary: 3900, city: `Ipoh` },
+      { id: 4, name: `Kavitha Devi`, department: `Finance`, salary: 6100, city: `Ipoh` },
+      { id: 5, name: `Hafizuddin Ali`, department: `IT`, salary: 4600, city: `Kuala Lumpur` },
+      { id: 6, name: `Mei Ling Wong`, department: `Finance`, salary: 5400, city: `George Town` },
+      { id: 7, name: `Suresh Kumar`, department: `HR`, salary: 4200, city: `Kuala Lumpur` },
+      { id: 8, name: `Nurul Huda`, department: `IT`, salary: 5900, city: `Ipoh` },
+      { id: 9, name: `Jason Lim`, department: `Finance`, salary: 4300, city: `Ipoh` }
+    ];
+
+    const TABLE_COLUMNS = [
+      { name: `id`, type: `INTEGER` },
+      { name: `name`, type: `VARCHAR` },
+      { name: `department`, type: `VARCHAR` },
+      { name: `salary`, type: `NUMERIC` },
+      { name: `city`, type: `VARCHAR` }
+    ];
+
+    const QUESTIONS = [
+      {
+        id: 1,
+        code: `Q1`,
+        topic: `Basic SELECT`,
+        title: `Display all columns and rows from <strong>employees</strong>`,
+        plainTitle: `Basic SELECT — All Columns & Rows`,
+        promptHtml: `Write a SQL query to display <strong>all columns and all rows</strong> from the <code class="code-inline">employees</code> table.`,
+        hint: `Use <code class="code-inline">SELECT *</code> to retrieve every column, followed by <code class="code-inline">FROM employees;</code>.`,
+        referenceSql: `SELECT * FROM employees;`,
+        rubric: [
+          { id: `q1_r1`, label: `Correct SELECT and FROM keywords`, detail: `Proper spelling and clause sequence` },
+          { id: `q1_r2`, label: `Selects all columns`, detail: `Uses * wildcard or lists all 5 columns` },
+          { id: `q1_r3`, label: `Correct table identifier`, detail: `Targets employees (exact spelling)` },
+          { id: `q1_r4`, label: `Clean SQL formatting`, detail: `No trailing commas or stray syntax` }
+        ]
+      },
+      {
+        id: 2,
+        code: `Q2`,
+        topic: `WHERE Filtering`,
+        title: `List <strong>name</strong> and <strong>salary</strong> for Finance`,
+        plainTitle: `Simple WHERE Filtering — Finance Department`,
+        promptHtml: `Write a SQL query to display only the <code class="code-inline">name</code> and <code class="code-inline">salary</code> of employees who work in the <code class="code-inline">'Finance'</code> department.`,
+        hint: `Specify <code class="code-inline">SELECT name, salary</code> instead of <code class="code-inline">*</code>, then add <code class="code-inline">WHERE department = 'Finance'</code> with single quotes.`,
+        referenceSql: `SELECT name, salary\nFROM employees\nWHERE department = 'Finance';`,
+        rubric: [
+          { id: `q2_r1`, label: `Exact column projection`, detail: `Selects only name and salary (not *)` },
+          { id: `q2_r2`, label: `Valid WHERE filter clause`, detail: `Filters on department column` },
+          { id: `q2_r3`, label: `Single-quoted string literal`, detail: `Uses 'Finance' instead of unquoted or double quotes` },
+          { id: `q2_r4`, label: `Case-accurate string value`, detail: `Matches 'Finance' exact casing` }
+        ]
+      },
+      {
+        id: 3,
+        code: `Q3`,
+        topic: `ORDER BY Sorting`,
+        title: `Sort <strong>name</strong> and <strong>salary</strong> highest to lowest`,
+        plainTitle: `ORDER BY Sorting — Salary Descending`,
+        promptHtml: `Display every employee's <code class="code-inline">name</code> and <code class="code-inline">salary</code>, sorted from the <strong>highest salary to the lowest</strong>.`,
+        hint: `Place <code class="code-inline">ORDER BY salary DESC</code> at the end of your query. <code class="code-inline">DESC</code> sorts descending (highest first).`,
+        referenceSql: `SELECT name, salary\nFROM employees\nORDER BY salary DESC;`,
+        rubric: [
+          { id: `q3_r1`, label: `Projects name and salary`, detail: `Displays the two requested columns` },
+          { id: `q3_r2`, label: `Uses ORDER BY salary`, detail: `Avoids invalid keywords like SORT BY` },
+          { id: `q3_r3`, label: `Includes DESC keyword`, detail: `Explicitly sorts highest to lowest` },
+          { id: `q3_r4`, label: `Proper clause order`, detail: `SELECT -> FROM -> ORDER BY` }
+        ]
+      },
+      {
+        id: 4,
+        code: `Q4`,
+        topic: `Basic Aggregation`,
+        title: `Count total employees in <strong>Ipoh</strong>`,
+        plainTitle: `Basic Aggregation — COUNT in Ipoh`,
+        promptHtml: `Write a SQL query to <strong>count the total number of employees</strong> whose <code class="code-inline">city</code> is <code class="code-inline">'Ipoh'</code>.`,
+        hint: `Use <code class="code-inline">SELECT COUNT(*)</code> and filter the rows with <code class="code-inline">WHERE city = 'Ipoh'</code>.`,
+        referenceSql: `SELECT COUNT(*) AS total_employees\nFROM employees\nWHERE city = 'Ipoh';`,
+        rubric: [
+          { id: `q4_r1`, label: `Uses COUNT(*) aggregate`, detail: `Applies COUNT(*) or COUNT(id) function` },
+          { id: `q4_r2`, label: `Applies WHERE city filter`, detail: `Filters rows before counting` },
+          { id: `q4_r3`, label: `String literal quotes`, detail: `Wraps 'Ipoh' in single quotes` },
+          { id: `q4_r4`, label: `Produces single count (4)`, detail: `Returns the exact aggregated total` }
+        ]
+      },
+      {
+        id: 5,
+        code: `Q5`,
+        topic: `INSERT INTO`,
+        title: `Insert new employee <strong>Ahmad</strong> (ID 101)`,
+        plainTitle: `INSERT INTO — Add Record 101 (Ahmad)`,
+        promptHtml: `Write a SQL statement to insert a new employee record into <code class="code-inline">employees</code> with values: <code class="code-inline">101, 'Ahmad', 'IT', 4500, 'Kuala Lumpur'</code>.`,
+        hint: `Use <code class="code-inline">INSERT INTO employees (id, name, department, salary, city) VALUES (101, 'Ahmad', 'IT', 4500, 'Kuala Lumpur');</code>. Numbers have no quotes; text uses single quotes.`,
+        referenceSql: `INSERT INTO employees (id, name, department, salary, city)\nVALUES (101, 'Ahmad', 'IT', 4500, 'Kuala Lumpur');`,
+        rubric: [
+          { id: `q5_r1`, label: `Valid INSERT INTO syntax`, detail: `Includes INTO keyword and table name` },
+          { id: `q5_r2`, label: `Exact column/value alignment`, detail: `5 values mapped cleanly to id, name, department, salary, city` },
+          { id: `q5_r3`, label: `Unquoted numeric fields`, detail: `101 and 4500 entered as numbers` },
+          { id: `q5_r4`, label: `Single-quoted text fields`, detail: `'Ahmad', 'IT', 'Kuala Lumpur' properly quoted` }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 2. APPLICATION STATE
+    // =========================================================================
+    function createDefaultState() {
+      const questionsState = {};
+      QUESTIONS.forEach((q) => {
+        questionsState[q.id] = {
+          draftSql: ``,
+          submittedSql: ``,
+          submittedAt: ``,
+          hintUsed: false,
+          lastOutputSummary: ``,
+          autoCheckPassed: null,
+          autoCheckNote: `Not evaluated yet`,
+          rubricChecked: {},
+          supervisorNote: ``
+        };
+      });
+      return {
+        candidateName: ``,
+        mode: `candidate`,
+        activeQuestionId: 1,
+        employees: INITIAL_EMPLOYEES.map((r) => ({ ...r })),
+        insertedIds: [],
+        questions: questionsState,
+        previewVisible: true
+      };
+    }
+
+    let appState = createDefaultState();
+    let lastExecutionResult = null;
+    let compareHighlighted = false;
+
+    async function persistState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        try {
+          await window.notebookAppApi.setAppState(appState);
+        } catch (err) {
+          // Graceful fallback if host limits exceeded
+        }
+      }
+    }
+
+    // =========================================================================
+    // 3. IN-MEMORY RELATIONAL SQL ENGINE
+    // =========================================================================
+    function stripSqlComments(sql) {
+      let out = ``;
+      let i = 0;
+      let inSingle = false;
+      let inDouble = false;
+      while (i < sql.length) {
+        const ch = sql[i];
+        const next = sql[i + 1];
+        if (ch === `'` && !inDouble) {
+          if (inSingle && next === `'`) {
+            out += `''`;
+            i += 2;
+            continue;
+          }
+          inSingle = !inSingle;
+          out += ch;
+          i++;
+          continue;
+        }
+        if (ch === `"` && !inSingle) {
+          inDouble = !inDouble;
+          out += ch;
+          i++;
+          continue;
+        }
+        if (!inSingle && !inDouble) {
+          if (ch === `-` && next === `-`) {
+            while (i < sql.length && sql[i] !== `\n`) i++;
+            continue;
+          }
+          if (ch === `/` && next === `*`) {
+            i += 2;
+            while (i < sql.length && !(sql[i] === `*` && sql[i + 1] === `/`)) i++;
+            i += 2;
+            out += ` `;
+            continue;
+          }
+        }
+        out += ch;
+        i++;
+      }
+      return out;
+    }
+
+    function splitTopLevelComma(str) {
+      const parts = [];
+      let current = ``;
+      let depth = 0;
+      let inSingle = false;
+      let inDouble = false;
+      for (let i = 0; i < str.length; i++) {
+        const ch = str[i];
+        const next = str[i + 1];
+        if (ch === `'` && !inDouble) {
+          if (inSingle && next === `'`) {
+            current += `''`;
+            i++;
+            continue;
+          }
+          inSingle = !inSingle;
+          current += ch;
+          continue;
+        }
+        if (ch === `"` && !inSingle) {
+          inDouble = !inDouble;
+          current += ch;
+          continue;
+        }
+        if (!inSingle && !inDouble) {
+          if (ch === `(`) depth++;
+          else if (ch === `)`) depth--;
+          else if (ch === `,` && depth === 0) {
+            parts.push(current.trim());
+            current = ``;
+            continue;
+          }
+        }
+        current += ch;
+      }
+      if (current.trim().length > 0 || str.trim().endsWith(`,`)) {
+        parts.push(current.trim());
+      }
+      return parts;
+    }
+
+    function checkUnclosedQuotes(sql) {
+      let inSingle = false;
+      let inDouble = false;
+      for (let i = 0; i < sql.length; i++) {
+        const ch = sql[i];
+        const next = sql[i + 1];
+        if (ch === `'` && !inDouble) {
+          if (inSingle && next === `'`) {
+            i++;
+            continue;
+          }
+          inSingle = !inSingle;
+        } else if (ch === `"` && !inSingle) {
+          inDouble = !inDouble;
+        }
+      }
+      if (inSingle) {
+        return `Unclosed single quote ('). Make sure every text literal ends with a matching '.`;
+      }
+      if (inDouble) {
+        return `Unclosed double quote ("). Use single quotes ('...') for text values in SQL.`;
+      }
+      return null;
+    }
+
+    function findKeywordOutsideQuotes(sql, keyword) {
+      const upper = sql.toUpperCase();
+      const kw = keyword.toUpperCase();
+      let depth = 0;
+      let inSingle = false;
+      let inDouble = false;
+      for (let i = 0; i <= sql.length - kw.length; i++) {
+        const ch = sql[i];
+        const next = sql[i + 1];
+        if (ch === `'` && !inDouble) {
+          if (inSingle && next === `'`) { i++; continue; }
+          inSingle = !inSingle;
+          continue;
+        }
+        if (ch === `"` && !inSingle) {
+          inDouble = !inDouble;
+          continue;
+        }
+        if (inSingle || inDouble) continue;
+        if (ch === `(`) { depth++; continue; }
+        if (ch === `)`) { depth--; continue; }
+        if (depth !== 0) continue;
+
+        if (upper.slice(i, i + kw.length) === kw) {
+          const prevChar = i === 0 ? ` ` : upper[i - 1];
+          const nextChar = i + kw.length >= upper.length ? ` ` : upper[i + kw.length];
+          const isWordBoundaryBefore = !/[A-Z0-9_]/.test(prevChar);
+          const isWordBoundaryAfter = !/[A-Z0-9_]/.test(nextChar);
+          if (isWordBoundaryBefore && isWordBoundaryAfter) {
+            return i;
+          }
+        }
+      }
+      return -1;
+    }
+
+    function suggestColumnName(col) {
+      const validCols = TABLE_COLUMNS.map((c) => c.name);
+      const lower = col.toLowerCase();
+      let best = null;
+      let bestScore = 0;
+      validCols.forEach((v) => {
+        if (v.startsWith(lower.slice(0, 2)) || lower.includes(v.slice(0, 3))) {
+          best = v;
+          bestScore = 1;
+        }
+      });
+      if (!best && lower === `dept`) best = `department`;
+      if (!best && lower === `emp_id`) best = `id`;
+      if (!best && lower === `location`) best = `city`;
+      return best ? ` Did you mean \`${best}\`?` : ``;
+    }
+
+    function validateColumnExists(colName) {
+      const valid = TABLE_COLUMNS.map((c) => c.name);
+      const found = valid.find((c) => c.toLowerCase() === colName.toLowerCase());
+      if (!found) {
+        throw new Error(`Unknown column '${colName}' in table 'employees'.${suggestColumnName(colName)} Available columns: id, name, department, salary, city.`);
+      }
+      return found;
+    }
+
+    function parseSqlLiteral(raw) {
+      const t = raw.trim();
+      if (t.startsWith(`'`)) {
+        if (!t.endsWith(`'`) || t.length < 2) {
+          throw new Error(`Invalid string literal ${t}. Wrap text values in single quotes like 'Finance'.`);
+        }
+        return { kind: `string`, value: t.slice(1, -1).replace(/''/g, `'`) };
+      }
+      if (t.startsWith(`"`)) {
+        throw new Error(`Invalid literal ${t}: SQL uses single quotes ('...') for text values, not double quotes ("...").`);
+      }
+      if (/^null$/i.test(t)) {
+        return { kind: `null`, value: null };
+      }
+      if (/^-?\d+(\.\d+)?$/.test(t)) {
+        return { kind: `number`, value: Number(t) };
+      }
+      throw new Error(`Syntax error near '${t}': text values must be wrapped in single quotes, e.g. '${t}'.`);
+    }
+
+    function tokenizeCondition(expr) {
+      const tokens = [];
+      let i = 0;
+      while (i < expr.length) {
+        const ch = expr[i];
+        if (/\s/.test(ch)) { i++; continue; }
+        if (ch === `(` || ch === `)`) {
+          tokens.push({ type: `paren`, value: ch });
+          i++;
+          continue;
+        }
+        if (ch === `,`) {
+          tokens.push({ type: `comma`, value: `,` });
+          i++;
+          continue;
+        }
+        if (ch === `'`) {
+          let str = ``;
+          i++;
+          while (i < expr.length) {
+            if (expr[i] === `'` && expr[i + 1] === `'`) {
+              str += `'`;
+              i += 2;
+            } else if (expr[i] === `'`) {
+              i++;
+              break;
+            } else {
+              str += expr[i];
+              i++;
+            }
+          }
+          tokens.push({ type: `string`, value: str });
+          continue;
+        }
+        if (ch === `"`) {
+          let str = ``;
+          i++;
+          while (i < expr.length && expr[i] !== `"`) {
+            str += expr[i];
+            i++;
+          }
+          if (expr[i] === `"`) i++;
+          tokens.push({ type: `double_quote`, value: str });
+          continue;
+        }
+        const twoChar = expr.slice(i, i + 2);
+        if ([`!=`, `<>`, `<=`, `>=`].includes(twoChar)) {
+          tokens.push({ type: `op`, value: twoChar });
+          i += 2;
+          continue;
+        }
+        if ([`=`, `<`, `>`].includes(ch)) {
+          tokens.push({ type: `op`, value: ch });
+          i++;
+          continue;
+        }
+        if (/[0-9]/.test(ch) || (ch === `-` && /[0-9]/.test(expr[i + 1] || ``))) {
+          let numStr = ch;
+          i++;
+          while (i < expr.length && /[0-9.]/.test(expr[i])) {
+            numStr += expr[i];
+            i++;
+          }
+          tokens.push({ type: `number`, value: Number(numStr) });
+          continue;
+        }
+        if (/[A-Za-z_]/.test(ch)) {
+          let word = ch;
+          i++;
+          while (i < expr.length && /[A-Za-z0-9_.]/.test(expr[i])) {
+            word += expr[i];
+            i++;
+          }
+          tokens.push({ type: `word`, value: word });
+          continue;
+        }
+        throw new Error(`Unexpected character '${ch}' in WHERE condition.`);
+      }
+      return tokens;
+    }
+
+    function buildWherePredicate(whereClause) {
+      const tokens = tokenizeCondition(whereClause);
+      if (tokens.length === 0) {
+        throw new Error(`WHERE keyword requires a condition (e.g., WHERE department = 'Finance').`);
+      }
+      let pos = 0;
+
+      function peek() { return tokens[pos]; }
+      function consume() { return tokens[pos++]; }
+
+      function parseOr() {
+        let left = parseAnd();
+        while (peek() && peek().type === `word` && peek().value.toUpperCase() === `OR`) {
+          consume();
+          const right = parseAnd();
+          const prevLeft = left;
+          left = (row) => prevLeft(row) || right(row);
+        }
+        return left;
+      }
+
+      function parseAnd() {
+        let left = parsePrimary();
+        while (peek() && peek().type === `word` && peek().value.toUpperCase() === `AND`) {
+          consume();
+          const right = parsePrimary();
+          const prevLeft = left;
+          left = (row) => prevLeft(row) && right(row);
+        }
+        return left;
+      }
+
+      function parsePrimary() {
+        const tok = peek();
+        if (!tok) throw new Error(`Incomplete WHERE condition.`);
+        if (tok.type === `paren` && tok.value === `(`) {
+          consume();
+          const inner = parseOr();
+          const close = consume();
+          if (!close || close.value !== `)`) {
+            throw new Error(`Missing closing parenthesis ')' in WHERE clause.`);
+          }
+          return inner;
+        }
+        if (tok.type === `word` && tok.value.toUpperCase() === `NOT`) {
+          consume();
+          const inner = parsePrimary();
+          return (row) => !inner(row);
+        }
+        return parseComparison();
+      }
+
+      function parseComparison() {
+        const lhs = consume();
+        if (!lhs || lhs.type !== `word`) {
+          throw new Error(`Expected a column name in WHERE clause (e.g., department = 'Finance').`);
+        }
+        let colRaw = lhs.value;
+        if (colRaw.includes(`.`)) colRaw = colRaw.split(`.`).pop();
+        const col = validateColumnExists(colRaw);
+
+        const opTok = consume();
+        if (!opTok) {
+          throw new Error(`Expected an operator (=, >, <, LIKE, IN) after column '${col}'.`);
+        }
+
+        if (opTok.type === `word` && opTok.value.toUpperCase() === `IS`) {
+          let negate = false;
+          if (peek() && peek().type === `word` && peek().value.toUpperCase() === `NOT`) {
+            consume();
+            negate = true;
+          }
+          const nullTok = consume();
+          if (!nullTok || nullTok.type !== `word` || nullTok.value.toUpperCase() !== `NULL`) {
+            throw new Error(`Expected NULL after IS in WHERE clause.`);
+          }
+          return (row) => negate ? row[col] !== null : row[col] === null;
+        }
+
+        if (opTok.type === `word` && opTok.value.toUpperCase() === `IN`) {
+          const openP = consume();
+          if (!openP || openP.value !== `(`) {
+            throw new Error(`Expected '(' after IN operator.`);
+          }
+          const values = [];
+          while (peek() && peek().value !== `)`) {
+            const vTok = consume();
+            if (vTok.type === `double_quote`) {
+              throw new Error(`Use single quotes '${vTok.value}' instead of double quotes "${vTok.value}".`);
+            }
+            if (vTok.type === `word`) {
+              throw new Error(`Text value '${vTok.value}' inside IN (...) must be wrapped in single quotes.`);
+            }
+            if (vTok.type === `string` || vTok.type === `number`) {
+              values.push(vTok.value);
+            }
+            if (peek() && peek().type === `comma`) consume();
+          }
+          const closeP = consume();
+          if (!closeP || closeP.value !== `)`) {
+            throw new Error(`Missing ')' after IN list.`);
+          }
+          return (row) => values.includes(row[col]);
+        }
+
+        if (opTok.type === `word` && opTok.value.toUpperCase() === `LIKE`) {
+          const rhs = consume();
+          if (!rhs || rhs.type !== `string`) {
+            throw new Error(`LIKE expects a single-quoted pattern, e.g. WHERE name LIKE 'A%'.`);
+          }
+          const escaped = rhs.value.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`).replace(/%/g, `.*`).replace(/_/g, `.`);
+          const regex = new RegExp(`^${escaped}$`, `i`);
+          return (row) => row[col] !== null && regex.test(String(row[col]));
+        }
+
+        if (opTok.type !== `op`) {
+          throw new Error(`Expected comparison operator (=, !=, <, >, <=, >=) after '${col}', got '${opTok.value}'.`);
+        }
+
+        const rhs = consume();
+        if (!rhs) {
+          throw new Error(`Expected a value after '${col} ${opTok.value}'.`);
+        }
+        if (rhs.type === `double_quote`) {
+          throw new Error(`String literal "${rhs.value}" uses double quotes. In SQL, wrap text in single quotes: '${rhs.value}'.`);
+        }
+        if (rhs.type === `word`) {
+          if (rhs.value.toUpperCase() === `NULL`) {
+            throw new Error(`Use 'IS NULL' or 'IS NOT NULL' instead of '= NULL'.`);
+          }
+          throw new Error(`Syntax error near '${rhs.value}': text values in SQL must be wrapped in single quotes, e.g. ${col} = '${rhs.value}'.`);
+        }
+        if (rhs.type !== `string` && rhs.type !== `number`) {
+          throw new Error(`Invalid comparison value near '${rhs.value}'.`);
+        }
+
+        const val = rhs.value;
+        const op = opTok.value;
+        return (row) => {
+          const cell = row[col];
+          if (cell === null || cell === undefined) return false;
+          if (op === `=`) return cell === val;
+          if (op === `!=` || op === `<>`) return cell !== val;
+          if (op === `>`) return cell > val;
+          if (op === `<`) return cell < val;
+          if (op === `>=`) return cell >= val;
+          if (op === `<=`) return cell <= val;
+          return false;
+        };
+      }
+
+      const predicate = parseOr();
+      if (pos < tokens.length) {
+        throw new Error(`Unexpected token '${tokens[pos].value}' in WHERE clause. Did you forget AND / OR?`);
+      }
+      return predicate;
+    }
+
+    function executeSql(rawSql, currentRows) {
+      const startTime = performance.now();
+      const trimmedRaw = (rawSql || ``).trim();
+      if (!trimmedRaw) {
+        throw new Error(`SQL editor is empty. Type a query such as SELECT * FROM employees;`);
+      }
+
+      const quoteErr = checkUnclosedQuotes(trimmedRaw);
+      if (quoteErr) throw new Error(quoteErr);
+
+      let clean = stripSqlComments(trimmedRaw).trim();
+      // Remove trailing semicolon(s)
+      clean = clean.replace(/;+\s*$/, ``).trim();
+      if (!clean) {
+        throw new Error(`No executable SQL statement found.`);
+      }
+      if (clean.includes(`;`)) {
+        // Check if semicolon is outside quotes
+        let inS = false;
+        for (let i = 0; i < clean.length; i++) {
+          if (clean[i] === `'`) inS = !inS;
+          else if (clean[i] === `;` && !inS) {
+            throw new Error(`Please run one SQL statement at a time.`);
+          }
+        }
+      }
+
+      const upper = clean.toUpperCase();
+
+      // Common beginner typos at start
+      if (/^SELEC\b/i.test(clean) || /^SLECT\b/i.test(clean)) {
+        throw new Error(`Typo in keyword: Did you mean SELECT?`);
+      }
+      if (/^INSRT\b/i.test(clean) || /^INSER\b/i.test(clean)) {
+        throw new Error(`Typo in keyword: Did you mean INSERT INTO?`);
+      }
+
+      // -----------------------------------------------------------------------
+      // SELECT STATEMENT
+      // -----------------------------------------------------------------------
+      if (/^SELECT\b/i.test(clean)) {
+        if (/\bFORM\b/i.test(clean) && findKeywordOutsideQuotes(clean, `FROM`) === -1) {
+          throw new Error(`Typo in clause: Did you mean FROM instead of FORM?`);
+        }
+        if (/\bWHER\b/i.test(clean) && findKeywordOutsideQuotes(clean, `WHERE`) === -1) {
+          throw new Error(`Typo in clause: Did you mean WHERE instead of WHER?`);
+        }
+        if (/\bSORT\s+BY\b/i.test(clean) && findKeywordOutsideQuotes(clean, `ORDER`) === -1) {
+          throw new Error(`Syntax error: SQL uses 'ORDER BY', not 'SORT BY'. Example: ORDER BY salary DESC`);
+        }
+
+        const fromIdx = findKeywordOutsideQuotes(clean, `FROM`);
+        if (fromIdx === -1) {
+          throw new Error(`Syntax error: Missing FROM clause. Example: SELECT * FROM employees`);
+        }
+
+        const whereIdx = findKeywordOutsideQuotes(clean, `WHERE`);
+        const groupIdx = findKeywordOutsideQuotes(clean, `GROUP`);
+        const orderIdx = findKeywordOutsideQuotes(clean, `ORDER`);
+        const limitIdx = findKeywordOutsideQuotes(clean, `LIMIT`);
+
+        // Validate clause ordering
+        if (whereIdx !== -1 && orderIdx !== -1 && orderIdx < whereIdx) {
+          throw new Error(`Clause order error: WHERE must appear before ORDER BY (SELECT ... FROM ... WHERE ... ORDER BY ...).`);
+        }
+        if (whereIdx !== -1 && whereIdx < fromIdx) {
+          throw new Error(`Clause order error: FROM must appear before WHERE.`);
+        }
+
+        let selectPart = clean.slice(6, fromIdx).trim();
+        if (!selectPart) {
+          throw new Error(`Missing column list after SELECT. Use '*' or column names like 'name, salary'.`);
+        }
+        if (selectPart.endsWith(`,`)) {
+          throw new Error(`Syntax error: Remove the extra trailing comma before FROM.`);
+        }
+
+        let distinctFlag = false;
+        if (/^DISTINCT\b/i.test(selectPart)) {
+          distinctFlag = true;
+          selectPart = selectPart.slice(8).trim();
+        }
+
+        const fromEndCandidates = [whereIdx, groupIdx, orderIdx, limitIdx].filter((x) => x > fromIdx);
+        const fromEnd = fromEndCandidates.length > 0 ? Math.min(...fromEndCandidates) : clean.length;
+        const tablePart = clean.slice(fromIdx + 4, fromEnd).trim();
+        if (!tablePart) {
+          throw new Error(`Missing table name after FROM. Use: FROM employees`);
+        }
+        const tableTokens = tablePart.split(/\s+/);
+        const tableName = tableTokens[0];
+        if (tableName.toLowerCase() !== `employees`) {
+          throw new Error(`Table '${tableName}' does not exist. The available table is 'employees'.`);
+        }
+
+        // Extract optional clauses
+        let whereClause = null;
+        if (whereIdx !== -1) {
+          const wEndCandidates = [groupIdx, orderIdx, limitIdx].filter((x) => x > whereIdx);
+          const wEnd = wEndCandidates.length > 0 ? Math.min(...wEndCandidates) : clean.length;
+          whereClause = clean.slice(whereIdx + 5, wEnd).trim();
+        }
+
+        let groupByCol = null;
+        if (groupIdx !== -1) {
+          const afterGroup = clean.slice(groupIdx + 5).trim();
+          if (!/^BY\b/i.test(afterGroup)) {
+            throw new Error(`Expected 'BY' after GROUP (GROUP BY column).`);
+          }
+          const gEndCandidates = [orderIdx, limitIdx].filter((x) => x > groupIdx);
+          const gEnd = gEndCandidates.length > 0 ? Math.min(...gEndCandidates) : clean.length;
+          const groupExpr = clean.slice(groupIdx + 5, gEnd).replace(/^BY\b/i, ``).trim();
+          groupByCol = validateColumnExists(groupExpr);
+        }
+
+        let orderSpecs = [];
+        if (orderIdx !== -1) {
+          const afterOrder = clean.slice(orderIdx + 5).trim();
+          if (!/^BY\b/i.test(afterOrder)) {
+            throw new Error(`Expected 'BY' after ORDER (ORDER BY salary DESC).`);
+          }
+          const oEndCandidates = [limitIdx].filter((x) => x > orderIdx);
+          const oEnd = oEndCandidates.length > 0 ? Math.min(...oEndCandidates) : clean.length;
+          const orderExpr = clean.slice(orderIdx + 5, oEnd).replace(/^BY\b/i, ``).trim();
+          if (!orderExpr) {
+            throw new Error(`Specify a column after ORDER BY, e.g. ORDER BY salary DESC.`);
+          }
+          const parts = splitTopLevelComma(orderExpr);
+          orderSpecs = parts.map((p) => {
+            const segs = p.trim().split(/\s+/);
+            if (segs.length > 2) {
+              throw new Error(`Invalid ORDER BY clause near '${p}'.`);
+            }
+            const col = validateColumnExists(segs[0]);
+            const dir = segs[1] ? segs[1].toUpperCase() : `ASC`;
+            if (dir !== `ASC` && dir !== `DESC`) {
+              throw new Error(`Invalid sort direction '${segs[1]}'. Use ASC or DESC.`);
+            }
+            return { col, dir };
+          });
+        }
+
+        let limitCount = null;
+        if (limitIdx !== -1) {
+          const limStr = clean.slice(limitIdx + 5).trim();
+          if (!/^\d+$/.test(limStr)) {
+            throw new Error(`LIMIT requires a positive whole number, e.g. LIMIT 5.`);
+          }
+          limitCount = parseInt(limStr, 10);
+        }
+
+        // Filter rows
+        let workingRows = currentRows.map((r) => ({ ...r }));
+        if (whereClause !== null) {
+          const predicate = buildWherePredicate(whereClause);
+          workingRows = workingRows.filter(predicate);
+        }
+
+        // Parse projection items
+        const rawSelectItems = splitTopLevelComma(selectPart);
+        if (rawSelectItems.some((s) => s === ``)) {
+          throw new Error(`Syntax error in SELECT list: unexpected empty item or trailing comma.`);
+        }
+
+        const parsedItems = rawSelectItems.map((item) => {
+          let expr = item;
+          let alias = null;
+          const asMatch = item.match(/^(.+?)\s+AS\s+([A-Za-z_][A-Za-z0-9_]*|"[^"]+")$/i);
+          if (asMatch) {
+            expr = asMatch[1].trim();
+            alias = asMatch[2].replace(/^"|"$/g, ``);
+          } else {
+            const spaceAliasMatch = item.match(/^([A-Za-z0-9_*()]+)\s+([A-Za-z_][A-Za-z0-9_]*)$/);
+            if (spaceAliasMatch && !/^(COUNT|SUM|AVG|MIN|MAX)$/i.test(spaceAliasMatch[1])) {
+              expr = spaceAliasMatch[1].trim();
+              alias = spaceAliasMatch[2].trim();
+            }
+          }
+
+          if (expr === `*`) {
+            return { kind: `wildcard` };
+          }
+          const aggMatch = expr.match(/^(COUNT|SUM|AVG|MIN|MAX)\s*\(\s*(\*|[A-Za-z_][A-Za-z0-9_]*)\s*\)$/i);
+          if (aggMatch) {
+            const fn = aggMatch[1].toUpperCase();
+            const arg = aggMatch[2] === `*` ? `*` : validateColumnExists(aggMatch[2]);
+            if (fn !== `COUNT` && arg === `*`) {
+              throw new Error(`${fn}(*) is invalid. Specify a numeric column such as ${fn}(salary).`);
+            }
+            return {
+              kind: `agg`,
+              fn,
+              arg,
+              label: alias || `${fn}(${arg})`
+            };
+          }
+          const col = validateColumnExists(expr);
+          return { kind: `col`, col, label: alias || col };
+        });
+
+        const hasAgg = parsedItems.some((p) => p.kind === `agg`);
+        const hasNonAggCol = parsedItems.some((p) => p.kind === `col` || p.kind === `wildcard`);
+
+        if (hasAgg && hasNonAggCol && !groupByCol) {
+          throw new Error(`Cannot mix aggregate functions (like COUNT) with regular columns without GROUP BY.`);
+        }
+
+        // Execute aggregation or projection
+        let resultColumns = [];
+        let resultRows = [];
+
+        if (hasAgg && !groupByCol) {
+          resultColumns = parsedItems.map((p) => p.label);
+          const outRow = {};
+          parsedItems.forEach((p) => {
+            if (p.fn === `COUNT`) {
+              if (p.arg === `*`) outRow[p.label] = workingRows.length;
+              else outRow[p.label] = workingRows.filter((r) => r[p.arg] !== null && r[p.arg] !== undefined).length;
+            } else if (p.fn === `SUM`) {
+              outRow[p.label] = workingRows.reduce((acc, r) => acc + (Number(r[p.arg]) || 0), 0);
+            } else if (p.fn === `AVG`) {
+              const vals = workingRows.map((r) => Number(r[p.arg])).filter((n) => !Number.isNaN(n));
+              outRow[p.label] = vals.length ? Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 100) / 100 : null;
+            } else if (p.fn === `MIN`) {
+              const vals = workingRows.map((r) => r[p.arg]).filter((v) => v !== null);
+              outRow[p.label] = vals.length ? vals.reduce((a, b) => (a < b ? a : b)) : null;
+            } else if (p.fn === `MAX`) {
+              const vals = workingRows.map((r) => r[p.arg]).filter((v) => v !== null);
+              outRow[p.label] = vals.length ? vals.reduce((a, b) => (a > b ? a : b)) : null;
+            }
+          });
+          resultRows = [outRow];
+        } else if (groupByCol) {
+          const groups = new Map();
+          workingRows.forEach((r) => {
+            const key = r[groupByCol];
+            if (!groups.has(key)) groups.set(key, []);
+            groups.get(key).push(r);
+          });
+          resultColumns = parsedItems.map((p) => p.label);
+          resultRows = Array.from(groups.entries()).map(([key, grpRows]) => {
+            const outRow = {};
+            parsedItems.forEach((p) => {
+              if (p.kind === `col`) {
+                if (p.col !== groupByCol) {
+                  throw new Error(`Column '${p.col}' must appear in GROUP BY or an aggregate function.`);
+                }
+                outRow[p.label] = key;
+              } else if (p.fn === `COUNT`) {
+                outRow[p.label] = grpRows.length;
+              } else if (p.fn === `SUM`) {
+                outRow[p.label] = grpRows.reduce((acc, r) => acc + (Number(r[p.arg]) || 0), 0);
+              } else if (p.fn === `AVG`) {
+                const vals = grpRows.map((r) => Number(r[p.arg])).filter((n) => !Number.isNaN(n));
+                outRow[p.label] = vals.length ? Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 100) / 100 : null;
+              } else if (p.fn === `MIN`) {
+                const vals = grpRows.map((r) => r[p.arg]);
+                outRow[p.label] = vals.length ? vals.reduce((a, b) => (a < b ? a : b)) : null;
+              } else if (p.fn === `MAX`) {
+                const vals = grpRows.map((r) => r[p.arg]);
+                outRow[p.label] = vals.length ? vals.reduce((a, b) => (a > b ? a : b)) : null;
+              }
+            });
+            return outRow;
+          });
+        } else {
+          // Sort workingRows first so ORDER BY works even on non-selected columns like `ORDER BY salary DESC`
+          if (orderSpecs.length > 0) {
+            workingRows.sort((a, b) => {
+              for (const spec of orderSpecs) {
+                const va = a[spec.col];
+                const vb = b[spec.col];
+                if (va === vb) continue;
+                if (va === null || va === undefined) return 1;
+                if (vb === null || vb === undefined) return -1;
+                const cmp = typeof va === `number` && typeof vb === `number`
+                  ? va - vb
+                  : String(va).localeCompare(String(vb));
+                return spec.dir === `DESC` ? -cmp : cmp;
+              }
+              return 0;
+            });
+          }
+
+          // Build columns
+          parsedItems.forEach((p) => {
+            if (p.kind === `wildcard`) {
+              TABLE_COLUMNS.forEach((c) => {
+                if (!resultColumns.includes(c.name)) resultColumns.push(c.name);
+              });
+            } else {
+              resultColumns.push(p.label);
+            }
+          });
+
+          resultRows = workingRows.map((r) => {
+            const outRow = {};
+            parsedItems.forEach((p) => {
+              if (p.kind === `wildcard`) {
+                TABLE_COLUMNS.forEach((c) => { outRow[c.name] = r[c.name]; });
+              } else {
+                outRow[p.label] = r[p.col];
+              }
+            });
+            return outRow;
+          });
+
+          if (distinctFlag) {
+            const seen = new Set();
+            resultRows = resultRows.filter((row) => {
+              const key = JSON.stringify(resultColumns.map((c) => row[c]));
+              if (seen.has(key)) return false;
+              seen.add(key);
+              return true;
+            });
+          }
+        }
+
+        if (limitCount !== null) {
+          resultRows = resultRows.slice(0, limitCount);
+        }
+
+        const elapsedMs = Math.max(0.1, Math.round((performance.now() - startTime) * 10) / 10);
+        return {
+          type: `SELECT`,
+          columns: resultColumns,
+          rows: resultRows,
+          elapsedMs,
+          zeroMatchTip: resultRows.length === 0 && whereClause !== null
+            ? `0 rows matched. Check exact spelling and capitalization inside single quotes (e.g. 'Finance' or 'Ipoh').`
+            : null
+        };
+      }
+
+      // -----------------------------------------------------------------------
+      // INSERT STATEMENT
+      // -----------------------------------------------------------------------
+      if (/^INSERT\b/i.test(clean)) {
+        if (!/^INSERT\s+INTO\b/i.test(clean)) {
+          throw new Error(`Syntax error: INSERT statements require the INTO keyword (INSERT INTO employees ...).`);
+        }
+        const rest = clean.replace(/^INSERT\s+INTO\s+/i, ``).trim();
+        const valuesIdx = findKeywordOutsideQuotes(rest, `VALUES`);
+        if (valuesIdx === -1) {
+          throw new Error(`Syntax error: Missing VALUES (...) clause in INSERT statement.`);
+        }
+
+        const targetPart = rest.slice(0, valuesIdx).trim();
+        const valuesPart = rest.slice(valuesIdx + 6).trim();
+
+        const colOpen = targetPart.indexOf(`(`);
+        let tableName = targetPart;
+        let targetCols = TABLE_COLUMNS.map((c) => c.name);
+
+        if (colOpen !== -1) {
+          tableName = targetPart.slice(0, colOpen).trim();
+          const colClose = targetPart.lastIndexOf(`)`);
+          if (colClose === -1 || colClose < colOpen) {
+            throw new Error(`Missing closing parenthesis ')' in column list.`);
+          }
+          const colListRaw = targetPart.slice(colOpen + 1, colClose).trim();
+          if (!colListRaw) {
+            throw new Error(`Column list inside parentheses cannot be empty.`);
+          }
+          targetCols = splitTopLevelComma(colListRaw).map((c) => validateColumnExists(c));
+        }
+
+        if (tableName.toLowerCase() !== `employees`) {
+          throw new Error(`Table '${tableName}' does not exist. Use: INSERT INTO employees ...`);
+        }
+
+        if (!valuesPart.startsWith(`(`) || !valuesPart.endsWith(`)`)) {
+          throw new Error(`VALUES must be enclosed in parentheses, e.g. VALUES (101, 'Ahmad', 'IT', 4500, 'Kuala Lumpur').`);
+        }
+
+        const innerVals = valuesPart.slice(1, -1);
+        const valParts = splitTopLevelComma(innerVals);
+        if (valParts.length !== targetCols.length) {
+          throw new Error(`Column count (${targetCols.length}) does not match value count (${valParts.length}). Check commas and parentheses.`);
+        }
+
+        const newRecord = { id: null, name: null, department: null, salary: null, city: null };
+        targetCols.forEach((colName, idx) => {
+          const parsed = parseSqlLiteral(valParts[idx]);
+          if (colName === `id` || colName === `salary`) {
+            if (parsed.kind !== `number` && parsed.kind !== `null`) {
+              throw new Error(`Type error for '${colName}': expected a number (without quotes), e.g. ${colName === `id` ? 101 : 4500}.`);
+            }
+          } else {
+            if (parsed.kind === `number`) {
+              throw new Error(`Type error for '${colName}': text values should be wrapped in single quotes.`);
+            }
+          }
+          newRecord[colName] = parsed.value;
+        });
+
+        if (newRecord.id === null) {
+          throw new Error(`Primary key 'id' cannot be NULL.`);
+        }
+        if (currentRows.some((r) => r.id === newRecord.id)) {
+          throw new Error(`Duplicate ID error: employee id = ${newRecord.id} already exists in 'employees'. Click 'Reset Database' to restore the original 9 rows.`);
+        }
+
+        const elapsedMs = Math.max(0.1, Math.round((performance.now() - startTime) * 10) / 10);
+        return {
+          type: `INSERT`,
+          insertedRow: newRecord,
+          columns: TABLE_COLUMNS.map((c) => c.name),
+          rows: [newRecord],
+          elapsedMs
+        };
+      }
+
+      // -----------------------------------------------------------------------
+      // UPDATE / DELETE SUPPORT (Bonus for exploratory testing)
+      // -----------------------------------------------------------------------
+      if (/^DELETE\b/i.test(clean)) {
+        const match = clean.match(/^DELETE\s+FROM\s+([A-Za-z_][A-Za-z0-9_]*)(?:\s+WHERE\s+(.+))?$/i);
+        if (!match) {
+          throw new Error(`Syntax error in DELETE statement. Format: DELETE FROM employees WHERE id = 101;`);
+        }
+        if (match[1].toLowerCase() !== `employees`) {
+          throw new Error(`Table '${match[1]}' does not exist.`);
+        }
+        const pred = match[2] ? buildWherePredicate(match[2]) : () => true;
+        const kept = currentRows.filter((r) => !pred(r));
+        const deletedCount = currentRows.length - kept.length;
+        const elapsedMs = Math.max(0.1, Math.round((performance.now() - startTime) * 10) / 10);
+        return {
+          type: `DELETE`,
+          remainingRows: kept,
+          affectedRows: deletedCount,
+          columns: TABLE_COLUMNS.map((c) => c.name),
+          rows: [],
+          elapsedMs
+        };
+      }
+
+      const firstWord = clean.split(/\s+/)[0];
+      throw new Error(`Unsupported or unrecognized SQL command '${firstWord}'. Supported commands: SELECT, INSERT INTO, DELETE.`);
+    }
+
+    // =========================================================================
+    // 4. QUESTION AUTO-EVALUATION LOGIC (Non-spoiling for candidate, detailed for supervisor)
+    // =========================================================================
+    function evaluateCandidateQuery(questionId, sql, currentEmployees) {
+      const q = QUESTIONS.find((item) => item.id === questionId);
+      if (!q) return { passed: false, note: `Unknown question` };
+
+      let exec;
+      try {
+        // Test against a fresh copy of initial dataset for Q1-Q4 or current state check for Q5
+        if (questionId === 5) {
+          const cleanCopy = INITIAL_EMPLOYEES.map((r) => ({ ...r }));
+          exec = executeSql(sql, cleanCopy);
+          if (exec.type !== `INSERT`) {
+            return { passed: false, note: `Expected an INSERT INTO statement.` };
+          }
+          const r = exec.insertedRow;
+          const ok = r.id === 101 && r.name === `Ahmad` && r.department === `IT` && r.salary === 4500 && r.city === `Kuala Lumpur`;
+          if (!ok) {
+            return {
+              passed: false,
+              note: `Inserted values do not exactly match (101, 'Ahmad', 'IT', 4500, 'Kuala Lumpur').`
+            };
+          }
+          return { passed: true, note: `Inserted record 101 ('Ahmad', 'IT', 4500, 'Kuala Lumpur') accurately.` };
+        }
+
+        const baseRows = INITIAL_EMPLOYEES.map((r) => ({ ...r }));
+        const candExec = executeSql(sql, baseRows);
+        const refExec = executeSql(q.referenceSql, baseRows);
+
+        if (candExec.type !== `SELECT`) {
+          return { passed: false, note: `Expected a SELECT query.` };
+        }
+
+        if (questionId === 4) {
+          // Accept any alias on COUNT(*) as long as single cell equals 4
+          if (candExec.rows.length === 1 && candExec.columns.length === 1) {
+            const val = candExec.rows[0][candExec.columns[0]];
+            if (val === 4) {
+              return { passed: true, note: `Returned exact Ipoh headcount (4).` };
+            }
+          }
+          return { passed: false, note: `Expected a single aggregated count equal to 4 for city = 'Ipoh'.` };
+        }
+
+        // Compare columns (case-insensitive) and row payloads
+        const candCols = candExec.columns.map((c) => c.toLowerCase());
+        const refCols = refExec.columns.map((c) => c.toLowerCase());
+        if (JSON.stringify(candCols) !== JSON.stringify(refCols)) {
+          return {
+            passed: false,
+            note: `Column mismatch: expected [${refExec.columns.join(`, `)}], got [${candExec.columns.join(`, `)}].`
+          };
+        }
+        if (candExec.rows.length !== refExec.rows.length) {
+          return {
+            passed: false,
+            note: `Row count mismatch: expected ${refExec.rows.length} rows, got ${candExec.rows.length}.`
+          };
+        }
+
+        const normalizeRow = (row, cols) => cols.map((c) => {
+          const actualKey = Object.keys(row).find((k) => k.toLowerCase() === c);
+          return row[actualKey];
+        });
+
+        const candMatrix = candExec.rows.map((r) => normalizeRow(r, candCols));
+        const refMatrix = refExec.rows.map((r) => normalizeRow(r, refCols));
+
+        if (questionId === 3) {
+          // Strict order matters for ORDER BY
+          const exactOrder = JSON.stringify(candMatrix) === JSON.stringify(refMatrix);
+          if (!exactOrder) {
+            return { passed: false, note: `Rows are not sorted by salary from highest to lowest (check ORDER BY salary DESC).` };
+          }
+          return { passed: true, note: `All 9 rows returned and sorted descending by salary.` };
+        }
+
+        // For Q1 & Q2, compare sorted row sets
+        const sortSet = (m) => m.map((r) => JSON.stringify(r)).sort();
+        const sameSet = JSON.stringify(sortSet(candMatrix)) === JSON.stringify(sortSet(refMatrix));
+        if (!sameSet) {
+          return { passed: false, note: `Returned data values do not match expected records.` };
+        }
+        return { passed: true, note: `Exact match: ${candExec.rows.length} rows and [${candExec.columns.join(`, `)}] columns verified.` };
+      } catch (err) {
+        return { passed: false, note: `Syntax/Execution error: ${err.message}` };
+      }
+    }
+
+    // =========================================================================
+    // 5. UI RENDERING FUNCTIONS
+    // =========================================================================
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, `&amp;`)
+        .replace(/</g, `&lt;`)
+        .replace(/>/g, `&gt;`)
+        .replace(/"/g, `&quot;`)
+        .replace(/'/g, `&#39;`);
+    }
+
+    function renderDataTable(columns, rows, options = {}) {
+      if (!columns || columns.length === 0) return ``;
+      const numericCols = new Set([`id`, `salary`, `count(*)`, `total_employees`]);
+      const insertedSet = new Set(options.insertedIds || []);
+
+      let html = `<table class="carbon-table"><thead><tr>`;
+      columns.forEach((col) => {
+        const isNum = numericCols.has(col.toLowerCase()) || /^(count|sum|avg|min|max)\(/i.test(col);
+        html += `<th class="${isNum ? `num-col` : ``}">${escapeHtml(col)}</th>`;
+      });
+      html += `</tr></thead><tbody>`;
+
+      if (rows.length === 0) {
+        html += `<tr><td colspan="${columns.length}" style="color: var(--on-surface-variant);">0 rows returned.</td></tr>`;
+      } else {
+        rows.forEach((row) => {
+          const isInserted = options.highlightInserted && row.id !== undefined && insertedSet.has(row.id);
+          html += `<tr class="${isInserted ? `row-inserted` : ``}">`;
+          columns.forEach((col) => {
+            const val = row[col];
+            const isNum = typeof val === `number` || numericCols.has(col.toLowerCase()) || /^(count|sum|avg|min|max)\(/i.test(col);
+            const display = val === null || val === undefined
+              ? `<span style="color: var(--on-surface-variant); font-style: italic;">NULL</span>`
+              : escapeHtml(val);
+            html += `<td class="${isNum ? `num-col` : ``}">${display}</td>`;
+          });
+          html += `</tr>`;
+        });
+      }
+
+      html += `</tbody></table>`;
+      return html;
+    }
+
+    function renderAll() {
+      const nameInput = document.getElementById(`candidate-name-input`);
+      if (nameInput && nameInput.value !== appState.candidateName) {
+        nameInput.value = appState.candidateName;
+      }
+
+      // Mode Tabs
+      const tabCand = document.getElementById(`tab-candidate`);
+      const tabSup = document.getElementById(`tab-supervisor`);
+      const viewCand = document.getElementById(`view-candidate`);
+      const viewSup = document.getElementById(`view-supervisor`);
+      if (tabCand && tabSup && viewCand && viewSup) {
+        const isCand = appState.mode === `candidate`;
+        tabCand.classList.toggle(`is-active`, isCand);
+        tabSup.classList.toggle(`is-active`, !isCand);
+        tabCand.setAttribute(`aria-selected`, String(isCand));
+        tabSup.setAttribute(`aria-selected`, String(!isCand));
+        viewCand.classList.toggle(`is-hidden`, !isCand);
+        viewSup.classList.toggle(`is-hidden`, isCand);
+      }
+
+      // Top badges
+      const badgeRows = document.getElementById(`badge-db-rows`);
+      if (badgeRows) {
+        badgeRows.textContent = `employees: ${appState.employees.length} row${appState.employees.length === 1 ? `` : `s`}`;
+      }
+
+      const submittedCount = QUESTIONS.filter((q) => Boolean(appState.questions[q.id].submittedSql)).length;
+      const badgeSub = document.getElementById(`badge-submitted-count`);
+      if (badgeSub) badgeSub.textContent = `${submittedCount} / ${QUESTIONS.length} submitted`;
+
+      const railLabel = document.getElementById(`rail-progress-label`);
+      const railFill = document.getElementById(`rail-progress-fill`);
+      if (railLabel) railLabel.textContent = `${submittedCount} / ${QUESTIONS.length}`;
+      if (railFill) railFill.style.width = `${(submittedCount / QUESTIONS.length) * 100}%`;
+
+      renderQuestionNav();
+      renderActiveCandidateQuestion();
+      renderLiveTablePreview();
+      if (appState.mode === `supervisor`) {
+        renderSupervisorView();
+      }
+    }
+
+    function renderQuestionNav() {
+      const nav = document.getElementById(`question-nav`);
+      if (!nav) return;
+      let html = ``;
+      QUESTIONS.forEach((q) => {
+        const qs = appState.questions[q.id];
+        const isActive = appState.activeQuestionId === q.id;
+        let statusTag = `<span class="tag">Pending</span>`;
+        if (qs.submittedSql) {
+          if (appState.mode === `supervisor`) {
+            statusTag = qs.autoCheckPassed
+              ? `<span class="tag tag-green">Pass</span>`
+              : `<span class="tag tag-amber">Review</span>`;
+          } else {
+            statusTag = `<span class="tag tag-green">Submitted</span>`;
+          }
+        } else if (qs.draftSql.trim()) {
+          statusTag = `<span class="tag tag-blue">Draft</span>`;
+        }
+
+        html += `
+          <button type="button" class="q-nav-item ${isActive ? `is-active` : ``}" onclick="selectQuestion(${q.id})">
+            <div class="q-nav-top">
+              <span class="q-nav-code">${q.code} &middot; ${escapeHtml(q.topic)}</span>
+              ${statusTag}
+            </div>
+            <div class="q-nav-title">${escapeHtml(q.plainTitle)}</div>
+          </button>
+        `;
+      });
+      nav.innerHTML = html;
+    }
+
+    function renderActiveCandidateQuestion() {
+      const q = QUESTIONS.find((item) => item.id === appState.activeQuestionId);
+      if (!q) return;
+      const qs = appState.questions[q.id];
+
+      const catLabel = document.getElementById(`q-category-label`);
+      const qTitle = document.getElementById(`q-title`);
+      const qPrompt = document.getElementById(`q-prompt-text`);
+      const qStatusTag = document.getElementById(`q-status-tag`);
+      const hintBtn = document.getElementById(`btn-toggle-hint`);
+      const hintBox = document.getElementById(`q-hint-box`);
+      const editor = document.getElementById(`sql-editor`);
+      const prevBtn = document.getElementById(`btn-prev-q`);
+      const nextBtn = document.getElementById(`btn-next-q`);
+
+      if (catLabel) catLabel.textContent = `Question ${q.id} of ${QUESTIONS.length} \u00B7 ${q.topic}`;
+      if (qTitle) qTitle.innerHTML = q.title;
+      if (qPrompt) qPrompt.innerHTML = q.promptHtml;
+
+      if (qStatusTag) {
+        qStatusTag.className = `tag`;
+        if (qs.submittedSql) {
+          qStatusTag.textContent = `Submitted`;
+          qStatusTag.classList.add(`tag-green`);
+        } else if (qs.draftSql.trim()) {
+          qStatusTag.textContent = `Draft Saved`;
+          qStatusTag.classList.add(`tag-blue`);
+        } else {
+          qStatusTag.textContent = `Not Attempted`;
+        }
+      }
+
+      if (hintBox && hintBtn) {
+        hintBox.innerHTML = `<strong>Beginner Hint:</strong> ${q.hint}`;
+        if (qs.hintOpen) {
+          hintBox.classList.remove(`is-hidden`);
+          hintBtn.querySelector(`span`).textContent = `Hide Hint`;
+        } else {
+          hintBox.classList.add(`is-hidden`);
+          hintBtn.querySelector(`span`).textContent = `Show Hint`;
+        }
+      }
+
+      if (editor && editor.value !== qs.draftSql) {
+        editor.value = qs.draftSql;
+      }
+
+      if (prevBtn) prevBtn.disabled = q.id === 1;
+      if (nextBtn) nextBtn.disabled = q.id === QUESTIONS.length;
+    }
+
+    function renderLiveTablePreview() {
+      const bodyEl = document.getElementById(`live-table-body`);
+      const toggleBtn = document.getElementById(`btn-toggle-preview`);
+      const filterInput = document.getElementById(`table-filter-input`);
+      if (!bodyEl) return;
+
+      if (toggleBtn) {
+        const span = toggleBtn.querySelector(`span`);
+        if (span) span.textContent = appState.previewVisible ? `Hide Table` : `Show Table`;
+      }
+
+      if (!appState.previewVisible) {
+        bodyEl.classList.add(`is-hidden`);
+        return;
+      }
+      bodyEl.classList.remove(`is-hidden`);
+
+      const term = filterInput ? filterInput.value.trim().toLowerCase() : ``;
+      const filtered = term
+        ? appState.employees.filter((r) =>
+            Object.values(r).some((v) => String(v).toLowerCase().includes(term))
+          )
+        : appState.employees;
+
+      bodyEl.innerHTML = renderDataTable(
+        TABLE_COLUMNS.map((c) => c.name),
+        filtered,
+        { highlightInserted: true, insertedIds: appState.insertedIds }
+      );
+    }
+
+    function renderSupervisorView() {
+      const q = QUESTIONS.find((item) => item.id === appState.activeQuestionId);
+      if (!q) return;
+      const qs = appState.questions[q.id];
+
+      // KPI computations
+      let totalSubmitted = 0;
+      let totalPassed = 0;
+      let totalRubricPoints = 0;
+      let totalRubricMax = 0;
+      let totalHints = 0;
+
+      QUESTIONS.forEach((item) => {
+        const st = appState.questions[item.id];
+        if (st.submittedSql) totalSubmitted++;
+        if (st.autoCheckPassed === true) totalPassed++;
+        if (st.hintUsed) totalHints++;
+        totalRubricMax += item.rubric.length;
+        item.rubric.forEach((r) => {
+          if (st.rubricChecked[r.id]) totalRubricPoints++;
+        });
+      });
+
+      const elSub = document.getElementById(`kpi-submitted`);
+      const elPass = document.getElementById(`kpi-passed`);
+      const elRub = document.getElementById(`kpi-rubric`);
+      const elHint = document.getElementById(`kpi-hints`);
+      if (elSub) elSub.textContent = `${totalSubmitted} / ${QUESTIONS.length}`;
+      if (elPass) elPass.textContent = `${totalPassed} / ${QUESTIONS.length}`;
+      if (elRub) elRub.textContent = `${totalRubricPoints} / ${totalRubricMax}`;
+      if (elHint) elHint.textContent = `${totalHints} / ${QUESTIONS.length}`;
+
+      // Active Question Supervision Header
+      const supLabel = document.getElementById(`sup-q-label`);
+      const supTitle = document.getElementById(`sup-q-title`);
+      const supAutoTag = document.getElementById(`sup-autocheck-tag`);
+      const supCandStatus = document.getElementById(`sup-cand-status`);
+      const supCandSql = document.getElementById(`sup-cand-sql`);
+      const supRefSql = document.getElementById(`sup-ref-sql`);
+
+      if (supLabel) supLabel.textContent = `Supervising Question ${q.id} of ${QUESTIONS.length} \u00B7 ${q.topic}`;
+      if (supTitle) supTitle.innerHTML = q.title;
+
+      const latestSql = qs.submittedSql || qs.draftSql || ``;
+      if (supCandStatus) {
+        if (qs.submittedSql) supCandStatus.textContent = `Submitted ${qs.submittedAt || ``}`;
+        else if (qs.draftSql.trim()) supCandStatus.textContent = `Live Draft (Unsubmitted)`;
+        else supCandStatus.textContent = `No input yet`;
+      }
+      if (supCandSql) supCandSql.textContent = latestSql.trim() ? latestSql : `(No SQL written yet)`;
+      if (supRefSql) supRefSql.textContent = q.referenceSql;
+
+      if (supAutoTag) {
+        supAutoTag.className = `tag`;
+        if (!latestSql.trim()) {
+          supAutoTag.textContent = `Not Tested`;
+        } else {
+          const check = evaluateCandidateQuery(q.id, latestSql, appState.employees);
+          qs.autoCheckPassed = check.passed;
+          qs.autoCheckNote = check.note;
+          if (check.passed) {
+            supAutoTag.textContent = `Output Match: Pass`;
+            supAutoTag.classList.add(`tag-green`);
+          } else {
+            supAutoTag.textContent = `Output Mismatch`;
+            supAutoTag.classList.add(`tag-red`);
+          }
+        }
+      }
+
+      const compareBanner = document.getElementById(`sup-compare-banner`);
+      const compareText = document.getElementById(`sup-compare-text`);
+      if (compareBanner && compareText) {
+        compareBanner.className = `notif`;
+        if (compareHighlighted && latestSql.trim()) {
+          const check = evaluateCandidateQuery(q.id, latestSql, appState.employees);
+          compareBanner.classList.add(check.passed ? `notif-success` : `notif-warn`);
+          compareText.innerHTML = `<strong>Comparison Check:</strong> ${escapeHtml(check.note)}`;
+        } else {
+          compareText.innerHTML = `Click <strong>Compare Query</strong> to inspect clause alignment and output parity against the reference answer.`;
+        }
+      }
+
+      // Rubric Checklist
+      const qNum1 = document.getElementById(`sup-rubric-qnum`);
+      const qNum2 = document.getElementById(`sup-notes-qnum`);
+      if (qNum1) qNum1.textContent = String(q.id);
+      if (qNum2) qNum2.textContent = String(q.id);
+
+      const rubricContainer = document.getElementById(`sup-rubric-list`);
+      let checkedCount = 0;
+      if (rubricContainer) {
+        let rHtml = ``;
+        q.rubric.forEach((item) => {
+          const isChecked = Boolean(qs.rubricChecked[item.id]);
+          if (isChecked) checkedCount++;
+          rHtml += `
+            <label class="rubric-item">
+              <input type="checkbox" ${isChecked ? `checked` : ``} onchange="toggleRubricItem(${q.id}, '${item.id}', this.checked)">
+              <span class="rubric-text">
+                <strong>${escapeHtml(item.label)}</strong>
+                <span class="rubric-sub">${escapeHtml(item.detail)}</span>
+              </span>
+            </label>
+          `;
+        });
+        rubricContainer.innerHTML = rHtml;
+      }
+
+      const scoreTag = document.getElementById(`sup-q-rubric-score`);
+      if (scoreTag) {
+        scoreTag.textContent = `${checkedCount} / ${q.rubric.length} Criteria`;
+      }
+
+      const notesInput = document.getElementById(`sup-notes-input`);
+      if (notesInput && notesInput.value !== qs.supervisorNote) {
+        notesInput.value = qs.supervisorNote || ``;
+      }
+
+      // Summary Table
+      const tbody = document.getElementById(`sup-summary-tbody`);
+      if (tbody) {
+        let rowsHtml = ``;
+        QUESTIONS.forEach((item) => {
+          const st = appState.questions[item.id];
+          const rChecked = item.rubric.filter((r) => st.rubricChecked[r.id]).length;
+          const statusBadge = st.submittedSql
+            ? `<span class="tag tag-green">Submitted</span>`
+            : st.draftSql.trim()
+              ? `<span class="tag tag-blue">Draft</span>`
+              : `<span class="tag">Pending</span>`;
+
+          const checkBadge = st.autoCheckPassed === true
+            ? `<span class="tag tag-green">Pass</span>`
+            : st.autoCheckPassed === false
+              ? `<span class="tag tag-red">Mismatch</span>`
+              : `<span class="tag">&mdash;</span>`;
+
+          rowsHtml += `
+            <tr>
+              <td class="mono-cell"><strong>${item.code}</strong></td>
+              <td>${escapeHtml(item.topic)}</td>
+              <td>${statusBadge}</td>
+              <td>${checkBadge}</td>
+              <td class="num-col">${rChecked} / ${item.rubric.length}</td>
+              <td>${st.hintUsed ? `Yes` : `No`}</td>
+              <td>
+                <button type="button" class="btn btn-ghost btn-row-height" style="min-height: 32px; height: 32px; padding: 0 var(--space-sm);" onclick="selectQuestion(${item.id})">
+                  Inspect
+                </button>
+              </td>
+            </tr>
+          `;
+        });
+        tbody.innerHTML = rowsHtml;
+      }
+    }
+
+    // =========================================================================
+    // 6. EVENT HANDLERS (All hoisted function declarations)
+    // =========================================================================
+    function switchMode(targetMode) {
+      appState.mode = targetMode;
+      compareHighlighted = false;
+      hideRefOutput();
+      renderAll();
+      persistState();
+    }
+
+    function selectQuestion(qId) {
+      appState.activeQuestionId = qId;
+      compareHighlighted = false;
+      hideRefOutput();
+
+      // Clear previous output banner into neutral prompt for new question
+      const banner = document.getElementById(`output-banner`);
+      const outTable = document.getElementById(`output-table-container`);
+      const outMeta = document.getElementById(`output-meta`);
+      if (banner && outTable && outMeta) {
+        const qs = appState.questions[qId];
+        if (qs.lastOutputSummary) {
+          banner.className = `notif`;
+          banner.innerHTML = `<span>${escapeHtml(qs.lastOutputSummary)}</span>`;
+        } else {
+          banner.className = `notif`;
+          banner.innerHTML = `<span>Ready for <strong>Q${qId}</strong>. Write your SQL query above and click <strong>Run Query</strong>.</span>`;
+        }
+        outTable.classList.add(`is-hidden`);
+        outTable.innerHTML = ``;
+        outMeta.textContent = `Ready`;
+      }
+
+      renderAll();
+      persistState();
+    }
+
+    function navigateQuestion(delta) {
+      const next = appState.activeQuestionId + delta;
+      if (next >= 1 && next <= QUESTIONS.length) {
+        selectQuestion(next);
+      }
+    }
+
+    function handleCandidateNameChange(val) {
+      appState.candidateName = val;
+      persistState();
+    }
+
+    function handleEditorInput(val) {
+      const qId = appState.activeQuestionId;
+      appState.questions[qId].draftSql = val;
+      renderQuestionNav();
+      persistState();
+    }
+
+    function insertTokenFromEl(btn) {
+      const tokenText = btn && btn.dataset ? btn.dataset.token : ``;
+      if (!tokenText) return;
+      insertToken(tokenText);
+    }
+
+    function insertToken(tokenText) {
+      const editor = document.getElementById(`sql-editor`);
+      if (!editor) return;
+      const start = editor.selectionStart || 0;
+      const end = editor.selectionEnd || 0;
+      const before = editor.value.slice(0, start);
+      const after = editor.value.slice(end);
+      const needsSpaceBefore = before.length > 0 && !/\s$/.test(before);
+      const inserted = (needsSpaceBefore ? ` ` : ``) + tokenText;
+      editor.value = before + inserted + after;
+      const cursor = before.length + inserted.length;
+      editor.setSelectionRange(cursor, cursor);
+      editor.focus();
+      handleEditorInput(editor.value);
+    }
+
+    function clearEditor() {
+      const editor = document.getElementById(`sql-editor`);
+      if (!editor) return;
+      editor.value = ``;
+      handleEditorInput(``);
+      editor.focus();
+    }
+
+    function toggleHint() {
+      const qId = appState.activeQuestionId;
+      const qs = appState.questions[qId];
+      qs.hintOpen = !qs.hintOpen;
+      if (qs.hintOpen) qs.hintUsed = true;
+      renderActiveCandidateQuestion();
+      persistState();
+    }
+
+    function runCandidateQuery() {
+      const editor = document.getElementById(`sql-editor`);
+      const banner = document.getElementById(`output-banner`);
+      const outTable = document.getElementById(`output-table-container`);
+      const outMeta = document.getElementById(`output-meta`);
+      if (!editor || !banner || !outTable || !outMeta) return;
+
+      const qId = appState.activeQuestionId;
+      const sql = editor.value;
+      appState.questions[qId].draftSql = sql;
+
+      try {
+        const res = executeSql(sql, appState.employees);
+        lastExecutionResult = res;
+
+        if (res.type === `SELECT`) {
+          outMeta.textContent = `${res.rows.length} row${res.rows.length === 1 ? `` : `s`} \u00B7 ${res.elapsedMs} ms`;
+          if (res.zeroMatchTip) {
+            banner.className = `notif notif-warn`;
+            banner.innerHTML = `<span><strong>Query ran (0 rows):</strong> ${escapeHtml(res.zeroMatchTip)}</span>`;
+          } else {
+            banner.className = `notif notif-success`;
+            banner.innerHTML = `<span><strong>Query executed successfully.</strong> Returned ${res.rows.length} row${res.rows.length === 1 ? `` : `s`} across ${res.columns.length} column${res.columns.length === 1 ? `` : `s`}.</span>`;
+          }
+          outTable.innerHTML = renderDataTable(res.columns, res.rows);
+          outTable.classList.remove(`is-hidden`);
+          appState.questions[qId].lastOutputSummary = `Last run returned ${res.rows.length} row(s).`;
+        } else if (res.type === `INSERT`) {
+          appState.employees.push(res.insertedRow);
+          if (!appState.insertedIds.includes(res.insertedRow.id)) {
+            appState.insertedIds.push(res.insertedRow.id);
+          }
+          outMeta.textContent = `1 row inserted \u00B7 ${res.elapsedMs} ms`;
+          banner.className = `notif notif-success`;
+          banner.innerHTML = `<span><strong>INSERT succeeded.</strong> Added 1 record to <code class="code-inline">employees</code> (total rows: ${appState.employees.length}). Check the Live Table Preview below.</span>`;
+          outTable.innerHTML = renderDataTable(res.columns, res.rows, {
+            highlightInserted: true,
+            insertedIds: [res.insertedRow.id]
+          });
+          outTable.classList.remove(`is-hidden`);
+          appState.questions[qId].lastOutputSummary = `Last run inserted ID ${res.insertedRow.id} (${res.insertedRow.name}).`;
+        } else if (res.type === `DELETE`) {
+          appState.employees = res.remainingRows;
+          outMeta.textContent = `${res.affectedRows} row(s) deleted \u00B7 ${res.elapsedMs} ms`;
+          banner.className = `notif notif-success`;
+          banner.innerHTML = `<span><strong>DELETE succeeded.</strong> Removed ${res.affectedRows} row(s). Remaining rows: ${appState.employees.length}.</span>`;
+          outTable.classList.add(`is-hidden`);
+          outTable.innerHTML = ``;
+        }
+
+        // Update background auto-check evaluation for supervisor view
+        const evalResult = evaluateCandidateQuery(qId, sql, appState.employees);
+        appState.questions[qId].autoCheckPassed = evalResult.passed;
+        appState.questions[qId].autoCheckNote = evalResult.note;
+
+        renderAll();
+        persistState();
+      } catch (err) {
+        outMeta.textContent = `Error`;
+        banner.className = `notif notif-error`;
+        banner.innerHTML = `<span><strong>SQL Error:</strong> ${escapeHtml(err.message)}</span>`;
+        outTable.classList.add(`is-hidden`);
+        outTable.innerHTML = ``;
+        appState.questions[qId].autoCheckPassed = false;
+        appState.questions[qId].autoCheckNote = err.message;
+        persistState();
+      }
+    }
+
+    function submitCandidateAnswer() {
+      const editor = document.getElementById(`sql-editor`);
+      const banner = document.getElementById(`output-banner`);
+      if (!editor || !banner) return;
+
+      const sql = editor.value.trim();
+      if (!sql) {
+        banner.className = `notif notif-warn`;
+        banner.innerHTML = `<span>Please type a SQL query before submitting your answer.</span>`;
+        return;
+      }
+
+      // Run first so candidate sees live execution
+      runCandidateQuery();
+
+      const qId = appState.activeQuestionId;
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: `2-digit`, minute: `2-digit` });
+
+      appState.questions[qId].submittedSql = sql;
+      appState.questions[qId].submittedAt = timeStr;
+
+      const evalResult = evaluateCandidateQuery(qId, sql, appState.employees);
+      appState.questions[qId].autoCheckPassed = evalResult.passed;
+      appState.questions[qId].autoCheckNote = evalResult.note;
+
+      banner.className = `notif notif-success`;
+      banner.innerHTML = `<span><strong>Answer saved for Q${qId}</strong> at ${escapeHtml(timeStr)}. You can revise and re-submit anytime or proceed to the next question.</span>`;
+
+      renderAll();
+      persistState();
+    }
+
+    function togglePreviewBody() {
+      appState.previewVisible = !appState.previewVisible;
+      renderLiveTablePreview();
+      persistState();
+    }
+
+    function scrollToTablePreview() {
+      if (appState.mode !== `candidate`) {
+        switchMode(`candidate`);
+      }
+      if (!appState.previewVisible) {
+        appState.previewVisible = true;
+        renderLiveTablePreview();
+      }
+      const el = document.getElementById(`live-table-section`);
+      if (el) el.scrollIntoView({ behavior: `smooth`, block: `start` });
+    }
+
+    function toggleCompareHighlight() {
+      compareHighlighted = !compareHighlighted;
+      renderSupervisorView();
+    }
+
+    function runReferenceInConsole() {
+      const q = QUESTIONS.find((item) => item.id === appState.activeQuestionId);
+      const wrap = document.getElementById(`sup-ref-output-wrap`);
+      const tbl = document.getElementById(`sup-ref-output-table`);
+      if (!q || !wrap || !tbl) return;
+
+      try {
+        const cleanRows = INITIAL_EMPLOYEES.map((r) => ({ ...r }));
+        const res = executeSql(q.referenceSql, cleanRows);
+        tbl.innerHTML = renderDataTable(res.columns, res.rows, {
+          highlightInserted: res.type === `INSERT`,
+          insertedIds: res.type === `INSERT` ? [res.insertedRow.id] : []
+        });
+        wrap.classList.remove(`is-hidden`);
+      } catch (err) {
+        tbl.innerHTML = `<div class="notif notif-error"><span>${escapeHtml(err.message)}</span></div>`;
+        wrap.classList.remove(`is-hidden`);
+      }
+    }
+
+    function hideRefOutput() {
+      const wrap = document.getElementById(`sup-ref-output-wrap`);
+      if (wrap) wrap.classList.add(`is-hidden`);
+    }
+
+    function toggleRubricItem(qId, rubricId, checked) {
+      appState.questions[qId].rubricChecked[rubricId] = Boolean(checked);
+      renderSupervisorView();
+      persistState();
+    }
+
+    function handleSupervisorNote(val) {
+      appState.questions[appState.activeQuestionId].supervisorNote = val;
+      persistState();
+    }
+
+    function handleResetDatabase(btn) {
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.classList.remove(`btn-danger-outline`);
+        btn.classList.add(`btn-danger-armed`);
+        const span = btn.querySelector(`span`);
+        if (span) span.textContent = `Confirm Reset DB`;
+        setTimeout(() => {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.classList.remove(`btn-danger-armed`);
+            btn.classList.add(`btn-danger-outline`);
+            if (span) span.textContent = `Reset Database`;
+          }
+        }, 4000);
+        return;
+      }
+
+      btn.dataset.armed = `false`;
+      btn.classList.remove(`btn-danger-armed`);
+      btn.classList.add(`btn-danger-outline`);
+      const span = btn.querySelector(`span`);
+      if (span) span.textContent = `Reset Database`;
+
+      appState.employees = INITIAL_EMPLOYEES.map((r) => ({ ...r }));
+      appState.insertedIds = [];
+
+      const banner = document.getElementById(`output-banner`);
+      const outTable = document.getElementById(`output-table-container`);
+      if (banner && outTable) {
+        banner.className = `notif`;
+        banner.innerHTML = `<span><strong>Database reset.</strong> <code class="code-inline">employees</code> has been restored to its original 9 sample rows.</span>`;
+        outTable.classList.add(`is-hidden`);
+        outTable.innerHTML = ``;
+      }
+
+      renderAll();
+      persistState();
+    }
+
+    function handleResetSession(btn) {
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.classList.remove(`btn-danger-outline`);
+        btn.classList.add(`btn-danger-armed`);
+        const span = btn.querySelector(`span`);
+        if (span) span.textContent = `Click Again to Wipe All`;
+        setTimeout(() => {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.classList.remove(`btn-danger-armed`);
+            btn.classList.add(`btn-danger-outline`);
+            if (span) span.textContent = `Reset Entire Session`;
+          }
+        }, 4000);
+        return;
+      }
+
+      btn.dataset.armed = `false`;
+      btn.classList.remove(`btn-danger-armed`);
+      btn.classList.add(`btn-danger-outline`);
+      const span = btn.querySelector(`span`);
+      if (span) span.textContent = `Reset Entire Session`;
+
+      appState = createDefaultState();
+      appState.mode = `supervisor`;
+      renderAll();
+      persistState();
+    }
+
+    function exportEvaluationReport() {
+      const candidate = appState.candidateName.trim() || `Unnamed Candidate`;
+      const dateStr = new Date().toISOString().slice(0, 10);
+
+      let totalRubric = 0;
+      let maxRubric = 0;
+      let totalPass = 0;
+
+      const lines = [
+        `====================================================================`,
+        `BEGINNER SQL CANDIDATE ASSESSMENT & SUPERVISION REPORT`,
+        `====================================================================`,
+        `Candidate Name : ${candidate}`,
+        `Assessment Date: ${dateStr}`,
+        `Dataset        : employees (${appState.employees.length} current rows)`,
+        ``
+      ];
+
+      QUESTIONS.forEach((q) => {
+        const st = appState.questions[q.id];
+        const checked = q.rubric.filter((r) => st.rubricChecked[r.id]).length;
+        totalRubric += checked;
+        maxRubric += q.rubric.length;
+        if (st.autoCheckPassed === true) totalPass++;
+
+        lines.push(`--------------------------------------------------------------------`);
+        lines.push(`${q.code}: ${q.plainTitle}`);
+        lines.push(`Status        : ${st.submittedSql ? `Submitted (${st.submittedAt})` : st.draftSql.trim() ? `Draft Only` : `Not Attempted`}`);
+        lines.push(`Output Check  : ${st.autoCheckPassed === true ? `PASS` : st.autoCheckPassed === false ? `MISMATCH` : `N/A`} — ${st.autoCheckNote}`);
+        lines.push(`Rubric Score  : ${checked} / ${q.rubric.length}`);
+        lines.push(`Hint Used     : ${st.hintUsed ? `Yes` : `No`}`);
+        lines.push(`Candidate SQL :`);
+        lines.push(st.submittedSql || st.draftSql || `(none)`);
+        lines.push(`Rubric Checklist:`);
+        q.rubric.forEach((r) => {
+          lines.push(`  [${st.rubricChecked[r.id] ? `x` : ` `}] ${r.label}`);
+        });
+        if (st.supervisorNote && st.supervisorNote.trim()) {
+          lines.push(`Interviewer Notes: ${st.supervisorNote.trim()}`);
+        }
+        lines.push(``);
+      });
+
+      const pct = Math.round((totalRubric / maxRubric) * 100);
+      lines.push(`====================================================================`);
+      lines.push(`OVERALL SUMMARY`);
+      lines.push(`Auto-Check Passed : ${totalPass} / ${QUESTIONS.length}`);
+      lines.push(`Total Rubric Score: ${totalRubric} / ${maxRubric} (${pct}%)`);
+      lines.push(`====================================================================`);
+
+      const reportText = lines.join(`\n`);
+      const safeFile = candidate.toLowerCase().replace(/[^a-z0-9]+/g, `_`).replace(/^_|_$/g, ``) || `candidate`;
+      const filename = `sql_assessment_${safeFile}_${dateStr}.txt`;
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === `function`) {
+        window.notebookAppApi.triggerFileDownload({
+          content: reportText,
+          contentType: `text/plain`,
+          encoding: `UTF-8`,
+          filename
+        });
+      }
+
+      const compareBanner = document.getElementById(`sup-compare-banner`);
+      const compareText = document.getElementById(`sup-compare-text`);
+      if (compareBanner && compareText) {
+        compareBanner.className = `notif notif-success`;
+        compareText.innerHTML = `<strong>Report exported:</strong> Downloaded <code class="code-inline">${escapeHtml(filename)}</code> (${totalRubric}/${maxRubric} rubric points).`;
+      }
+    }
+
+    // =========================================================================
+    // 7. INITIALIZATION & KEYBOARD SHORTCUTS
+    // =========================================================================
+    async function initApp() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && saved.questions && Array.isArray(saved.employees)) {
+            appState = saved;
+          }
+        } catch (err) {
+          // Proceed with fresh default state
+        }
+      }
+
+      const editor = document.getElementById(`sql-editor`);
+      if (editor) {
+        editor.addEventListener(`keydown`, function (e) {
+          if ((e.ctrlKey || e.metaKey) && e.key === `Enter`) {
+            e.preventDefault();
+            runCandidateQuery();
+          }
+        });
+      }
+
+      renderAll();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
