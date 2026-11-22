@@ -1,0 +1,18 @@
+{
+  "name": "InterviewX — Role-Based Technical Assessment",
+  "short_name": "InterviewX",
+  "description": "Static role-based technical interview assessment platform across 7 engineering, product, QA, and Oracle 12c DBA tracks.",
+  "start_url": "./#/",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090b0f",
+  "theme_color": "#090b0f",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

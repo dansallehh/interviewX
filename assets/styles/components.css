@@ -1005,3 +1005,29 @@
 .is-hidden {
   display: none;
 }
+
+/* Phase 4: Role 3D Scene / 2D Fallback Stage */
+.scene-stage {
+  width: 100%;
+  min-height: 140px;
+  border-radius: var(--radius-md);
+  background: radial-gradient(circle at 50% 50%, var(--role-accent-soft), var(--bg-canvas) 75%);
+  border: 1px solid var(--border-subtle);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.scene-fallback {
+  display: grid;
+  place-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  color: var(--role-accent);
+}
+
+.scene-canvas {
+  display: block;
+  width: 100%;
+  height: 140px;
+}

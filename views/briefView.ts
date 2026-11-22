@@ -1,6 +1,7 @@
 import { getRoleLevel, type RoleDefinition, type RoleLevel } from '../models/role';
 import { clear, h } from './dom';
 import { renderRoleMotifSvg } from './roleMotifs';
+import { mountRoleScene, type RoleSceneHandle } from './roleSceneView';
 
 export interface LevelPickerCallbacks {
   onBack: () => void;
@@ -98,7 +99,7 @@ export function renderBriefView(
   role: RoleDefinition,
   levelId: string | undefined,
   callbacks: BriefViewCallbacks,
-): void {
+): RoleSceneHandle {
   clear(container);
   const level = getRoleLevel(role, levelId);
   let multiplier = 1;
@@ -230,6 +231,7 @@ export function renderBriefView(
       h(
         'div',
         { className: 'stack-sm' },
+        h('div', { className: 'scene-stage', id: 'role-scene-stage' }),
         h('h2', { className: 'role-title' }, 'Weighted Sections'),
         weightsList,
       ),
@@ -260,4 +262,6 @@ export function renderBriefView(
   );
 
   container.appendChild(page);
+  const stage = page.querySelector('#role-scene-stage') as HTMLElement;
+  return mountRoleScene(stage, role);
 }

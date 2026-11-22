@@ -10,6 +10,7 @@ import '../assets/styles/tokens.css';
 import '../assets/styles/base.css';
 import '../assets/styles/components.css';
 
+import { registerServiceWorker } from '../services/pwaService';
 import { AppController } from './appController';
 
 const root = document.getElementById('app');
@@ -17,3 +18,5 @@ if (root) {
   const controller = new AppController();
   controller.mount(root);
 }
+
+void registerServiceWorker();

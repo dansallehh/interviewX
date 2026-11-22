@@ -15,8 +15,10 @@ import { TimerService } from '../services/timerService';
 import { renderAssessmentView } from '../views/assessmentView';
 import { renderBriefView, renderLevelPickerView } from '../views/briefView';
 import { showErrorOverlay } from '../views/errorOverlayView';
-import { renderNotFoundView, renderPlaceholderView } from '../views/notFoundView';
+import { renderInterviewerView, type InterviewerState } from '../views/interviewerView';
+import { renderNotFoundView } from '../views/notFoundView';
 import { renderReportView } from '../views/reportView';
+import type { RoleSceneHandle } from '../views/roleSceneView';
 import { renderRoleSelectorSkeleton, renderRoleSelectorView } from '../views/roleSelectorView';
 import { renderShell, updateThemeButton, type ShellRefs } from '../views/shellView';
 
@@ -27,6 +29,13 @@ export class AppController {
   private storage = new StorageService();
   private tabSync = new TabSyncService();
   private activeTimer: TimerService | null = null;
+  private activeScene: RoleSceneHandle | null = null;
+  private interviewerState: InterviewerState = {
+    unlocked: false,
+    selectedRoleId: 'dba',
+    rubricChecks: {},
+    notes: {},
+  };
   private unsubscribeConflict: (() => void) | null = null;
   private shell: ShellRefs | null = null;
   private unsubscribeRoute: (() => void) | null = null;
@@ -89,6 +98,11 @@ export class AppController {
     if (!this.shell) return;
     const outlet = this.shell.mainOutlet;
 
+    if (this.activeScene) {
+      this.activeScene.dispose();
+      this.activeScene = null;
+    }
+
     if (route.name !== 'assess') {
       this.teardownActiveAssessment();
     }
@@ -130,7 +144,7 @@ export class AppController {
           return;
         }
         document.title = `${role.name} Brief · InterviewX`;
-        renderBriefView(outlet, role, route.levelId, {
+        this.activeScene = renderBriefView(outlet, role, route.levelId, {
           onBackToLevels: () => this.router.navigate(`#/role/${role.id}`),
           onStartAssessment: async (level, multiplier, candidateName) => {
             renderRoleSelectorSkeleton(outlet);
@@ -164,13 +178,13 @@ export class AppController {
 
       case 'interviewer': {
         document.title = 'Interviewer Mode · InterviewX';
-        renderPlaceholderView(
-          outlet,
-          'Phase 4 · Interviewer Mode',
-          'Live supervision & rubric panel coming in Phase 4.',
-          'Interviewer Mode will provide PIN-gated live rubric scoring, candidate vs. reference comparison, and structured session exports.',
-          () => this.router.navigate('#/'),
-        );
+        const drawInterviewer = () => {
+          renderInterviewerView(outlet, this.interviewerState, (next) => {
+            this.interviewerState = next;
+            drawInterviewer();
+          });
+        };
+        drawInterviewer();
         break;
       }
 

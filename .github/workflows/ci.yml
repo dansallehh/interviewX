@@ -17,8 +17,19 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  secret-scan:
+    name: Secret Scan (gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   quality-gate:
-    name: Lint, Typecheck, Unit, Build & A11y
+    name: Lint, Typecheck, Bank QA, Unit, Build, E2E, A11y & Lighthouse
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -48,21 +59,30 @@ jobs:
       - name: Production build
         run: npm run build
 
-      - name: Enforce bundle budget
+      - name: Enforce bundle budget (< 200 KB gzip initial JS)
         run: npm run check:budget
 
-      - name: Install Playwright Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Install Playwright browsers (Chromium, Firefox, WebKit)
+        run: npx playwright install --with-deps chromium firefox webkit
 
-      - name: Accessibility & keyboard baseline
+      - name: Accessibility baseline (axe-core)
         run: npm run test:a11y
 
-      - name: Upload Playwright report
+      - name: E2E suite (7 roles + edge cases)
+        run: npm run test:e2e
+
+      - name: Lighthouse CI (>= 90 all categories)
+        run: npx @lhci/cli@0.14.0 autorun
+
+      - name: Upload coverage & Playwright & Lighthouse artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
-          path: playwright-report/
+          name: qa-artifacts
+          path: |
+            coverage/
+            playwright-report/
+            .lighthouseci/
           retention-days: 14
 
       - name: Upload Pages artifact
@@ -74,7 +94,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: quality-gate
+    needs: [secret-scan, quality-gate]
     runs-on: ubuntu-latest
     environment:
       name: github-pages

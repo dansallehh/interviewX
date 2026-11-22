@@ -24,6 +24,14 @@ export default tseslint.config(
     },
   },
   {
+    files: ['public/sw.js'],
+    languageOptions: {
+      globals: {
+        ...globals.serviceworker,
+      },
+    },
+  },
+  {
     files: ['scripts/**/*.mjs', 'vite.config.ts', 'vitest.config.ts', 'playwright.config.ts'],
     languageOptions: {
       globals: {
