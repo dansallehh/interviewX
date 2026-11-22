@@ -1,6 +1,6 @@
 {
   "name": "interviewx",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Role-based technical interview assessment platform hosted statically on GitHub Pages.",

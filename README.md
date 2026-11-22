@@ -1,8 +1,8 @@
 # InterviewX
 
-Role-based technical interview assessment platform hosted statically on GitHub Pages. Built with strict MVC architecture, dark/light graphite design tokens, privacy-first local persistence, and automated quality gates.
+**InterviewX** is a static, privacy-first, role-based technical interview assessment platform hosted on GitHub Pages. It evaluates candidates across **7 specialized tracks** with weighted question assembly, interactive in-browser SQL (`sql.js`) and sandboxed Web Worker JavaScript runners, SVG radar competency reports, checksummed JSON/PDF export, tamper-evident shareable result codes, lazy-loaded Three.js per-role motifs (with 2D fallback), and a PIN-gated Interviewer Mode.
 
-## Supported Roles
+## Supported Roles (168 Verified Questions · 2× Pool Enforced)
 
 | ID | Role | Focus |
 |---|---|---|
@@ -20,19 +20,20 @@ Role-based technical interview assessment platform hosted statically on GitHub P
 flowchart LR
   User["Candidate / Interviewer"] --> Router["services/routerService.ts (Hash Router)"]
   Router --> Controller["controllers/appController.ts"]
-  Controller --> Models["models/ (Role, Router, State)"]
-  Controller --> Services["services/ (Theme, Privacy, ErrorBoundary)"]
-  Controller --> Views["views/ (Shell, RoleSelector, Brief, 404)"]
-  Views --> Assets["assets/styles/ (Tokens, Dark/Light Themes)"]
+  Controller --> Models["models/ (Role, Question, Report, Crypto)"]
+  Controller --> Services["services/ (Engine, Timer, Storage, TabSync, Scoring, Runners, Export, PWA)"]
+  Controller --> Views["views/ (Shell, RoleSelector, Brief, Scene, Assessment, Radar, Report, Interviewer, 404)"]
+  Services --> Data["data/ (Schemas, 7 Role Profiles, 7 Question Banks, 2 SQL Datasets)"]
+  Views --> Assets["assets/styles/ (Dark/Light Tokens & Role Accents)"]
 ```
 
-- `/models` — Domain models and TypeScript definitions
-- `/views` — Safe DOM view renderers (zero raw `innerHTML`, zero inline handlers)
-- `/controllers` — Route orchestration and application entry point
-- `/services` — Hash router, theme service, privacy/data clearing, global error boundary
-- `/data` — Role profiles, schemas, question banks, SQL datasets (Phase 2)
-- `/assets` — CSS design tokens, dark/light themes, per-role accents
-- `/tests` — Unit (`tests/unit`) and Accessibility/E2E (`tests/a11y`, `tests/e2e`)
+- `/models` — Domain models, SHA-256 hashing & obfuscation helpers
+- `/views` — Safe DOM renderers (zero raw `innerHTML`, zero inline handlers), SVG radar chart, lazy Three.js + 2D fallback scenes
+- `/controllers` — Route orchestration (`appController.ts`) and entry point (`main.ts`)
+- `/services` — Hash router, weighted assessment engine, drift-corrected timer, IndexedDB/localStorage/memory store, multi-tab sync, lazy `sql.js` & sandboxed Web Worker JS runners, scoring, PDF/JSON/share-code exporter, PWA registration, error boundary
+- `/data` — JSON schemas, 7 role profiles, 7 tagged question banks, 2 relational SQL datasets
+- `/assets` — Dark graphite + light CSS custom-property design tokens and 7 per-role accents
+- `/tests` — Unit (`tests/unit`), Integration (`tests/integration`), Accessibility (`tests/a11y`), E2E (`tests/e2e`), Visual Baselines (`tests/visual`)
 - `/scripts` — Cross-platform Node ESM scripts (100% PowerShell-compatible)
 
 ## Running on Windows 11 (PowerShell)
@@ -40,29 +41,44 @@ flowchart LR
 **Prerequisites**: Node.js `22.13.0` (or compatible Node 22.x)
 
 ```powershell
-# 1. Install dependencies
+# 1. Install pinned dependencies
 npm ci
 
 # 2. Start local dev server
 npm run dev
 
-# 3. Run quality gates (Phase 2 includes bank integrity + >=85% coverage)
-npm run validate:bank
-npm run test:coverage
-npm run gate:p2
+# 3. Run individual verification commands
+npm run lint              # ESLint
+npm run typecheck         # TypeScript strict check
+npm run validate:bank     # JSON schemas, 2x pool coverage, duplicate check, sql.js SQL verification
+npm run test:coverage     # Vitest unit & integration tests (>= 85% on /models & /services)
+npm run build             # Self-host sql-wasm.wasm + Vite production build
+npm run check:budget      # Enforce < 200 KB gzip initial JS budget
+npx playwright install chromium
+npm run test:a11y         # axe-core WCAG 2.2 AA & CSP baseline
+npm run test:e2e          # All 7 roles happy path + negative paths + Phase 4 edge cases
+
+# 4. Run full quality gate
+npm run gate:p4
 ```
 
-## Privacy & Security
+## Security & Privacy
 
-- **100% client-side**: All progress and diagnostics stay in your browser. No tracking or backend calls.
-- **Clear All My Data**: Available in the footer to wipe `localStorage`, `sessionStorage`, `IndexedDB`, and browser caches.
-- **Strict CSP**: Enforced via `<meta http-equiv="Content-Security-Policy">` with zero inline scripts or styles and self-hosted fonts.
-- **Answer-key hygiene**: MCQ/multi-select answers use SHA-256 hashes and reference SQL/code keys are obfuscated. Because a static site cannot be fully cheat-proof against determined inspection, supervised interviews should use Interviewer Mode (Phase 4).
+- **100% client-side**: All answers, notes, and diagnostics stay locally in the browser (`IndexedDB` / `localStorage`). No tracking, cookies, or backend uploads.
+- **Clear All My Data**: Footer action wipes `localStorage`, `sessionStorage`, `IndexedDB`, and CacheStorage.
+- **Strict CSP**: Enforced via `<meta http-equiv="Content-Security-Policy">` with zero `'unsafe-inline'` scripts/styles and self-hosted fonts & WASM.
+- **Sandboxed Code Execution**: JavaScript coding tasks run inside an isolated Web Worker with network/import APIs stripped, a 1.5s execution timeout, and an output memory guard.
+- **Honest Static-Site Security Note**: Answer keys are SHA-256 hashed / obfuscated and Interviewer Mode uses a PIN gate (default demo PIN: `2026`). Because static client-side apps cannot be 100% cheat-proof against determined DevTools inspection, use Interviewer Mode during supervised live interviews.
 
-## Roadmap Status
+## Deployment (GitHub Pages)
 
-- [x] **Phase 1**: Audit, strict MVC architecture, design system, 7-role selector & brief shell, hash router, error boundary, CI skeleton
-- [x] **Phase 2**: 7 JSON role profiles, 168 tagged questions (2× pool enforced), weighted assessment engine, timer & persistence/multi-tab services, automated Content QA (`sql.js` verified), ≥ 85% unit coverage
-- [x] **Phase 3**: Lazy-loaded SQL (`sql.js`) & isolated Web Worker Code runners, live 5-type assessment workspace, weighted scoring, SVG radar chart, PDF/JSON checksummed export, signed share codes, 7-role E2E & visual baselines
-- [ ] **Phase 4**: Lazy-loaded Three.js per-role scenes + 2D fallback, Interviewer Mode, PWA/offline, security hardening, Lighthouse ≥ 90
-- [ ] **Phase 5**: Full UAT checklist, runbook, documentation, `v1.0.0` release tag
+Pushes to `main` automatically run `.github/workflows/ci.yml` (`secret-scan → lint → typecheck → validate:bank → test:coverage → build → budget → e2e → a11y → lighthouse → deploy`). Ensure repository **Settings → Pages → Source** is set to **GitHub Actions**.
+
+## Additional Documentation
+
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — How to add a role or question and run validation
+- [`QUESTION-AUTHORING.md`](QUESTION-AUTHORING.md) — Authoring standards and quality checklist
+- [`RUNBOOK.md`](RUNBOOK.md) — Deployment, rollback, and troubleshooting procedures
+- [`UAT-CHECKLIST.md`](UAT-CHECKLIST.md) — 7-role manual UAT, Go/No-Go checklist, and S1–S4 defect log template
+- [`CHANGELOG.md`](CHANGELOG.md) — Release history (`v1.0.0`)
+- [`LICENSE`](LICENSE) — MIT License
