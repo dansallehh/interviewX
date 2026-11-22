@@ -34,7 +34,6 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes('node_modules/three')) return 'vendor-three';
           if (id.includes('node_modules/sql.js')) return 'vendor-sql';
-          if (id.includes('node_modules/jspdf')) return 'vendor-pdf';
           return undefined;
         },
       },

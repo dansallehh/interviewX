@@ -63,6 +63,6 @@ npm run gate:p2
 
 - [x] **Phase 1**: Audit, strict MVC architecture, design system, 7-role selector & brief shell, hash router, error boundary, CI skeleton
 - [x] **Phase 2**: 7 JSON role profiles, 168 tagged questions (2× pool enforced), weighted assessment engine, timer & persistence/multi-tab services, automated Content QA (`sql.js` verified), ≥ 85% unit coverage
-- [ ] **Phase 3**: Lazy-loaded SQL (`sql.js`) & sandboxed Code runners, scoring, SVG radar chart, PDF/JSON round-trip export, signed share code
+- [x] **Phase 3**: Lazy-loaded SQL (`sql.js`) & isolated Web Worker Code runners, live 5-type assessment workspace, weighted scoring, SVG radar chart, PDF/JSON checksummed export, signed share codes, 7-role E2E & visual baselines
 - [ ] **Phase 4**: Lazy-loaded Three.js per-role scenes + 2D fallback, Interviewer Mode, PWA/offline, security hardening, Lighthouse ≥ 90
 - [ ] **Phase 5**: Full UAT checklist, runbook, documentation, `v1.0.0` release tag

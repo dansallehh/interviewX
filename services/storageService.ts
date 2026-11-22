@@ -212,6 +212,20 @@ export class StorageService {
     return this.getRaw('activeSessionId');
   }
 
+  async saveReport(report: { sessionId: string }): Promise<void> {
+    await this.setRaw(`report:${report.sessionId}`, JSON.stringify(report));
+  }
+
+  async loadReport<T>(sessionId: string): Promise<T | null> {
+    const raw = await this.getRaw(`report:${sessionId}`);
+    if (!raw) return null;
+    try {
+      return JSON.parse(raw) as T;
+    } catch {
+      return null;
+    }
+  }
+
   async saveAttemptHistory(record: AttemptHistoryRecord): Promise<void> {
     await this.setRaw(`history:${record.roleId}`, JSON.stringify(record));
   }

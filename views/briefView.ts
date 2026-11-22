@@ -82,7 +82,7 @@ export function renderLevelPickerView(
 
 export interface BriefViewCallbacks {
   onBackToLevels: () => void;
-  onStartAssessment: (level: RoleLevel, extraTimeMultiplier: number) => void;
+  onStartAssessment: (level: RoleLevel, extraTimeMultiplier: number, candidateName: string) => void;
 }
 
 function weightWidthClass(weight: number): string {
@@ -113,6 +113,14 @@ export function renderBriefView(
   );
 
   const durationValueEl = h('span', { className: 'meta-value', id: 'brief-duration-val' }, `${level.durationMinutes} min`);
+
+  const candidateNameInput = h('input', {
+    id: 'candidate-name-input',
+    type: 'text',
+    className: 'text-input',
+    ariaLabel: 'Candidate name (optional)',
+  }) as HTMLInputElement;
+  candidateNameInput.placeholder = 'Optional — e.g. Aisyah Rahman';
 
   const extraTimeSelect = h(
     'select',
@@ -153,10 +161,6 @@ export function renderBriefView(
         ),
       );
     }),
-  );
-
-  const startStatus = h('div', { className: 'notice notice-warn', id: 'brief-start-notice' },
-    'Phase 1 Shell: Weighted question bank and live assessment runner activate in Phase 2–3.',
   );
 
   const page = h(
@@ -208,13 +212,19 @@ export function renderBriefView(
         h(
           'div',
           { className: 'field-row' },
+          h('label', { htmlFor: 'candidate-name-input' }, 'Candidate Name'),
+          candidateNameInput,
+        ),
+        h(
+          'div',
+          { className: 'field-row' },
           h('label', { htmlFor: 'extra-time-select' }, 'Accessibility · Timer Accommodation'),
           extraTimeSelect,
         ),
         h(
           'div',
           { className: 'notice' },
-          'Privacy: Progress and results are stored locally on this device only. You can clear all data anytime from the footer.',
+          'Privacy: Progress and results are stored locally on this device only. Refreshing mid-test resumes your timer automatically.',
         ),
       ),
       h(
@@ -224,7 +234,6 @@ export function renderBriefView(
         weightsList,
       ),
     ),
-    startStatus,
     h(
       'div',
       { className: 'action-bar' },
@@ -243,7 +252,7 @@ export function renderBriefView(
           type: 'button',
           className: 'btn btn-role',
           id: 'btn-start-assessment',
-          onClick: () => callbacks.onStartAssessment(level, multiplier),
+          onClick: () => callbacks.onStartAssessment(level, multiplier, candidateNameInput.value),
         },
         'Start Assessment →',
       ),

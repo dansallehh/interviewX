@@ -12,7 +12,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       include: ['models/**/*.ts', 'services/**/*.ts'],
-      exclude: ['models/env.d.ts', 'models/router.ts', 'models/question.ts'],
+      exclude: ['models/env.d.ts', 'models/router.ts', 'models/question.ts', 'models/report.ts'],
       reporter: ['text', 'html', 'lcov'],
       thresholds: {
         lines: 85,

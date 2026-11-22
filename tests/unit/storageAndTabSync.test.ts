@@ -113,4 +113,15 @@ describe('StorageService & TabSyncService', () => {
     expect(memoryOnly.getStatus().backend).toBe('memory');
     expect(memoryOnly.getStatus().degraded).toBe(true);
   });
+
+  it('saves, loads, and safely handles corrupted reports', async () => {
+    const store = new StorageService(false);
+    await store.saveReport({ sessionId: 'rep-1' });
+    const loaded = await store.loadReport<{ sessionId: string }>('rep-1');
+    expect(loaded?.sessionId).toBe('rep-1');
+
+    await store.setRaw('report:bad', '{bad-json');
+    expect(await store.loadReport('bad')).toBeNull();
+    expect(await store.loadReport('missing')).toBeNull();
+  });
 });
