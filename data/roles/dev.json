@@ -1,0 +1,35 @@
+{
+  "id": "dev",
+  "code": "DEV",
+  "name": "Developer",
+  "shortName": "Developer",
+  "tagline": "Web and backend engineering, strict MVC design, REST APIs, JS/Node debugging, and code review.",
+  "focus": ["Web / Backend", "MVC", "APIs", "JS / Node", "Debugging", "Code Review"],
+  "motif": "circuit-cube",
+  "accentHex": "#22d3ee",
+  "rubricId": "rubric-dev-v1",
+  "levels": [
+    {
+      "id": "junior",
+      "label": "Junior Developer",
+      "summary": "Core JavaScript, HTTP fundamentals, clean MVC structure, and bug fixing.",
+      "durationMinutes": 35,
+      "questionCount": 8,
+      "passMark": 70
+    },
+    {
+      "id": "mid",
+      "label": "Mid-Level Developer",
+      "summary": "API design, async Node.js debugging, state management, and PR review.",
+      "durationMinutes": 45,
+      "questionCount": 10,
+      "passMark": 75
+    }
+  ],
+  "sections": [
+    { "topic": "JS / Node & Debugging", "weight": 0.3 },
+    { "topic": "Web / Backend & APIs", "weight": 0.3 },
+    { "topic": "MVC & Code Review", "weight": 0.2 },
+    { "topic": "Data & SQL", "weight": 0.2 }
+  ]
+}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseHash } from '../../services/routerService';
+import { parseHash, RouterService } from '../../services/routerService';
 
 describe('Hash router parser', () => {
   it('routes empty hash and root to home', () => {
@@ -39,5 +39,26 @@ describe('Hash router parser', () => {
       name: 'not-found',
       path: '/something/random',
     });
+  });
+
+  it('dispatches route updates via RouterService start, navigate, subscribe, and stop', () => {
+    const router = new RouterService();
+    const history: string[] = [];
+    const unsub = router.subscribe((route) => history.push(route.name));
+
+    window.location.hash = '#/';
+    router.start();
+    expect(router.getCurrent().name).toBe('home');
+
+    router.navigate('#/role/dev');
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+    expect(router.getCurrent()).toEqual({ name: 'role', roleId: 'dev' });
+
+    // Navigating to same hash still re-triggers cleanly
+    router.navigate('#/role/dev');
+    expect(history.length).toBeGreaterThanOrEqual(2);
+
+    unsub();
+    router.stop();
   });
 });

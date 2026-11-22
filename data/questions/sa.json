@@ -1,0 +1,1037 @@
+{
+  "roleId": "sa",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "sa-req-01",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Requirements & BRD/FRD",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "What is the core distinction between a Business Requirements Document (BRD) and a Functional Requirements Document (FRD)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "BRD defines business objectives and what value is needed; FRD specifies how the system behaves to fulfill them"
+        },
+        {
+          "id": "b",
+          "text": "FRD is written only after production launch"
+        },
+        {
+          "id": "c",
+          "text": "BRD contains SQL table DDL exclusively"
+        },
+        {
+          "id": "d",
+          "text": "There is no difference; they are identical"
+        }
+      ],
+      "answerHash": "f3b6f55af652b9e32d308331f576c80d55b19d399a93d8d6571c5c5f73870d88",
+      "answerObfuscated": "KA==",
+      "explanation": "BRDs capture business goals, scope, and high-level needs; FRDs translate those into detailed system behaviors, rules, and validations.",
+      "rubric": [
+        {
+          "id": "sa-req-01-r1",
+          "label": "Separates business intent from system behavior",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-req-01-r2",
+          "label": "Aligns BRD and FRD audiences",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-req-02",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Requirements & BRD/FRD",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which statement is an example of a measurable Non-Functional Requirement (NFR)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The system should be fast and user-friendly"
+        },
+        {
+          "id": "b",
+          "text": "The checkout API must respond within 300ms at P95 under 500 concurrent users"
+        },
+        {
+          "id": "c",
+          "text": "Users can click the submit button"
+        },
+        {
+          "id": "d",
+          "text": "Managers like dark mode"
+        }
+      ],
+      "answerHash": "cd5e63719ae88778fb3d648dedab4793e0e1d880082d4209890e77a7dced9be9",
+      "answerObfuscated": "Kw==",
+      "explanation": "Good NFRs are quantitative, testable, and specify operating conditions (latency percentile + load).",
+      "rubric": [
+        {
+          "id": "sa-req-02-r1",
+          "label": "Writes quantitative, testable NFRs",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-req-02-r2",
+          "label": "Rejects vague subjective adjectives",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-req-03",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Requirements & BRD/FRD",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "During requirements elicitation, operational users describe a workaround they use every Friday that contradicts the written SOP. What should the System Analyst do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ignore the workaround and copy the old SOP verbatim"
+        },
+        {
+          "id": "b",
+          "text": "Document the real-world exception, validate why it exists with business owners, and design explicit handling in the FRD"
+        },
+        {
+          "id": "c",
+          "text": "Tell the users to stop doing their job"
+        },
+        {
+          "id": "d",
+          "text": "Leave it for developers to guess"
+        }
+      ],
+      "answerHash": "13be72a195a2239b3f8ed5c7f9f6218c0c6d1301e11772b68071de3dbf2aae3c",
+      "answerObfuscated": "Kw==",
+      "explanation": "Shadowing reveals tacit business rules and exception paths that written SOPs often miss.",
+      "rubric": [
+        {
+          "id": "sa-req-03-r1",
+          "label": "Captures real operational exception paths",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-req-03-r2",
+          "label": "Validates business rules with owners",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-req-04",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Requirements & BRD/FRD",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL qualities of a well-written functional requirement (IEEE 29148 / INVEST).",
+      "options": [
+        {
+          "id": "a",
+          "text": "Unambiguous and testable"
+        },
+        {
+          "id": "b",
+          "text": "Traceable to a business objective"
+        },
+        {
+          "id": "c",
+          "text": "Consistent with other requirements"
+        },
+        {
+          "id": "d",
+          "text": "Bundles five unrelated features into one paragraph"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "00bb03616b5e433a2a73faba21ffd497ec8c7d60ac8773ecc3d96e91fd12e721",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "Atomic, unambiguous, consistent, and traceable requirements prevent downstream rework in engineering and QA.",
+      "rubric": [
+        {
+          "id": "sa-req-04-r1",
+          "label": "Applies IEEE 29148 quality attributes",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-req-04-r2",
+          "label": "Avoids compound ambiguous statements",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-req-05",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Requirements & BRD/FRD",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "In MoSCoW prioritization, what does the \"Could-have\" category signify?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mandatory for regulatory compliance"
+        },
+        {
+          "id": "b",
+          "text": "Desirable enhancement included only if time and budget permit without impacting Must/Should items"
+        },
+        {
+          "id": "c",
+          "text": "Explicitly out of scope for this release"
+        },
+        {
+          "id": "d",
+          "text": "Critical security fix"
+        }
+      ],
+      "answerHash": "3790762d36daa6b92caab6bbde62a506aaf55085e092e60276896407f886c81d",
+      "answerObfuscated": "Kw==",
+      "explanation": "Could-have items act as the primary scope buffer to protect Must-have delivery dates.",
+      "rubric": [
+        {
+          "id": "sa-req-05-r1",
+          "label": "Applies MoSCoW prioritization accurately",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-req-05-r2",
+          "label": "Uses Could-have as delivery buffer",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-req-06",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Requirements & BRD/FRD",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Rewrite the vague stakeholder request \"The invoice approval screen should notify finance quickly\" into two concrete functional/non-functional requirements with clear acceptance criteria.",
+      "minWords": 25,
+      "keyPoints": [
+        "acceptance",
+        "notify",
+        "threshold",
+        "role"
+      ],
+      "explanation": "Strong specs define the exact trigger event, recipient role, delivery channel, latency SLA, and failure fallback.",
+      "rubric": [
+        {
+          "id": "sa-req-06-r1",
+          "label": "Translates vague intent into testable rules",
+          "weight": 0.5
+        },
+        {
+          "id": "sa-req-06-r2",
+          "label": "Includes measurable SLA and trigger",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "sa-uml-01",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UML & Process Modelling",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which UML diagram is best suited for illustrating time-ordered message exchanges between a browser, API gateway, and payment provider?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Class Diagram"
+        },
+        {
+          "id": "b",
+          "text": "Sequence Diagram"
+        },
+        {
+          "id": "c",
+          "text": "Deployment Diagram"
+        },
+        {
+          "id": "d",
+          "text": "Entity-Relationship Diagram"
+        }
+      ],
+      "answerHash": "4752e9ba14b1e3242ab299d6beee6551bac9beaa588b1776297e1b51f9d04926",
+      "answerObfuscated": "Kw==",
+      "explanation": "Sequence diagrams explicitly model lifelines, synchronous/asynchronous calls, and chronological message order.",
+      "rubric": [
+        {
+          "id": "sa-uml-01-r1",
+          "label": "Selects Sequence Diagram for temporal flows",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uml-01-r2",
+          "label": "Matches diagram type to modeling goal",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uml-02",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UML & Process Modelling",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "In a BPMN or UML Activity Diagram, what do \"swimlanes\" represent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Database table partitions"
+        },
+        {
+          "id": "b",
+          "text": "Ownership boundaries showing which actor, role, or system performs each activity"
+        },
+        {
+          "id": "c",
+          "text": "Network bandwidth tiers"
+        },
+        {
+          "id": "d",
+          "text": "Error severity levels"
+        }
+      ],
+      "answerHash": "62e498b805f38505c0c0e15519e638406dd242732c4a3703d722cc3283e957e8",
+      "answerObfuscated": "Kw==",
+      "explanation": "Swimlanes clarify handoffs and accountability across roles or systems in an end-to-end process.",
+      "rubric": [
+        {
+          "id": "sa-uml-02-r1",
+          "label": "Uses swimlanes for cross-role handoffs",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uml-02-r2",
+          "label": "Clarifies process accountability",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uml-03",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UML & Process Modelling",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "When modeling an order lifecycle (Draft -> Submitted -> Approved -> Paid -> Refunded) with strict guard conditions, which UML diagram is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "State Machine Diagram"
+        },
+        {
+          "id": "b",
+          "text": "Component Diagram"
+        },
+        {
+          "id": "c",
+          "text": "Package Diagram"
+        },
+        {
+          "id": "d",
+          "text": "Use Case Diagram"
+        }
+      ],
+      "answerHash": "1b83834e909cb45bc210e06a1f1c885fd84d04c64c47e5f3efdbe17106888acf",
+      "answerObfuscated": "KA==",
+      "explanation": "State Machine diagrams capture valid states, triggering events, guard conditions, and disallowed transitions.",
+      "rubric": [
+        {
+          "id": "sa-uml-03-r1",
+          "label": "Models lifecycle rules via State Machine",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uml-03-r2",
+          "label": "Prevents invalid state transitions",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uml-04",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UML & Process Modelling",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "In a UML Use Case diagram, what does an `<<include>>` relationship between Use Case A and Use Case B indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use Case B is optional and rarely runs"
+        },
+        {
+          "id": "b",
+          "text": "Use Case A always invokes the behavior of Use Case B as a mandatory sub-step"
+        },
+        {
+          "id": "c",
+          "text": "Use Case B replaces Use Case A"
+        },
+        {
+          "id": "d",
+          "text": "Both are database tables"
+        }
+      ],
+      "answerHash": "f1663d876030d3931090af5cecf25fa8e541fbc83167ac40430f5f3aa37fbc68",
+      "answerObfuscated": "Kw==",
+      "explanation": "<<include>> models mandatory reused behavior (e.g., Authenticate), whereas <<extend>> models optional/conditional behavior.",
+      "rubric": [
+        {
+          "id": "sa-uml-04-r1",
+          "label": "Distinguishes <<include>> from <<extend>>",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uml-04-r2",
+          "label": "Applies UML use-case semantics",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uml-05",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UML & Process Modelling",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL elements that should appear in an accurate integration data-mapping specification.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Source and target field names with data types and lengths"
+        },
+        {
+          "id": "b",
+          "text": "Transformation rules and null/default handling"
+        },
+        {
+          "id": "c",
+          "text": "Error/rejection behavior for invalid payloads"
+        },
+        {
+          "id": "d",
+          "text": "Leaving date timezone formats unspecified"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "da3a63e3bcd81c8b9bd9e13c72e6e2f6bf65b1ecf7f3d99a3a4e2691c126faff",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "Complete field mappings eliminate silent truncation, timezone drift, and schema mismatch bugs.",
+      "rubric": [
+        {
+          "id": "sa-uml-05-r1",
+          "label": "Specifies types, transforms, and defaults",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uml-05-r2",
+          "label": "Defines error handling explicitly",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uml-06",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UML & Process Modelling",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Describe the key lifelines, synchronous calls, and failure branch you would draw in a Sequence Diagram for a 3DS card payment confirmation flow.",
+      "minWords": 25,
+      "keyPoints": [
+        "lifeline",
+        "gateway",
+        "timeout",
+        "alt"
+      ],
+      "explanation": "Include Customer, Checkout API, Payment Gateway, and Issuer Bank lifelines with an alt/else fragment for declined or timed-out challenges.",
+      "rubric": [
+        {
+          "id": "sa-uml-06-r1",
+          "label": "Identifies core actors/lifelines",
+          "weight": 0.5
+        },
+        {
+          "id": "sa-uml-06-r2",
+          "label": "Models unhappy-path alt/timeout branches",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "sa-gap-01",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Gap Analysis",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "What is the primary output of a structured Fit-Gap Analysis when evaluating a COTS/SaaS platform against current business processes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A list of every employee's salary"
+        },
+        {
+          "id": "b",
+          "text": "A categorized matrix of Fits, Configuration Gaps, Customizations, and Process Workarounds with effort/risk ratings"
+        },
+        {
+          "id": "c",
+          "text": "A compiled binary executable"
+        },
+        {
+          "id": "d",
+          "text": "A marketing brochure"
+        }
+      ],
+      "answerHash": "41f9627adc78bd225ebfcb3b9c0a8eb118218fb1324a08b66bfd0a130f9b66eb",
+      "answerObfuscated": "Kw==",
+      "explanation": "Fit-Gap analysis makes buy-vs-build and process-change trade-offs transparent before implementation.",
+      "rubric": [
+        {
+          "id": "sa-gap-01-r1",
+          "label": "Categorizes fits, configs, and custom gaps",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-gap-01-r2",
+          "label": "Supports build-vs-configure decisions",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-gap-02",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Gap Analysis",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A legacy ERP stores customer tax IDs in a free-text 50-character field, while the new system enforces a strict 12-digit numeric format. What type of gap is this?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Network latency gap"
+        },
+        {
+          "id": "b",
+          "text": "Data quality and schema validation gap requiring cleansing and migration rules"
+        },
+        {
+          "id": "c",
+          "text": "UI color-contrast gap"
+        },
+        {
+          "id": "d",
+          "text": "Licensing gap"
+        }
+      ],
+      "answerHash": "1a4c42137e395f2bd63e5114592d3baba827840cbfb5093b19738645c5b1d3b3",
+      "answerObfuscated": "Kw==",
+      "explanation": "Legacy-to-target schema mismatches require pre-migration profiling, cleansing rules, and exception handling.",
+      "rubric": [
+        {
+          "id": "sa-gap-02-r1",
+          "label": "Identifies data migration schema gap",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-gap-02-r2",
+          "label": "Plans cleansing before cutover",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-gap-03",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Gap Analysis",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Before recommending a costly custom code extension to close a SaaS functional gap, what should a Lead System Analyst evaluate first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether standard configuration or minor business process alignment can satisfy the underlying need"
+        },
+        {
+          "id": "b",
+          "text": "How to bypass vendor support warranties"
+        },
+        {
+          "id": "c",
+          "text": "Whether to remove audit logging"
+        },
+        {
+          "id": "d",
+          "text": "Whether to hide the gap until UAT"
+        }
+      ],
+      "answerHash": "5da2695f90690f0a58a74db60147b53902d1813b7ad2a921e46af1ab5a49558a",
+      "answerObfuscated": "KA==",
+      "explanation": "Customizations increase upgrade and maintenance costs; adopting standard capability where viable lowers total cost of ownership.",
+      "rubric": [
+        {
+          "id": "sa-gap-03-r1",
+          "label": "Evaluates configuration before customization",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-gap-03-r2",
+          "label": "Considers long-term upgrade TCO",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-gap-04",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Gap Analysis",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Which technique establishes the baseline before performing a To-Be gap analysis?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Documenting the current As-Is state (processes, systems, pain points, and metrics)"
+        },
+        {
+          "id": "b",
+          "text": "Deploying straight to production"
+        },
+        {
+          "id": "c",
+          "text": "Deleting legacy documentation"
+        },
+        {
+          "id": "d",
+          "text": "Writing unit tests only"
+        }
+      ],
+      "answerHash": "8cb405b8c28f363fcec9a26a7e5d877c63850b8efcfd330e3241cdb18e9c18c7",
+      "answerObfuscated": "KA==",
+      "explanation": "Without an accurate As-Is baseline, gaps, hidden integrations, and transition risks are easily missed.",
+      "rubric": [
+        {
+          "id": "sa-gap-04-r1",
+          "label": "Establishes accurate As-Is baseline",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-gap-04-r2",
+          "label": "Maps As-Is to To-Be deltas",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-gap-05",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Gap Analysis",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Your company is migrating from an on-prem payroll tool to a cloud HRIS that lacks a legacy multi-currency bonus export. Outline your gap closure recommendation options.",
+      "minWords": 25,
+      "keyPoints": [
+        "as-is",
+        "workaround",
+        "middleware",
+        "cost"
+      ],
+      "explanation": "Compare options: standard report + lightweight middleware transform, vendor roadmap wait, or custom integration — weighted by maintenance cost and compliance.",
+      "rubric": [
+        {
+          "id": "sa-gap-05-r1",
+          "label": "Proposes pragmatic gap-closure options",
+          "weight": 0.5
+        },
+        {
+          "id": "sa-gap-05-r2",
+          "label": "Weighs maintenance cost vs business value",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "sa-gap-06",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "Gap Analysis",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "What is a \"transition requirement\" in BABOK terminology?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A temporary capability needed only to move from the current state to the future state (e.g., data migration, parallel run, training)"
+        },
+        {
+          "id": "b",
+          "text": "A permanent UI theme color"
+        },
+        {
+          "id": "c",
+          "text": "An obsolete bug ticket"
+        },
+        {
+          "id": "d",
+          "text": "A database primary key"
+        }
+      ],
+      "answerHash": "3981c6e3fc5732ab28818e6f291241ea734e700b74db1f6ae386d0e60aafa121",
+      "answerObfuscated": "KA==",
+      "explanation": "Transition requirements are critical for safe cutover even though they are retired once migration succeeds.",
+      "rubric": [
+        {
+          "id": "sa-gap-06-r1",
+          "label": "Identifies transition requirements",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-gap-06-r2",
+          "label": "Plans cutover/parallel-run needs",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uat-01",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UAT & Traceability",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "What is the purpose of a Requirements Traceability Matrix (RTM)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Track developer keyboard speed"
+        },
+        {
+          "id": "b",
+          "text": "Link every business requirement forward to design, test cases, and UAT sign-off (and backward to origin)"
+        },
+        {
+          "id": "c",
+          "text": "Replace version control"
+        },
+        {
+          "id": "d",
+          "text": "Encrypt passwords"
+        }
+      ],
+      "answerHash": "ffdabb745c5a0a1a387496bdaf6f1581970ffe4a77144e66791d5c11c062719a",
+      "answerObfuscated": "Kw==",
+      "explanation": "An RTM ensures zero orphaned requirements and proves full test coverage prior to release sign-off.",
+      "rubric": [
+        {
+          "id": "sa-uat-01-r1",
+          "label": "Maintains bidirectional traceability",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uat-01-r2",
+          "label": "Verifies 100% requirement coverage",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uat-02",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UAT & Traceability",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Who is primarily responsible for executing and signing off User Acceptance Testing (UAT)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the build server"
+        },
+        {
+          "id": "b",
+          "text": "Business end-users / product owners validating real-world workflows against acceptance criteria"
+        },
+        {
+          "id": "c",
+          "text": "External network ISP engineers"
+        },
+        {
+          "id": "d",
+          "text": "Only the database hardware vendor"
+        }
+      ],
+      "answerHash": "4bc43f7ed6560a9217a4162244ce4530892af3d437b590c4cc60c5a8e4455bdc",
+      "answerObfuscated": "Kw==",
+      "explanation": "UAT confirms fitness for business use by the actual business representatives who own the workflow.",
+      "rubric": [
+        {
+          "id": "sa-uat-02-r1",
+          "label": "Clarifies business ownership of UAT",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uat-02-r2",
+          "label": "Separates UAT from developer unit testing",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uat-03",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UAT & Traceability",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Which exit criteria should be met before formal UAT sign-off is granted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "100% of planned UAT scenarios executed, 0 open S1/S2 defects, and documented workarounds/deferrals for any minor S3/S4 items"
+        },
+        {
+          "id": "b",
+          "text": "At least 10% of test cases run"
+        },
+        {
+          "id": "c",
+          "text": "Developers say it works on their laptop"
+        },
+        {
+          "id": "d",
+          "text": "Zero documentation written"
+        }
+      ],
+      "answerHash": "0e967bca4fecd04a0273ac45b7e8b0dd27294c6c47be9a308b563eae63254522",
+      "answerObfuscated": "KA==",
+      "explanation": "Objective UAT exit criteria prevent ambiguous go-live decisions and ensure critical defects are closed.",
+      "rubric": [
+        {
+          "id": "sa-uat-03-r1",
+          "label": "Enforces objective UAT exit gates",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uat-03-r2",
+          "label": "Requires zero open S1/S2 blockers",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uat-04",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UAT & Traceability",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL prerequisites that must be ready BEFORE UAT kickoff (UAT entry criteria).",
+      "options": [
+        {
+          "id": "a",
+          "text": "System Integration Testing (SIT) completed with no S1/S2 blockers"
+        },
+        {
+          "id": "b",
+          "text": "Representative anonymized test data loaded in UAT environment"
+        },
+        {
+          "id": "c",
+          "text": "Approved UAT test scripts and defect-logging workflow"
+        },
+        {
+          "id": "d",
+          "text": "Unmerged feature branches still in development"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "a8d8d211e4fe172906791398e140c72c28150b2754f7e7e6727abc3ecf717603",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "Starting UAT without stable SIT, realistic test data, and scripts wastes business-user time.",
+      "rubric": [
+        {
+          "id": "sa-uat-04-r1",
+          "label": "Enforces UAT entry readiness",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uat-04-r2",
+          "label": "Protects UAT environment integrity",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uat-05",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UAT & Traceability",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "During UAT, a tester reports a \"defect\" for a feature that was never in the approved FRD. How should the System Analyst classify it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "S1 Critical bug"
+        },
+        {
+          "id": "b",
+          "text": "Change Request / Enhancement to be triaged against release scope"
+        },
+        {
+          "id": "c",
+          "text": "Delete the ticket silently"
+        },
+        {
+          "id": "d",
+          "text": "Roll back the database"
+        }
+      ],
+      "answerHash": "ca650ff6eb412f86494be58f06c9f04aed7b2323e3bb178a401a5393b1c72a87",
+      "answerObfuscated": "Kw==",
+      "explanation": "Comparing against the baselined FRD distinguishes true defects (deviations from spec) from new scope requests.",
+      "rubric": [
+        {
+          "id": "sa-uat-05-r1",
+          "label": "Separates spec defects from scope changes",
+          "weight": 0.6
+        },
+        {
+          "id": "sa-uat-05-r2",
+          "label": "Protects UAT focus",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "sa-uat-06",
+      "role": "sa",
+      "levels": [
+        "standard",
+        "lead"
+      ],
+      "topic": "UAT & Traceability",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Write 3 concise Given/When/Then UAT acceptance scenarios for a role-based discount approval workflow (discounts > 15% require manager approval).",
+      "minWords": 25,
+      "keyPoints": [
+        "given",
+        "when",
+        "then",
+        "15%"
+      ],
+      "explanation": "Cover boundary values: <= 15% auto-approved, > 15% routed to manager pending state, and manager rejection notification.",
+      "rubric": [
+        {
+          "id": "sa-uat-06-r1",
+          "label": "Uses clear Given/When/Then structure",
+          "weight": 0.5
+        },
+        {
+          "id": "sa-uat-06-r2",
+          "label": "Covers boundary and negative paths",
+          "weight": 0.5
+        }
+      ]
+    }
+  ]
+}

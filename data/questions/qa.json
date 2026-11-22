@@ -1,0 +1,1088 @@
+{
+  "roleId": "qa",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "qa-des-01",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Test Design",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "An age field accepts integers from 18 to 65 inclusive. Using 2-value Boundary Value Analysis (BVA), which set of values should you test?",
+      "options": [
+        {
+          "id": "a",
+          "text": "18 and 65 only"
+        },
+        {
+          "id": "b",
+          "text": "17, 18, 65, and 66"
+        },
+        {
+          "id": "c",
+          "text": "0, 50, and 100"
+        },
+        {
+          "id": "d",
+          "text": "20, 30, 40, and 50"
+        }
+      ],
+      "answerHash": "273206f39c020b5d968f5b2f0c44ab747dfdfd205391fa45356ceb401fe6b91d",
+      "answerObfuscated": "Kw==",
+      "explanation": "BVA targets the exact boundaries (18, 65) and their immediate off-by-one neighbors (17, 66) where defects cluster.",
+      "rubric": [
+        {
+          "id": "qa-des-01-r1",
+          "label": "Applies 2-value BVA accurately",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-des-01-r2",
+          "label": "Catches off-by-one defects",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-des-02",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Test Design",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "What is the goal of Equivalence Partitioning in black-box test design?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Test every possible 64-bit integer exhaustively"
+        },
+        {
+          "id": "b",
+          "text": "Divide inputs into classes expected to behave identically so one representative per class maximizes coverage with minimal redundancy"
+        },
+        {
+          "id": "c",
+          "text": "Skip negative test cases"
+        },
+        {
+          "id": "d",
+          "text": "Only test the happy path"
+        }
+      ],
+      "answerHash": "8c4b4860fa2aebfab3597f800d9f42ca23cd3c8e3b73c0b6433277577c88878f",
+      "answerObfuscated": "Kw==",
+      "explanation": "Equivalence partitioning reduces redundant test cases while ensuring valid and invalid classes are covered.",
+      "rubric": [
+        {
+          "id": "qa-des-02-r1",
+          "label": "Balances coverage and test efficiency",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-des-02-r2",
+          "label": "Includes valid and invalid partitions",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-des-03",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Test Design",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A pricing engine combines 4 independent rules (VIP tier, promo code, bulk quantity, free shipping). Which technique systematically ensures every combination of conditions and actions is covered?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Decision Table Testing"
+        },
+        {
+          "id": "b",
+          "text": "Random clicking"
+        },
+        {
+          "id": "c",
+          "text": "Load testing only"
+        },
+        {
+          "id": "d",
+          "text": "CSS snapshot testing"
+        }
+      ],
+      "answerHash": "74c23051958e0eb98e4a2b6bed311b764dd2a49151846941f0166b63ab907659",
+      "answerObfuscated": "KA==",
+      "explanation": "Decision tables map all relevant combinations of boolean/rule conditions to expected outcomes, exposing contradictory or missing rules.",
+      "rubric": [
+        {
+          "id": "qa-des-03-r1",
+          "label": "Selects Decision Table for rule combinations",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-des-03-r2",
+          "label": "Exposes missing business-rule branches",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-des-04",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Test Design",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "When is Exploratory Testing most valuable relative to scripted regression tests?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replacing all CI unit tests"
+        },
+        {
+          "id": "b",
+          "text": "Uncovering unexpected UX, edge-case, and integration bugs through time-boxed charters guided by tester intuition"
+        },
+        {
+          "id": "c",
+          "text": "Verifying exact SHA-256 hashes manually"
+        },
+        {
+          "id": "d",
+          "text": "Eliminating bug reports"
+        }
+      ],
+      "answerHash": "33bca250256f96bfbdec15cc5882b700a884bbc56426e8413aae3e910329551b",
+      "answerObfuscated": "Kw==",
+      "explanation": "Session-based exploratory testing complements scripted automation by probing unscripted interactions and real user mental models.",
+      "rubric": [
+        {
+          "id": "qa-des-04-r1",
+          "label": "Uses time-boxed exploratory charters",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-des-04-r2",
+          "label": "Complements scripted automation",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-des-05",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Test Design",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL scenarios that represent high-value negative test cases for a file upload endpoint.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Uploading a file exceeding the maximum size limit"
+        },
+        {
+          "id": "b",
+          "text": "Uploading a disguised executable renamed with a .png extension"
+        },
+        {
+          "id": "c",
+          "text": "Uploading a valid 100 KB PNG image"
+        },
+        {
+          "id": "d",
+          "text": "Uploading a zero-byte corrupted file"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "c3f9e716f60680466aa82dcd889627046437431a90434387573b1dc176263dec",
+      "answerObfuscated": "KHRPfzA=",
+      "explanation": "Negative testing validates bounds, content-type/magic-byte validation, and corrupted payload handling.",
+      "rubric": [
+        {
+          "id": "qa-des-05-r1",
+          "label": "Designs security and boundary negative tests",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-des-05-r2",
+          "label": "Distinguishes negative vs happy paths",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-des-06",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Test Design",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Design a concise test charter for a client-side timed exam app that persists progress in localStorage/IndexedDB, covering at least 4 critical edge cases.",
+      "minWords": 25,
+      "keyPoints": [
+        "refresh",
+        "timer",
+        "storage",
+        "tab"
+      ],
+      "explanation": "Cover mid-test reload resume, timer expiry auto-submit, full/corrupted storage fallback, multi-tab concurrency, and offline reload.",
+      "rubric": [
+        {
+          "id": "qa-des-06-r1",
+          "label": "Identifies high-risk stateful edge cases",
+          "weight": 0.5
+        },
+        {
+          "id": "qa-des-06-r2",
+          "label": "Covers persistence, timer, and concurrency",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "qa-auto-01",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Automation & CI",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "In Playwright E2E tests, why are user-facing locators (`getByRole`, `getByLabel`) preferred over brittle XPath or deep CSS chains?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They run without a browser"
+        },
+        {
+          "id": "b",
+          "text": "They resist layout refactors and simultaneously verify accessible names and roles"
+        },
+        {
+          "id": "c",
+          "text": "They skip waiting for visibility"
+        },
+        {
+          "id": "d",
+          "text": "They disable assertions"
+        }
+      ],
+      "answerHash": "daf0f7f6f7f36be8054067458d1415244719b7bcceea585de5e8d5fd65b03ec2",
+      "answerObfuscated": "Kw==",
+      "explanation": "Role/label locators align tests with user perception and accessibility semantics while minimizing maintenance churn.",
+      "rubric": [
+        {
+          "id": "qa-auto-01-r1",
+          "label": "Chooses resilient accessible locators",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-auto-01-r2",
+          "label": "Reduces UI test maintenance",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-auto-02",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Automation & CI",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "An E2E test uses `await page.waitForTimeout(3000)` and fails intermittently in CI. What is the right fix?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the sleep to 15,000 ms"
+        },
+        {
+          "id": "b",
+          "text": "Replace arbitrary sleeps with web-first auto-retrying assertions (e.g., `expect(locator).toBeVisible()`) or deterministic network/state waits"
+        },
+        {
+          "id": "c",
+          "text": "Delete the assertion"
+        },
+        {
+          "id": "d",
+          "text": "Run CI only on Fridays"
+        }
+      ],
+      "answerHash": "689dc4c8c3567ab3a5b79e1d7dbb32579bdf25bb23f9ed816a29cb9c808e9b90",
+      "answerObfuscated": "Kw==",
+      "explanation": "Hard sleeps are slow when fast and flaky when CI is under load; condition-based waits make suites fast and deterministic.",
+      "rubric": [
+        {
+          "id": "qa-auto-02-r1",
+          "label": "Eliminates sleep-induced flakiness",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-auto-02-r2",
+          "label": "Uses condition-based auto-waiting",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-auto-03",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Automation & CI",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "According to the Test Pyramid (or Testing Trophy), why should the majority of business-logic checks live in unit and integration tests rather than browser E2E tests?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Unit/integration tests execute in milliseconds, isolate root causes precisely, and have far lower flake and maintenance cost"
+        },
+        {
+          "id": "b",
+          "text": "E2E tests cannot click buttons"
+        },
+        {
+          "id": "c",
+          "text": "Unit tests replace accessibility audits"
+        },
+        {
+          "id": "d",
+          "text": "Browsers cannot run in CI"
+        }
+      ],
+      "answerHash": "6746b172c3ae2961e57a4fbc849d93548bf2c6860d7622041c0ca0219be582f0",
+      "answerObfuscated": "KA==",
+      "explanation": "Reserve browser E2E for critical user journeys while covering combinatorial logic in fast, isolated unit/integration layers.",
+      "rubric": [
+        {
+          "id": "qa-auto-03-r1",
+          "label": "Balances test layers pragmatically",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-auto-03-r2",
+          "label": "Optimizes CI feedback speed and signal",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-auto-04",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Automation & CI",
+      "difficulty": "medium",
+      "type": "code",
+      "prompt": "Implement `classifyFlakyRuns(results)` that takes an array of `{ testId, passed }` run records and returns a sorted array of `testId`s that both passed at least once AND failed at least once.",
+      "hint": "Track per-testId booleans `{ hasPass, hasFail }` in a Map, then filter and sort.",
+      "language": "javascript",
+      "functionName": "classifyFlakyRuns",
+      "starterCode": "function classifyFlakyRuns(results) {\n  // Return sorted list of flaky testIds\n}\n",
+      "referenceCodeObfuscated": "Ly1DMCAoOydjTickKl4/VzAeQTI/OAY8LV5jNzxeI109KwRzL0t0aSBCJTYtDTtQOXgQczokI2kOTDttcBZcEWk+QiF0aTcmLV4/ZSsNOVdpKkggIS0gOmoNME95DXYRKjdDICBhNzwxDXZlNEwmHy49WXsmbyAsMFkCIXANKk1pIw0jbmEyKC9eLml5S2wRLzlBIDFhKXJJDWtleUQwEWEqAyM1MicsJwRrJixfeEFpZQ0nJjQxcmNIJzY8DTVEO3ZLc2lhIDs2SHBPeQ12ESQ5XX0nJCBhMQM/ICpZH1VleE4mJmhvQ2MNNk95DSRUPS1fPXQAJjsiVGUjK0I7GSQ5XX0xLyA7Kkg4bXAEeFcgNFk2Jml8Em8NPRhwDWsPaS4DI3Rncmk1Ay1sd0A3QWFwdjowHH1pfhNrLD0EeEImKll7fXpeNA==",
+      "testCases": [
+        {
+          "args": [
+            [
+              {
+                "testId": "t2",
+                "passed": true
+              },
+              {
+                "testId": "t1",
+                "passed": true
+              },
+              {
+                "testId": "t2",
+                "passed": false
+              },
+              {
+                "testId": "t3",
+                "passed": false
+              }
+            ]
+          ],
+          "expected": [
+            "t2"
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "testId": "b",
+                "passed": false
+              },
+              {
+                "testId": "a",
+                "passed": true
+              },
+              {
+                "testId": "b",
+                "passed": true
+              },
+              {
+                "testId": "a",
+                "passed": false
+              }
+            ]
+          ],
+          "expected": [
+            "a",
+            "b"
+          ]
+        }
+      ],
+      "explanation": "Identifies non-deterministic flaky tests by detecting mixed pass/fail outcomes across repeated runs.",
+      "rubric": [
+        {
+          "id": "qa-auto-04-r1",
+          "label": "Accurately detects mixed pass/fail runs",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-auto-04-r2",
+          "label": "Returns deterministic sorted output",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-auto-05",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Automation & CI",
+      "difficulty": "hard",
+      "type": "multi",
+      "prompt": "Select ALL practices that keep a CI Playwright suite reliable and debuggable on failure.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Upload HTML report, traces, and failure screenshots as CI artifacts"
+        },
+        {
+          "id": "b",
+          "text": "Isolate test state/storage per test so tests are order-independent"
+        },
+        {
+          "id": "c",
+          "text": "Share mutable global state across parallel workers"
+        },
+        {
+          "id": "d",
+          "text": "Pin browser and dependency versions via lockfile"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "de0435cd204d999c3fe0f055c814d25f5cf2464c325e96b21c16cbeaa04bed94",
+      "answerObfuscated": "KHRPfzA=",
+      "explanation": "Isolated state, pinned toolchains, and trace/screenshot artifacts make CI failures immediately actionable.",
+      "rubric": [
+        {
+          "id": "qa-auto-05-r1",
+          "label": "Enforces test isolation and determinism",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-auto-05-r2",
+          "label": "Captures actionable CI diagnostics",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-auto-06",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Automation & CI",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the purpose of integrating `axe-core` into Playwright CI tests?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Measure SQL query execution time"
+        },
+        {
+          "id": "b",
+          "text": "Automatically detect WCAG accessibility violations (contrast, ARIA, labels, landmarks) on every PR"
+        },
+        {
+          "id": "c",
+          "text": "Minify JavaScript bundles"
+        },
+        {
+          "id": "d",
+          "text": "Generate PDF invoices"
+        }
+      ],
+      "answerHash": "e1a3b56ddacc59e3185a53493739f76df33e57dd2b9a8a4da66bb1d5c5a5470b",
+      "answerObfuscated": "Kw==",
+      "explanation": "Automated axe-core checks catch ~30–50% of WCAG issues immediately in CI, complementing manual keyboard and screen-reader audits.",
+      "rubric": [
+        {
+          "id": "qa-auto-06-r1",
+          "label": "Automates WCAG baseline checks in CI",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-auto-06-r2",
+          "label": "Recognizes automated + manual a11y pairing",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-tri-01",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Defect Triage",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "A typo in the company name appears on the public checkout banner, causing zero functional breakage. How should Severity and Priority be classified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Low Severity (S4), High Priority (P1/P2) due to brand visibility"
+        },
+        {
+          "id": "b",
+          "text": "Critical Severity (S1), Low Priority"
+        },
+        {
+          "id": "c",
+          "text": "Not a bug"
+        },
+        {
+          "id": "d",
+          "text": "Cannot be triaged"
+        }
+      ],
+      "answerHash": "7edc01e530e8658a30a1b59db64470049abf272a1dec52db3858541b5a87cb90",
+      "answerObfuscated": "KA==",
+      "explanation": "Severity measures technical/functional impact; Priority measures business urgency to fix.",
+      "rubric": [
+        {
+          "id": "qa-tri-01-r1",
+          "label": "Separates Severity from Priority",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-tri-01-r2",
+          "label": "Applies business context to triage",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-tri-02",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Defect Triage",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which piece of information is MOST essential for a developer to fix a bug quickly without back-and-forth?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Minimal deterministic steps to reproduce, expected vs actual result, environment/version, and logs/screenshot"
+        },
+        {
+          "id": "b",
+          "text": "A one-line title saying \"Page broken\""
+        },
+        {
+          "id": "c",
+          "text": "Guessing which line of code is wrong without repro steps"
+        },
+        {
+          "id": "d",
+          "text": "Marking every defect S1"
+        }
+      ],
+      "answerHash": "9160bcdd452c24715f5b542b71ab706140e3e7c5a13fa91078a1dc0ea4fde9d3",
+      "answerObfuscated": "KA==",
+      "explanation": "Actionable defect reports eliminate ambiguity and cut mean time to resolution dramatically.",
+      "rubric": [
+        {
+          "id": "qa-tri-02-r1",
+          "label": "Writes reproducible defect reports",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-tri-02-r2",
+          "label": "Includes environment and expected vs actual",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-tri-03",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Defect Triage",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Two hours before release, QA discovers that exporting a PDF crashes the browser tab with an uncaught exception. What is the correct triage severity and release action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "S1/S2 High-Critical blocker — hold release (No-Go) until fixed or scoped out with stakeholder sign-off"
+        },
+        {
+          "id": "b",
+          "text": "S4 Cosmetic — ship without mentioning it"
+        },
+        {
+          "id": "c",
+          "text": "Close as Won't Fix immediately"
+        },
+        {
+          "id": "d",
+          "text": "Disable PDF tests in CI"
+        }
+      ],
+      "answerHash": "ef58fed829622e1312aec3c902dae5817a809458c5378d489b48b0595ddec04c",
+      "answerObfuscated": "KA==",
+      "explanation": "Uncaught crashes on a core deliverable violate Go/No-Go quality gates and require a fix or explicit leadership waiver.",
+      "rubric": [
+        {
+          "id": "qa-tri-03-r1",
+          "label": "Enforces Go/No-Go release discipline",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-tri-03-r2",
+          "label": "Assesses crash severity accurately",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-tri-04",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Defect Triage",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A developer marks a bug \"Cannot Reproduce\". What should QA do next?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Close the ticket immediately"
+        },
+        {
+          "id": "b",
+          "text": "Verify environment parity (browser, build SHA, data state, feature flags), attach HAR/trace/video, and pair briefly to reproduce"
+        },
+        {
+          "id": "c",
+          "text": "Reopen 10 times with no new info"
+        },
+        {
+          "id": "d",
+          "text": "Escalate to HR"
+        }
+      ],
+      "answerHash": "972272c4955c67f7e26c61b5236acc3fbe165ed4f41518051ae37495ee5b44eb",
+      "answerObfuscated": "Kw==",
+      "explanation": "Environment/data drift causes most \"cannot reproduce\" loops; concrete traces and pairing resolve them fast.",
+      "rubric": [
+        {
+          "id": "qa-tri-04-r1",
+          "label": "Investigates environment and state parity",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-tri-04-r2",
+          "label": "Collaborates with evidence",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-tri-05",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Defect Triage",
+      "difficulty": "medium",
+      "type": "scenario",
+      "prompt": "Write a structured S2 bug report for an assessment timer that resets to full duration when the user refreshes the page mid-test.",
+      "minWords": 25,
+      "keyPoints": [
+        "reproduce",
+        "expected",
+        "actual",
+        "refresh"
+      ],
+      "explanation": "Include title, severity S2, exact repro steps, expected resumed countdown, actual reset behavior, and impact on exam integrity.",
+      "rubric": [
+        {
+          "id": "qa-tri-05-r1",
+          "label": "Provides deterministic reproduction steps",
+          "weight": 0.5
+        },
+        {
+          "id": "qa-tri-05-r2",
+          "label": "States expected vs actual and impact",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "qa-tri-06",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Defect Triage",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "What is Defect Escape Rate (or Defect Leakage), and what does an upward trend indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Percentage of defects found in production vs caught before release; a rising rate signals gaps in test coverage or release gates"
+        },
+        {
+          "id": "b",
+          "text": "Number of bugs closed per day"
+        },
+        {
+          "id": "c",
+          "text": "Speed of Playwright test execution"
+        },
+        {
+          "id": "d",
+          "text": "Count of unit tests per file"
+        }
+      ],
+      "answerHash": "8237103811da2d8d59b1b4f34e42869a5135eaba114493caca71c5380e5af832",
+      "answerObfuscated": "KA==",
+      "explanation": "Tracking escaped defects guides where to strengthen unit, integration, or UAT coverage.",
+      "rubric": [
+        {
+          "id": "qa-tri-06-r1",
+          "label": "Defines defect leakage metric",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-tri-06-r2",
+          "label": "Uses metrics to improve test strategy",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-reg-01",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Regression Strategy",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "When a hotfix touches only the payment webhook handler with 30 minutes before deploy, which test subset should run first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Targeted smoke + risk-based regression on payment/checkout flows plus full automated CI unit/API checks"
+        },
+        {
+          "id": "b",
+          "text": "Manual testing of the About Us page only"
+        },
+        {
+          "id": "c",
+          "text": "No testing at all"
+        },
+        {
+          "id": "d",
+          "text": "A 3-day full manual regression before any CI"
+        }
+      ],
+      "answerHash": "7b09c458299134c94a248e0a18714f711199c43dbf8cb27bf6c9321e331ddd8b",
+      "answerObfuscated": "KA==",
+      "explanation": "Risk-based regression focuses limited time on impacted modules and critical revenue paths backed by automated CI.",
+      "rubric": [
+        {
+          "id": "qa-reg-01-r1",
+          "label": "Applies risk-based regression selection",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-reg-01-r2",
+          "label": "Protects critical paths under time pressure",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-reg-02",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Regression Strategy",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the difference between Confirmation Testing (re-testing) and Regression Testing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Confirmation testing verifies the specific bug fix works; regression testing verifies the fix did not break existing unaffected functionality"
+        },
+        {
+          "id": "b",
+          "text": "They are identical terms"
+        },
+        {
+          "id": "c",
+          "text": "Regression testing only runs on new features"
+        },
+        {
+          "id": "d",
+          "text": "Confirmation testing never uses test data"
+        }
+      ],
+      "answerHash": "93760be1b919929ba3077d2b91908add5b44ab887d78685cd22ca281684a08ac",
+      "answerObfuscated": "KA==",
+      "explanation": "Both are required: confirm the fix resolves the defect, then verify no collateral side effects occurred.",
+      "rubric": [
+        {
+          "id": "qa-reg-02-r1",
+          "label": "Distinguishes confirmation vs regression",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-reg-02-r2",
+          "label": "Combines both after bug fixes",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-reg-03",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Regression Strategy",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "How should QA manage visual regression baselines (e.g., Playwright screenshots) to prevent noisy false positives?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Disable visual tests permanently"
+        },
+        {
+          "id": "b",
+          "text": "Run in a consistent OS/browser container, mask dynamic timestamps/animations, and review intentional UI diffs in PRs"
+        },
+        {
+          "id": "c",
+          "text": "Compare screenshots across random developer laptops"
+        },
+        {
+          "id": "d",
+          "text": "Set pixel tolerance to 100%"
+        }
+      ],
+      "answerHash": "36d454552a0e5ce35d012c6e8a258faf152aa14cd0bf5f23c34b0ec66385bf3c",
+      "answerObfuscated": "Kw==",
+      "explanation": "Deterministic rendering environments and masking dynamic elements keep visual diffs high-signal.",
+      "rubric": [
+        {
+          "id": "qa-reg-03-r1",
+          "label": "Controls visual-diff determinism",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-reg-03-r2",
+          "label": "Masks dynamic content appropriately",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-reg-04",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Regression Strategy",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL valid triggers for executing a full cross-browser regression pass.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Major dependency or framework upgrade (e.g., router/bundler)"
+        },
+        {
+          "id": "b",
+          "text": "Database schema or persistence layer overhaul"
+        },
+        {
+          "id": "c",
+          "text": "Core authentication or scoring engine refactor"
+        },
+        {
+          "id": "d",
+          "text": "Fixing a typo in README.md"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "6c6204c9cd32316c244438ee7c1b0ce453b2bad4a9c4e30d2849b6be5da0f1e0",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "High-blast-radius infrastructure and core-engine changes warrant full cross-browser regression; doc-only edits do not.",
+      "rubric": [
+        {
+          "id": "qa-reg-04-r1",
+          "label": "Matches regression depth to change blast radius",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-reg-04-r2",
+          "label": "Avoids wasteful full runs on doc edits",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-reg-05",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Regression Strategy",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "Why should a regression suite be periodically pruned and audited?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To delete all failing tests"
+        },
+        {
+          "id": "b",
+          "text": "To retire obsolete/duplicate tests, fix flaky ones, and keep CI fast and trustworthy"
+        },
+        {
+          "id": "c",
+          "text": "To lower code coverage"
+        },
+        {
+          "id": "d",
+          "text": "To avoid running tests in PRs"
+        }
+      ],
+      "answerHash": "f3682948a883892d2e3860d62b8b095da57cb258872fa0d68b01119b718db7d7",
+      "answerObfuscated": "Kw==",
+      "explanation": "Bloated, flaky suites cause teams to ignore CI failures; curating the suite preserves trust and speed.",
+      "rubric": [
+        {
+          "id": "qa-reg-05-r1",
+          "label": "Maintains suite signal-to-noise ratio",
+          "weight": 0.6
+        },
+        {
+          "id": "qa-reg-05-r2",
+          "label": "Addresses test rot and flakiness",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "qa-reg-06",
+      "role": "qa",
+      "levels": [
+        "manual",
+        "sdet"
+      ],
+      "topic": "Regression Strategy",
+      "difficulty": "medium",
+      "type": "scenario",
+      "prompt": "Propose a concise cross-browser and responsive regression matrix for a static GitHub Pages web app targeting Windows 11 primary users and mobile viewports.",
+      "minWords": 20,
+      "keyPoints": [
+        "chromium",
+        "firefox",
+        "webkit",
+        "360"
+      ],
+      "explanation": "Cover Chromium (Chrome/Edge), Firefox, and WebKit across desktop (1440px) and mobile (360px), focusing E2E on critical journeys and a11y.",
+      "rubric": [
+        {
+          "id": "qa-reg-06-r1",
+          "label": "Covers major browser engines",
+          "weight": 0.5
+        },
+        {
+          "id": "qa-reg-06-r2",
+          "label": "Includes 360px mobile to desktop viewports",
+          "weight": 0.5
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "pm",
+  "code": "PMO",
+  "name": "Project Manager",
+  "shortName": "Project Mgr",
+  "tagline": "Scope governance, critical-path scheduling, risk registers, stakeholder alignment, and change control.",
+  "focus": ["Scope", "Schedule", "Risk", "Stakeholders", "Change Control"],
+  "motif": "vector-gantt",
+  "accentHex": "#f59e0b",
+  "rubricId": "rubric-pm-v1",
+  "levels": [
+    {
+      "id": "mid",
+      "label": "Project Manager",
+      "summary": "Delivery execution, RAID logs, sprint/waterfall hybrids, and escalations.",
+      "durationMinutes": 35,
+      "questionCount": 8,
+      "passMark": 70
+    },
+    {
+      "id": "program",
+      "label": "Senior / Program Manager",
+      "summary": "Cross-team dependencies, executive governance, and contract change control.",
+      "durationMinutes": 45,
+      "questionCount": 10,
+      "passMark": 75
+    }
+  ],
+  "sections": [
+    { "topic": "Scope & Change Control", "weight": 0.3 },
+    { "topic": "Schedule & Delivery", "weight": 0.25 },
+    { "topic": "Risk Management", "weight": 0.25 },
+    { "topic": "Stakeholder Alignment", "weight": 0.2 }
+  ]
+}

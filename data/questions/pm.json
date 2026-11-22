@@ -1,0 +1,1036 @@
+{
+  "roleId": "pm",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "pm-scope-01",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Scope & Change Control",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "What is the primary purpose of a Work Breakdown Structure (WBS) during project planning?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assign blame for missed deadlines"
+        },
+        {
+          "id": "b",
+          "text": "Decompose 100% of project scope into manageable, estimable deliverables"
+        },
+        {
+          "id": "c",
+          "text": "Replace the project charter"
+        },
+        {
+          "id": "d",
+          "text": "Track daily attendance of developers"
+        }
+      ],
+      "answerHash": "77b7e670ad14451d79d52e64579310a6e02cdaa5a4567322252762e0ef26e0b4",
+      "answerObfuscated": "Kw==",
+      "explanation": "A WBS follows the 100% rule, breaking project deliverables into work packages for accurate estimation and accountability.",
+      "rubric": [
+        {
+          "id": "pm-scope-01-r1",
+          "label": "Understands WBS 100% rule",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-scope-01-r2",
+          "label": "Links scope decomposition to estimation",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-scope-02",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Scope & Change Control",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Midway through delivery, a key client asks the dev lead directly for three extra reporting screens. What should the PM do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approve verbally to keep the client happy"
+        },
+        {
+          "id": "b",
+          "text": "Log a formal Change Request, assess schedule/cost/risk impact, and route it to the Change Control Board (CCB)"
+        },
+        {
+          "id": "c",
+          "text": "Tell engineering to work weekends silently"
+        },
+        {
+          "id": "d",
+          "text": "Cancel the project"
+        }
+      ],
+      "answerHash": "268db3d8ff56202d33891b3147aba931f3e12be41918bb2d467210e609a47f81",
+      "answerObfuscated": "Kw==",
+      "explanation": "Uncontrolled scope creep erodes margins and quality; formal change control makes cost/schedule trade-offs explicit before approval.",
+      "rubric": [
+        {
+          "id": "pm-scope-02-r1",
+          "label": "Prevents unmanaged scope creep",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-scope-02-r2",
+          "label": "Applies formal impact analysis and CCB governance",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-scope-03",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Scope & Change Control",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which artifact formally authorizes a project and grants the Project Manager authority to apply organizational resources?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sprint Retrospective"
+        },
+        {
+          "id": "b",
+          "text": "Project Charter"
+        },
+        {
+          "id": "c",
+          "text": "Defect Triage Log"
+        },
+        {
+          "id": "d",
+          "text": "Release Runbook"
+        }
+      ],
+      "answerHash": "cbcb3bdc2ffa24414745a83653c238e9f213984a4deff6d49f2e3df564c1468f",
+      "answerObfuscated": "Kw==",
+      "explanation": "The Project Charter establishes high-level objectives, sponsor authorization, and PM authority.",
+      "rubric": [
+        {
+          "id": "pm-scope-03-r1",
+          "label": "Identifies Project Charter purpose",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-scope-03-r2",
+          "label": "Distinguishes initiation from execution artifacts",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-scope-04",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Scope & Change Control",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is \"gold plating\" in project management, and why is it discouraged?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adding unrequested extra features beyond agreed scope, which adds unbudgeted cost and defect risk"
+        },
+        {
+          "id": "b",
+          "text": "Using automated CI pipelines"
+        },
+        {
+          "id": "c",
+          "text": "Writing acceptance criteria before development"
+        },
+        {
+          "id": "d",
+          "text": "Holding sprint demos with stakeholders"
+        }
+      ],
+      "answerHash": "b1df1b9d86ed8085e0a4257a2daf40455457502722b28a066be96323895c6205",
+      "answerObfuscated": "KA==",
+      "explanation": "Gold plating consumes budget and introduces untested complexity without stakeholder authorization or validated value.",
+      "rubric": [
+        {
+          "id": "pm-scope-04-r1",
+          "label": "Identifies gold plating risk",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-scope-04-r2",
+          "label": "Protects baseline scope and quality",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-scope-05",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Scope & Change Control",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL elements that belong in a complete Change Request impact assessment.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Schedule and critical-path impact"
+        },
+        {
+          "id": "b",
+          "text": "Budget and resource cost impact"
+        },
+        {
+          "id": "c",
+          "text": "Risk and quality/testing impact"
+        },
+        {
+          "id": "d",
+          "text": "Removing the original baseline without history"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "2bee748c18b0318e432488eee2fc0b355c6c4b1778f5d2cc36fb876372354e03",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "Change control evaluates triple-constraint and risk impacts while preserving baseline audit history.",
+      "rubric": [
+        {
+          "id": "pm-scope-05-r1",
+          "label": "Evaluates schedule, cost, and risk impacts",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-scope-05-r2",
+          "label": "Preserves baseline auditability",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-scope-06",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Scope & Change Control",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "A regulatory deadline cannot move, yet a stakeholder demands a major new integration 4 weeks before launch. Outline how you present options (descope, phase 2, or budget/capacity) to the steering committee.",
+      "minWords": 25,
+      "keyPoints": [
+        "baseline",
+        "trade-off",
+        "phase",
+        "steering"
+      ],
+      "explanation": "Effective PMs frame fixed-date constraints using explicit trade-off options: descope lower-value items, defer to Phase 2, or add vetted capacity with risk callouts.",
+      "rubric": [
+        {
+          "id": "pm-scope-06-r1",
+          "label": "Frames fixed-date triple-constraint options",
+          "weight": 0.5
+        },
+        {
+          "id": "pm-scope-06-r2",
+          "label": "Recommends structured steering decision",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "pm-sched-01",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Schedule & Delivery",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "In Critical Path Method (CPM) scheduling, what is the total float (slack) of any task on the critical path?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zero (0 days)"
+        },
+        {
+          "id": "b",
+          "text": "Equal to the sprint length"
+        },
+        {
+          "id": "c",
+          "text": "Always 5 working days"
+        },
+        {
+          "id": "d",
+          "text": "Double the task duration"
+        }
+      ],
+      "answerHash": "ff82cf046205987669831aceeb23ccb05c0aeb6f27266401d2e59edb7cde6246",
+      "answerObfuscated": "KA==",
+      "explanation": "Critical-path activities have zero total float; any delay directly delays the project finish date.",
+      "rubric": [
+        {
+          "id": "pm-sched-01-r1",
+          "label": "Applies CPM critical-path definition",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-sched-01-r2",
+          "label": "Links zero float to end-date sensitivity",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-sched-02",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Schedule & Delivery",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A project has Planned Value (PV) = $100k, Earned Value (EV) = $80k, and Actual Cost (AC) = $100k. What do SPI and CPI indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ahead of schedule and under budget"
+        },
+        {
+          "id": "b",
+          "text": "Behind schedule (SPI = 0.80) and over budget (CPI = 0.80)"
+        },
+        {
+          "id": "c",
+          "text": "On schedule and over budget"
+        },
+        {
+          "id": "d",
+          "text": "Behind schedule and under budget"
+        }
+      ],
+      "answerHash": "5c287f299eb0aa39d52a9cb19aeb122dc9a7f69dd4225ac37523b0c333ebb862",
+      "answerObfuscated": "Kw==",
+      "explanation": "SPI = EV / PV = 80/100 = 0.80 (< 1 means behind schedule); CPI = EV / AC = 80/100 = 0.80 (< 1 means over budget).",
+      "rubric": [
+        {
+          "id": "pm-sched-02-r1",
+          "label": "Computes SPI and CPI accurately",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-sched-02-r2",
+          "label": "Interprets EVM variance correctly",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-sched-03",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Schedule & Delivery",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the key difference between \"crashing\" and \"fast-tracking\" a schedule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Crashing adds resources/cost to critical tasks; fast-tracking overlaps sequential tasks and increases rework risk"
+        },
+        {
+          "id": "b",
+          "text": "Fast-tracking always reduces risk to zero"
+        },
+        {
+          "id": "c",
+          "text": "Crashing removes QA testing"
+        },
+        {
+          "id": "d",
+          "text": "Both terms mean cancelling milestones"
+        }
+      ],
+      "answerHash": "1738bdc3d00593e95ad6c2f085a3c0ebd0414a00210273fd5c2df3613c23a62e",
+      "answerObfuscated": "KA==",
+      "explanation": "Crashing trades money for time on critical-path tasks; fast-tracking runs dependent tasks in parallel, increasing rework risk.",
+      "rubric": [
+        {
+          "id": "pm-sched-03-r1",
+          "label": "Distinguishes crashing from fast-tracking",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-sched-03-r2",
+          "label": "Recognizes cost vs rework trade-offs",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-sched-04",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Schedule & Delivery",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Why is adding more engineers to a late software project often ineffective in the short term (Brooks's Law)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "New engineers cannot use Git"
+        },
+        {
+          "id": "b",
+          "text": "Onboarding and communication overhead temporarily reduce existing team velocity"
+        },
+        {
+          "id": "c",
+          "text": "Hardware costs double immediately"
+        },
+        {
+          "id": "d",
+          "text": "Agile forbids teams over 3 people"
+        }
+      ],
+      "answerHash": "dab093797e8189afc922c8b73207e272f28b27f18c91e54b41dbddbaf6a016e3",
+      "answerObfuscated": "Kw==",
+      "explanation": "Ramp-up time and quadratic communication channels initially slow delivery before new capacity pays off.",
+      "rubric": [
+        {
+          "id": "pm-sched-04-r1",
+          "label": "Applies Brooks's Law pragmatically",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-sched-04-r2",
+          "label": "Accounts for ramp-up and communication overhead",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-sched-05",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Schedule & Delivery",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Which estimation technique uses Optimistic (O), Most Likely (M), and Pessimistic (P) estimates as `(O + 4M + P) / 6`?",
+      "options": [
+        {
+          "id": "a",
+          "text": "PERT three-point estimation"
+        },
+        {
+          "id": "b",
+          "text": "Monte Carlo deletion"
+        },
+        {
+          "id": "c",
+          "text": "T-shirt sizing"
+        },
+        {
+          "id": "d",
+          "text": "Burn-down averaging"
+        }
+      ],
+      "answerHash": "c6c9837895038e53bd8edda56160615cf9b80755a25c755789461b64d75be5b7",
+      "answerObfuscated": "KA==",
+      "explanation": "PERT beta-distribution weighting incorporates uncertainty while emphasizing the most likely duration.",
+      "rubric": [
+        {
+          "id": "pm-sched-05-r1",
+          "label": "Identifies PERT formula",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-sched-05-r2",
+          "label": "Uses probabilistic range estimation",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-sched-06",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Schedule & Delivery",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "An external vendor API dependency slips by 2 weeks, threatening your critical path. Describe your immediate schedule recovery plan.",
+      "minWords": 25,
+      "keyPoints": [
+        "mock",
+        "critical path",
+        "contingency",
+        "escalate"
+      ],
+      "explanation": "Decouple internal integration using contract mocks, re-sequence non-dependent work, escalate vendor SLA, and update the milestone forecast transparently.",
+      "rubric": [
+        {
+          "id": "pm-sched-06-r1",
+          "label": "Decouples blocked work via mocks/parallelism",
+          "weight": 0.5
+        },
+        {
+          "id": "pm-sched-06-r2",
+          "label": "Escalates and re-baselines transparently",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "pm-risk-01",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Risk Management",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "What is the difference between a Risk and an Issue in a RAID log?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A Risk is an uncertain future event; an Issue is a problem that has already occurred"
+        },
+        {
+          "id": "b",
+          "text": "Risks are always technical; Issues are always financial"
+        },
+        {
+          "id": "c",
+          "text": "Issues do not need owners"
+        },
+        {
+          "id": "d",
+          "text": "Risks cannot be mitigated"
+        }
+      ],
+      "answerHash": "651879a6d7a2148ae3815531ab13a4f5a81c74ec24ec6f3bff5e35100a03225a",
+      "answerObfuscated": "KA==",
+      "explanation": "Risks have probability and impact before occurring; once realized, they become active Issues requiring resolution.",
+      "rubric": [
+        {
+          "id": "pm-risk-01-r1",
+          "label": "Distinguishes Risk vs Issue cleanly",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-risk-01-r2",
+          "label": "Applies RAID governance",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-risk-02",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Risk Management",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Purchasing cyber-liability insurance or writing an SLA penalty clause into a vendor contract is an example of which risk response strategy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Avoid"
+        },
+        {
+          "id": "b",
+          "text": "Transfer"
+        },
+        {
+          "id": "c",
+          "text": "Accept"
+        },
+        {
+          "id": "d",
+          "text": "Exploit"
+        }
+      ],
+      "answerHash": "e2b48c550dd490f30cfe8a8b82785a760ad5619234661c6da5c23bc647b75abf",
+      "answerObfuscated": "Kw==",
+      "explanation": "Risk transfer shifts financial impact or liability to a third party via insurance or contractual terms.",
+      "rubric": [
+        {
+          "id": "pm-risk-02-r1",
+          "label": "Classifies risk response strategies",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-risk-02-r2",
+          "label": "Identifies contractual transfer",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-risk-03",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Risk Management",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "When prioritizing a Risk Register, which two dimensions determine a risk's exposure score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Team size and sprint number"
+        },
+        {
+          "id": "b",
+          "text": "Probability (likelihood) and Impact (severity)"
+        },
+        {
+          "id": "c",
+          "text": "Lines of code and budget spent"
+        },
+        {
+          "id": "d",
+          "text": "Meeting count and stakeholder title"
+        }
+      ],
+      "answerHash": "47f4a6a6272c3a7c5263d4896155116ea38e1b1d568d4a4fc537a1f275da3c4c",
+      "answerObfuscated": "Kw==",
+      "explanation": "Risk exposure = Probability × Impact, focusing mitigation effort on high-likelihood, high-impact threats.",
+      "rubric": [
+        {
+          "id": "pm-risk-03-r1",
+          "label": "Applies Probability x Impact scoring",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-risk-03-r2",
+          "label": "Prioritizes mitigation by exposure",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-risk-04",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Risk Management",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL essential fields for an actionable entry in a project Risk Register.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Clear risk trigger / early warning indicator"
+        },
+        {
+          "id": "b",
+          "text": "Named risk owner"
+        },
+        {
+          "id": "c",
+          "text": "Mitigation and contingency plan"
+        },
+        {
+          "id": "d",
+          "text": "Ignoring residual risk after mitigation"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "e9ca14231dbc8fb0cd8eef005bbb005e7363a28b4e80bf808604cb47929fe96a",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "Actionable risk registers pair triggers, owners, and concrete mitigation/contingency actions while tracking residual risk.",
+      "rubric": [
+        {
+          "id": "pm-risk-04-r1",
+          "label": "Defines complete risk register anatomy",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-risk-04-r2",
+          "label": "Assigns clear ownership and triggers",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-risk-05",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Risk Management",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "What distinguishes a Contingency Reserve from a Management Reserve?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contingency covers known-unknowns within PM authority; Management Reserve covers unknown-unknowns requiring sponsor approval"
+        },
+        {
+          "id": "b",
+          "text": "Both are spent without tracking"
+        },
+        {
+          "id": "c",
+          "text": "Management Reserve is only for hardware"
+        },
+        {
+          "id": "d",
+          "text": "Contingency Reserve is illegal in fixed-price contracts"
+        }
+      ],
+      "answerHash": "e174824f7625b2ba7e6dbda060b2c72ab72a5855fe08bef1a13acef21d92f126",
+      "answerObfuscated": "KA==",
+      "explanation": "Contingency reserves are budgeted for identified risks in the baseline; management reserves handle unforeseen shocks outside baseline.",
+      "rubric": [
+        {
+          "id": "pm-risk-05-r1",
+          "label": "Separates known-unknowns vs unknown-unknowns",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-risk-05-r2",
+          "label": "Knows governance approval boundaries",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-risk-06",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Risk Management",
+      "difficulty": "medium",
+      "type": "scenario",
+      "prompt": "Your single Oracle 12c DBA is scheduled for 2 weeks of leave during production cutover. Write a concise risk entry covering trigger, mitigation, and contingency.",
+      "minWords": 25,
+      "keyPoints": [
+        "key-person",
+        "runbook",
+        "backup",
+        "cutover"
+      ],
+      "explanation": "Address key-person dependency via early runbook rehearsal, cross-training/vendor standby DBA, or shifting cutover window.",
+      "rubric": [
+        {
+          "id": "pm-risk-06-r1",
+          "label": "Identifies key-person cutover risk",
+          "weight": 0.5
+        },
+        {
+          "id": "pm-risk-06-r2",
+          "label": "Defines concrete mitigation and fallback",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "pm-stake-01",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Stakeholder Alignment",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "In a RACI matrix, how many individuals should hold the \"Accountable\" (A) role for a single deliverable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zero"
+        },
+        {
+          "id": "b",
+          "text": "Exactly one"
+        },
+        {
+          "id": "c",
+          "text": "At least three"
+        },
+        {
+          "id": "d",
+          "text": "Every member of the team"
+        }
+      ],
+      "answerHash": "c5a516da07221c7692c58bb8a0a50e95264aa0ccbf913ca728ee77e1abba1ed2",
+      "answerObfuscated": "Kw==",
+      "explanation": "Exactly one Accountable owner ensures unambiguous final sign-off and prevents diffused responsibility.",
+      "rubric": [
+        {
+          "id": "pm-stake-01-r1",
+          "label": "Applies single-Accountable RACI rule",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-stake-01-r2",
+          "label": "Prevents ownership ambiguity",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-stake-02",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Stakeholder Alignment",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "On a Power/Interest grid, how should you engage a stakeholder with High Power and High Interest?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Monitor minimally"
+        },
+        {
+          "id": "b",
+          "text": "Manage closely with proactive, frequent alignment and decision involvement"
+        },
+        {
+          "id": "c",
+          "text": "Send only an end-of-year email"
+        },
+        {
+          "id": "d",
+          "text": "Exclude from steering reviews"
+        }
+      ],
+      "answerHash": "d700fd848459bb6a709af425aa841da9c0912482536be1f928b29e06451972e6",
+      "answerObfuscated": "Kw==",
+      "explanation": "High-power, high-interest stakeholders directly shape project success and require active, close engagement.",
+      "rubric": [
+        {
+          "id": "pm-stake-02-r1",
+          "label": "Applies Power/Interest quadrant strategy",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-stake-02-r2",
+          "label": "Tailors communication cadence",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-stake-03",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Stakeholder Alignment",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Two department heads disagree sharply on whether reporting or mobile checkout should ship in Release 1. What is the PM's best next step?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Side with whoever spoke loudest"
+        },
+        {
+          "id": "b",
+          "text": "Facilitate a structured trade-off workshop anchored on business KPIs, effort estimates, and sponsor priority"
+        },
+        {
+          "id": "c",
+          "text": "Build half of both features without telling them"
+        },
+        {
+          "id": "d",
+          "text": "Delay the project indefinitely"
+        }
+      ],
+      "answerHash": "9abf4e65a3dd04b2a4f45c28b6a73847cae5325fed49add9fdd7a260bed90b29",
+      "answerObfuscated": "Kw==",
+      "explanation": "Objective criteria (KPIs, ROI, dependencies) depersonalize conflict and align leadership around a clear release scope.",
+      "rubric": [
+        {
+          "id": "pm-stake-03-r1",
+          "label": "Resolves cross-functional conflict objectively",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-stake-03-r2",
+          "label": "Anchors priority on measurable outcomes",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-stake-04",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Stakeholder Alignment",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A project status report turns from Green to Amber on schedule. What must accompany an Amber/Red status?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only a color indicator with no commentary"
+        },
+        {
+          "id": "b",
+          "text": "Root cause, quantified variance, recovery plan, owner, and any executive decision needed"
+        },
+        {
+          "id": "c",
+          "text": "Hiding the status until it turns Green again"
+        },
+        {
+          "id": "d",
+          "text": "A full dump of raw Jira ticket IDs"
+        }
+      ],
+      "answerHash": "0d23e46218aa94651d08966e0e5a6cdbab77123579da673fd7abc738fc8e39a5",
+      "answerObfuscated": "Kw==",
+      "explanation": "Executive RAG reporting is actionable only when paired with variance, path-to-green, and clear asks.",
+      "rubric": [
+        {
+          "id": "pm-stake-04-r1",
+          "label": "Delivers decision-ready RAG reporting",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-stake-04-r2",
+          "label": "Avoids watermelon (green outside, red inside) status",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "pm-stake-05",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Stakeholder Alignment",
+      "difficulty": "medium",
+      "type": "scenario",
+      "prompt": "Write a 4-sentence executive escalation note requesting a decision on whether to cut two nice-to-have reports or extend the launch date by 10 days.",
+      "minWords": 25,
+      "keyPoints": [
+        "decision",
+        "option",
+        "impact",
+        "recommendation"
+      ],
+      "explanation": "Effective escalations present concise context, clear options with trade-offs, a PM recommendation, and a decision deadline.",
+      "rubric": [
+        {
+          "id": "pm-stake-05-r1",
+          "label": "Presents clear options and trade-offs",
+          "weight": 0.5
+        },
+        {
+          "id": "pm-stake-05-r2",
+          "label": "Includes a recommendation and decision deadline",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "pm-stake-06",
+      "role": "pm",
+      "levels": [
+        "mid",
+        "program"
+      ],
+      "topic": "Stakeholder Alignment",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "Which practice best prevents last-minute UAT rejection by business stakeholders?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keeping stakeholders away until the final week"
+        },
+        {
+          "id": "b",
+          "text": "Running incremental sprint demos and signing off acceptance criteria early with UAT leads"
+        },
+        {
+          "id": "c",
+          "text": "Sending a 200-page PDF on launch morning"
+        },
+        {
+          "id": "d",
+          "text": "Skipping UAT when unit tests pass"
+        }
+      ],
+      "answerHash": "94419c2b7e3d0c2d3cd590656c1ffa3a4dee48d03ac03b1144a7713cef1a3f08",
+      "answerObfuscated": "Kw==",
+      "explanation": "Continuous validation through demos and early UAT criteria eliminates expectation mismatch at release.",
+      "rubric": [
+        {
+          "id": "pm-stake-06-r1",
+          "label": "Engages stakeholders incrementally",
+          "weight": 0.6
+        },
+        {
+          "id": "pm-stake-06-r2",
+          "label": "Aligns acceptance criteria early",
+          "weight": 0.4
+        }
+      ]
+    }
+  ]
+}

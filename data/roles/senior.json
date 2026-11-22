@@ -1,0 +1,35 @@
+{
+  "id": "senior",
+  "code": "SEN",
+  "name": "Senior Engineer",
+  "shortName": "Senior Eng",
+  "tagline": "Distributed architecture, trade-off analysis, performance engineering, and incident leadership.",
+  "focus": ["Architecture", "Trade-offs", "Performance", "Mentoring", "Incident Leadership"],
+  "motif": "orbital-mesh",
+  "accentHex": "#818cf8",
+  "rubricId": "rubric-senior-v1",
+  "levels": [
+    {
+      "id": "senior",
+      "label": "Senior (L5)",
+      "summary": "Service design, scaling bottlenecks, code quality, and team mentoring.",
+      "durationMinutes": 40,
+      "questionCount": 8,
+      "passMark": 75
+    },
+    {
+      "id": "staff",
+      "label": "Staff / Principal (L6)",
+      "summary": "Multi-region resilience, org-wide trade-offs, and high-severity incident command.",
+      "durationMinutes": 50,
+      "questionCount": 10,
+      "passMark": 80
+    }
+  ],
+  "sections": [
+    { "topic": "Architecture & Trade-offs", "weight": 0.35 },
+    { "topic": "Performance & Reliability", "weight": 0.25 },
+    { "topic": "Incident Leadership", "weight": 0.2 },
+    { "topic": "Mentoring & Review", "weight": 0.2 }
+  ]
+}

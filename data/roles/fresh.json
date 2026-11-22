@@ -1,0 +1,35 @@
+{
+  "id": "fresh",
+  "code": "FRG",
+  "name": "Fresh Graduate",
+  "shortName": "Fresh Grad",
+  "tagline": "Core CS fundamentals, relational SQL, networking, OS, and structured problem solving.",
+  "focus": ["Logic", "Basic SQL", "Networking", "OS", "Aptitude", "Communication"],
+  "motif": "lattice-prism",
+  "accentHex": "#34d399",
+  "rubricId": "rubric-fresh-v1",
+  "levels": [
+    {
+      "id": "entry",
+      "label": "Entry / Intern",
+      "summary": "Foundational aptitude, SQL queries, and core CS concepts.",
+      "durationMinutes": 30,
+      "questionCount": 8,
+      "passMark": 65
+    },
+    {
+      "id": "associate",
+      "label": "Graduate Associate",
+      "summary": "Applied troubleshooting, SQL aggregation, and system basics.",
+      "durationMinutes": 40,
+      "questionCount": 10,
+      "passMark": 70
+    }
+  ],
+  "sections": [
+    { "topic": "Logic & Aptitude", "weight": 0.25 },
+    { "topic": "Basic SQL", "weight": 0.25 },
+    { "topic": "Networking & OS", "weight": 0.25 },
+    { "topic": "Communication", "weight": 0.25 }
+  ]
+}

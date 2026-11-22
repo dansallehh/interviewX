@@ -1,0 +1,1083 @@
+{
+  "roleId": "senior",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "senior-arch-01",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Architecture & Trade-offs",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Under the CAP theorem, when a network partition occurs between two database regions, what trade-off must a distributed system make?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Choose between Consistency (linearizability) and Availability"
+        },
+        {
+          "id": "b",
+          "text": "Choose between Durability and Latency"
+        },
+        {
+          "id": "c",
+          "text": "Disable TLS encryption to recover throughput"
+        },
+        {
+          "id": "d",
+          "text": "Switch from TCP to UDP"
+        }
+      ],
+      "answerHash": "18414335ba7ab7ab536b7d0a639a95b0b690c4bd1225e7ce7d63e4be45770975",
+      "answerObfuscated": "KA==",
+      "explanation": "During a partition (P), a distributed system must either reject/block requests to preserve Consistency (CP) or serve potentially stale data to maintain Availability (AP).",
+      "rubric": [
+        {
+          "id": "senior-arch-01-r1",
+          "label": "Applies CAP theorem accurately",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-arch-01-r2",
+          "label": "Distinguishes CP vs AP behavior under partition",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-arch-02",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Architecture & Trade-offs",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "When migrating a high-traffic monolith to microservices, which pattern minimizes big-bang risk by incrementally routing endpoints to new services?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Big-Bang Cutover"
+        },
+        {
+          "id": "b",
+          "text": "Strangler Fig Pattern"
+        },
+        {
+          "id": "c",
+          "text": "Singleton Proxy"
+        },
+        {
+          "id": "d",
+          "text": "Shared Database Polling"
+        }
+      ],
+      "answerHash": "75e34725efcb8902a4db7f7b3646ee59db8baa69076366d27af731fe8504ad04",
+      "answerObfuscated": "Kw==",
+      "explanation": "The Strangler Fig pattern incrementally intercepts and migrates vertical slices behind a routing layer while keeping the legacy system operational.",
+      "rubric": [
+        {
+          "id": "senior-arch-02-r1",
+          "label": "Identifies incremental migration strategy",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-arch-02-r2",
+          "label": "Mitigates cutover blast radius",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-arch-03",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Architecture & Trade-offs",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "An order service must atomically persist an order in PostgreSQL and publish an OrderCreated event to Kafka without dual-write inconsistencies. Which pattern solves this reliably?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fire-and-forget Kafka publish before DB commit"
+        },
+        {
+          "id": "b",
+          "text": "Transactional Outbox with CDC or relay poller"
+        },
+        {
+          "id": "c",
+          "text": "Client-side retry loop without idempotency keys"
+        },
+        {
+          "id": "d",
+          "text": "Two-phase commit across browser and Kafka"
+        }
+      ],
+      "answerHash": "7fdfe75971a9e3bf8652d27a0a3f03fee5526f1acf1960271e9a8ff211f6ad6e",
+      "answerObfuscated": "Kw==",
+      "explanation": "Transactional Outbox writes the domain row and outbox event in the same local ACID transaction; a relay/CDC publisher then emits to Kafka with at-least-once delivery.",
+      "rubric": [
+        {
+          "id": "senior-arch-03-r1",
+          "label": "Eliminates dual-write race conditions",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-arch-03-r2",
+          "label": "Understands outbox + idempotent consumers",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-arch-04",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Architecture & Trade-offs",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL strategies that make an asynchronous webhook consumer safe under at-least-once delivery.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Idempotency key stored with a unique constraint"
+        },
+        {
+          "id": "b",
+          "text": "Deduplication window keyed by event ID"
+        },
+        {
+          "id": "c",
+          "text": "Assuming network packets never duplicate"
+        },
+        {
+          "id": "d",
+          "text": "State-machine transition guards"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "574c9b7d29d747be81186b3c2efa4d31a991d36fcdfce9ea388d87a0c3172a26",
+      "answerObfuscated": "KHRPfzA=",
+      "explanation": "At-least-once delivery requires idempotent handlers backed by unique keys, deduplication, and valid state transitions.",
+      "rubric": [
+        {
+          "id": "senior-arch-04-r1",
+          "label": "Designs idempotent event consumers",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-arch-04-r2",
+          "label": "Rejects fragile delivery assumptions",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-arch-05",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Architecture & Trade-offs",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "Which trade-off is the primary downside of introducing CQRS with an eventually consistent read model?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reads become slower than complex multi-join writes"
+        },
+        {
+          "id": "b",
+          "text": "Users may briefly observe stale reads immediately after a write (read-your-writes lag)"
+        },
+        {
+          "id": "c",
+          "text": "Horizontal scaling of read replicas becomes impossible"
+        },
+        {
+          "id": "d",
+          "text": "SQL databases cannot be used on the write side"
+        }
+      ],
+      "answerHash": "e9953f772175c9c859cc22eb54a5cf84a61829e06ba528e5d07f94d675476275",
+      "answerObfuscated": "Kw==",
+      "explanation": "Separating write and asynchronously projected read models introduces eventual consistency lag that UX/APIs must handle.",
+      "rubric": [
+        {
+          "id": "senior-arch-05-r1",
+          "label": "Recognizes read-your-writes consistency lag",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-arch-05-r2",
+          "label": "Balances scaling gains against complexity",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-arch-06",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Architecture & Trade-offs",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Why should an internal service-to-service API gateway avoid sharing a single database schema across independent bounded contexts?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SQL joins fail across schemas"
+        },
+        {
+          "id": "b",
+          "text": "Shared schemas create tight deployment coupling and prevent independent scaling or schema evolution"
+        },
+        {
+          "id": "c",
+          "text": "Database backups cannot include multiple tables"
+        },
+        {
+          "id": "d",
+          "text": "ORMs only support one table per service"
+        }
+      ],
+      "answerHash": "983c2ad5c0b84b99f6bb688ecc8774f71fead31d8ce045dee1165ef71e12b71f",
+      "answerObfuscated": "Kw==",
+      "explanation": "Shared databases turn microservices into a distributed monolith where any schema change risks breaking unrelated services.",
+      "rubric": [
+        {
+          "id": "senior-arch-06-r1",
+          "label": "Protects bounded-context autonomy",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-arch-06-r2",
+          "label": "Prevents distributed monolith coupling",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-arch-07",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Architecture & Trade-offs",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Your payment API experiences occasional 30-second spikes from a downstream fraud provider. Outline the resilience architecture (timeouts, circuit breaker, bulkhead, fallback) you would introduce and the business trade-offs.",
+      "minWords": 30,
+      "keyPoints": [
+        "timeout",
+        "circuit breaker",
+        "bulkhead",
+        "fallback"
+      ],
+      "explanation": "A resilient design bounds latency with strict timeouts, isolates thread/connection pools via bulkheads, trips circuit breakers on sustained failure, and defines explicit fail-open vs fail-closed risk policy.",
+      "rubric": [
+        {
+          "id": "senior-arch-07-r1",
+          "label": "Applies timeouts, bulkheads, and circuit breakers",
+          "weight": 0.5
+        },
+        {
+          "id": "senior-arch-07-r2",
+          "label": "Articulates fail-open vs fail-closed trade-off",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "senior-arch-08",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Architecture & Trade-offs",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Compare using a Redis write-through cache vs cache-aside for a high-read product catalog with infrequent price updates, including invalidation and thundering-herd mitigation.",
+      "minWords": 30,
+      "keyPoints": [
+        "cache-aside",
+        "invalidation",
+        "ttl",
+        "thundering herd"
+      ],
+      "explanation": "Cache-aside fits read-heavy workloads well when paired with explicit invalidation on writes, jittered TTLs, and single-flight/request coalescing to prevent cache stampedes.",
+      "rubric": [
+        {
+          "id": "senior-arch-08-r1",
+          "label": "Contrasts caching topologies accurately",
+          "weight": 0.5
+        },
+        {
+          "id": "senior-arch-08-r2",
+          "label": "Addresses invalidation and stampede protection",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "senior-perf-01",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Performance & Reliability",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "P50 API latency is 40ms, but P99 jumped from 180ms to 3.4s after a release. What is the most effective first diagnostic step?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase P50 alerting threshold"
+        },
+        {
+          "id": "b",
+          "text": "Inspect distributed traces and flamegraphs filtered specifically to P99 slow requests"
+        },
+        {
+          "id": "c",
+          "text": "Restart all pods without capturing telemetry"
+        },
+        {
+          "id": "d",
+          "text": "Add more frontend CSS minification"
+        }
+      ],
+      "answerHash": "5ce1586e0e53b17704414308ccbca0df8a62b7862420e0ed82b839e5e707c583",
+      "answerObfuscated": "Kw==",
+      "explanation": "Tail latency spikes are invisible in averages/P50; sampling P99 traces immediately isolates lock contention, GC pauses, or N+1 downstream calls.",
+      "rubric": [
+        {
+          "id": "senior-perf-01-r1",
+          "label": "Focuses on tail-latency telemetry",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-perf-01-r2",
+          "label": "Avoids blind restarts that destroy evidence",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-perf-02",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Performance & Reliability",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A Node.js API service shows 100% single-core CPU and rising event-loop lag whenever a large JSON report is requested. What is the root cause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Too many async I/O promises"
+        },
+        {
+          "id": "b",
+          "text": "Synchronous CPU-bound work blocking the single-threaded event loop"
+        },
+        {
+          "id": "c",
+          "text": "Insufficient DNS TTL"
+        },
+        {
+          "id": "d",
+          "text": "HTTP/2 header compression"
+        }
+      ],
+      "answerHash": "6f0f39b7b3e4f318a7e015a5512091077fc76e4dd5aae1239cd9b4651d30dab1",
+      "answerObfuscated": "Kw==",
+      "explanation": "Heavy synchronous serialization/computation starves the Node.js event loop; offload to worker threads, streaming, or background jobs.",
+      "rubric": [
+        {
+          "id": "senior-perf-02-r1",
+          "label": "Diagnoses event-loop starvation",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-perf-02-r2",
+          "label": "Identifies offloading/streaming remedies",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-perf-03",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Performance & Reliability",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "When implementing client retries against a degraded downstream service, why is exponential backoff paired with full jitter essential?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It guarantees zero failed requests"
+        },
+        {
+          "id": "b",
+          "text": "It desynchronizes retry storms so recovering servers are not overwhelmed simultaneously"
+        },
+        {
+          "id": "c",
+          "text": "It disables TCP keep-alive"
+        },
+        {
+          "id": "d",
+          "text": "It halves TLS handshake size"
+        }
+      ],
+      "answerHash": "d0e9e9461a8b4799ebfd8addd7dc0168b7601c19a90d30f5acc4e5bc49e575e8",
+      "answerObfuscated": "Kw==",
+      "explanation": "Without jitter, synchronized client retries create periodic traffic waves (retry storms) that prolong outages.",
+      "rubric": [
+        {
+          "id": "senior-perf-03-r1",
+          "label": "Prevents synchronized retry storms",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-perf-03-r2",
+          "label": "Applies backoff + jitter best practice",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-perf-04",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Performance & Reliability",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL valid SLO / Error Budget practices for production reliability engineering.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Define SLIs around user-perceived availability and latency"
+        },
+        {
+          "id": "b",
+          "text": "Freeze non-critical feature launches when error budget is exhausted"
+        },
+        {
+          "id": "c",
+          "text": "Target 100.000% uptime for every internal tool"
+        },
+        {
+          "id": "d",
+          "text": "Use multi-window burn-rate alerts to detect fast budget depletion"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "8cc418876a9ee9a12befdd15310b4a75fb2d8d5f7965ddb3eea469ffc315aa41",
+      "answerObfuscated": "KHRPfzA=",
+      "explanation": "100% uptime is unrealistic and stalls innovation; SLIs, error budgets, and burn-rate alerts balance velocity and reliability.",
+      "rubric": [
+        {
+          "id": "senior-perf-04-r1",
+          "label": "Applies SRE error-budget governance",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-perf-04-r2",
+          "label": "Uses burn-rate alerting over noisy static thresholds",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-perf-05",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Performance & Reliability",
+      "difficulty": "medium",
+      "type": "code",
+      "prompt": "Implement `dedupeByKey(items, key)` that returns a new array keeping only the first occurrence of each distinct `item[key]` in O(n) time while preserving input order.",
+      "hint": "Use a Set to track seen keys in a single pass.",
+      "language": "javascript",
+      "functionName": "dedupeByKey",
+      "starterCode": "function dedupeByKey(items, key) {\n  // Return array preserving first occurrence per item[key]\n}\n",
+      "referenceCodeObfuscated": "Ly1DMCAoOydjSS4hLF0zczATSCp8KCAsLl5nZTJILxhpIydzdCI7JzBZazY8SDgRdHhDNiNhByw3BWJ+Uw12UiY2Xid0LiE9YxBrHgQWXBFpPkIhdGk3Ji1eP2UwWTNcaTdLcz01MSQwBGs+Uw12EWk7Qj0nNXQiYxBrLC1IO2oiPVQOb0t0aWMNIiN5BXdCLD1DfTwgJ2EoBGJlIid2EWl4DXMnJDEnbUwvIXFGfwpDeA1zdGF0JjZZZTUsXj4ZICxIPn16XmljDWs4Uw12TEN4DSExNSE7LQ0kMC0WXEw=",
+      "testCases": [
+        {
+          "args": [
+            [
+              {
+                "id": 1,
+                "v": "a"
+              },
+              {
+                "id": 2,
+                "v": "b"
+              },
+              {
+                "id": 1,
+                "v": "c"
+              }
+            ],
+            "id"
+          ],
+          "expected": [
+            {
+              "id": 1,
+              "v": "a"
+            },
+            {
+              "id": 2,
+              "v": "b"
+            }
+          ]
+        },
+        {
+          "args": [
+            [],
+            "id"
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              {
+                "k": "x"
+              },
+              {
+                "k": "x"
+              },
+              {
+                "k": "y"
+              }
+            ],
+            "k"
+          ],
+          "expected": [
+            {
+              "k": "x"
+            },
+            {
+              "k": "y"
+            }
+          ]
+        }
+      ],
+      "explanation": "A single pass with a Set achieves O(n) time and preserves first-seen order without mutating input.",
+      "rubric": [
+        {
+          "id": "senior-perf-05-r1",
+          "label": "Achieves O(n) linear complexity",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-perf-05-r2",
+          "label": "Preserves first occurrence and input immutability",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-perf-06",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Performance & Reliability",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "A database connection pool is sized to 500 connections per pod across 20 pods (10,000 total) against a primary DB with 32 vCPUs. What is the likely consequence under load?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Linear 10x throughput gain"
+        },
+        {
+          "id": "b",
+          "text": "Severe context-switching thrashing and lock contention degrading DB throughput"
+        },
+        {
+          "id": "c",
+          "text": "Zero impact because idle connections cost nothing"
+        },
+        {
+          "id": "d",
+          "text": "Automatic horizontal sharding"
+        }
+      ],
+      "answerHash": "43d397ff1ce6671aac88d3baf5973b665ac7b6e487b44a7285b46865fa1d1534",
+      "answerObfuscated": "Kw==",
+      "explanation": "Excessive active DB connections cause CPU context-switching and memory exhaustion; use bounded pools plus a connection pooler like PgBouncer.",
+      "rubric": [
+        {
+          "id": "senior-perf-06-r1",
+          "label": "Understands connection-pool saturation",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-perf-06-r2",
+          "label": "Recommends bounded pools / pooler",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-inc-01",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Incident Leadership",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "As Incident Commander during a Sev-1 checkout outage, what is your primary responsibility?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Personally write and deploy the hotfix without telling anyone"
+        },
+        {
+          "id": "b",
+          "text": "Coordinate roles, protect focus, drive mitigation decisions, and ensure regular stakeholder updates"
+        },
+        {
+          "id": "c",
+          "text": "Conduct root-cause blame analysis during the outage"
+        },
+        {
+          "id": "d",
+          "text": "Wait for full RCA before rolling back a bad release"
+        }
+      ],
+      "answerHash": "531dcdae2ddec0a2de99bcd3f70d277041e51c28424be7b2cdd84cd3369d962a",
+      "answerObfuscated": "Kw==",
+      "explanation": "The Incident Commander orchestrates mitigation and communication rather than becoming a bottleneck inside the debugger.",
+      "rubric": [
+        {
+          "id": "senior-inc-01-r1",
+          "label": "Separates command from hands-on debugging",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-inc-01-r2",
+          "label": "Prioritizes mitigation over premature RCA",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-inc-02",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Incident Leadership",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A deployment 12 minutes ago correlates with a 40% spike in 500 errors. What is the fastest safe mitigation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Spend 2 hours reproducing locally before acting"
+        },
+        {
+          "id": "b",
+          "text": "Execute the documented rollback/feature-flag kill switch and verify error rates drop"
+        },
+        {
+          "id": "c",
+          "text": "Delete production logs to free disk space"
+        },
+        {
+          "id": "d",
+          "text": "Scale up pods to mask the 500 errors"
+        }
+      ],
+      "answerHash": "2a9f3e0d5f5e406d8db469012f771768bf1121171232bf64ccb1bde704da66ad",
+      "answerObfuscated": "Kw==",
+      "explanation": "Mitigate customer impact first via fast rollback or feature flag, then investigate root cause safely offline.",
+      "rubric": [
+        {
+          "id": "senior-inc-02-r1",
+          "label": "Prioritizes customer impact mitigation",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-inc-02-r2",
+          "label": "Leverages rollback / kill-switch procedures",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-inc-03",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Incident Leadership",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the core objective of a blameless postmortem after a production incident?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Identify which engineer to penalize"
+        },
+        {
+          "id": "b",
+          "text": "Uncover systemic gaps in tooling, guards, and processes and assign concrete preventive action items"
+        },
+        {
+          "id": "c",
+          "text": "Hide the incident from leadership"
+        },
+        {
+          "id": "d",
+          "text": "Prove that the incident could never happen again"
+        }
+      ],
+      "answerHash": "7f0110d6125f1377c9312845f8c26ad69a054b3cef7e5c6baab3f3456e058e77",
+      "answerObfuscated": "Kw==",
+      "explanation": "Blameless postmortems foster psychological safety so teams surface real systemic causes and build durable guardrails.",
+      "rubric": [
+        {
+          "id": "senior-inc-03-r1",
+          "label": "Focuses on systemic improvements",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-inc-03-r2",
+          "label": "Tracks actionable preventive follow-ups",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-inc-04",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Incident Leadership",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Draft a concise Sev-1 status update for executive stakeholders 20 minutes into a partial login outage where a rollback is currently in progress.",
+      "minWords": 25,
+      "keyPoints": [
+        "impact",
+        "mitigation",
+        "rollback",
+        "next update"
+      ],
+      "explanation": "Executive updates must state customer impact, current mitigation action, what is known/unknown, and the exact timestamp of the next update.",
+      "rubric": [
+        {
+          "id": "senior-inc-04-r1",
+          "label": "Quantifies impact without jargon",
+          "weight": 0.5
+        },
+        {
+          "id": "senior-inc-04-r2",
+          "label": "Gives clear mitigation status and next update cadence",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "senior-inc-05",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Incident Leadership",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "During an outage, two engineers propose conflicting fixes simultaneously in the incident channel. How should the Incident Commander handle this?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Let both deploy at once to see which works"
+        },
+        {
+          "id": "b",
+          "text": "Pause, evaluate risk and reversibility of each option in 2 minutes, pick one owner to execute, and log the decision"
+        },
+        {
+          "id": "c",
+          "text": "Escalate to the CEO to pick the SQL query"
+        },
+        {
+          "id": "d",
+          "text": "Close the channel until tomorrow"
+        }
+      ],
+      "answerHash": "b8b7b046bf8167aa987a6b2cd976e1ce63b3b6531b5e7f40afa1a181cacc67b3",
+      "answerObfuscated": "Kw==",
+      "explanation": "Single-threaded decision-making avoids compounding failures from uncoordinated production changes.",
+      "rubric": [
+        {
+          "id": "senior-inc-05-r1",
+          "label": "Enforces single-threaded change control",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-inc-05-r2",
+          "label": "Weighs reversibility under pressure",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-ment-01",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Mentoring & Review",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "When reviewing a junior engineer's 800-line PR that mixes formatting changes, a refactor, and a bug fix, what is the best coaching approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approve immediately to avoid slowing them down"
+        },
+        {
+          "id": "b",
+          "text": "Point out critical correctness/security issues first, and coach them on splitting future PRs into focused, reviewable units"
+        },
+        {
+          "id": "c",
+          "text": "Rewrite the entire PR yourself and force-push over their branch"
+        },
+        {
+          "id": "d",
+          "text": "Leave 40 nitpick comments on variable naming only"
+        }
+      ],
+      "answerHash": "fbe79899441a471a1484319cefa626c6d731ba8874008feba3e70e2a85a07e60",
+      "answerObfuscated": "Kw==",
+      "explanation": "Prioritizing high-leverage feedback and teaching PR hygiene builds lasting engineering autonomy.",
+      "rubric": [
+        {
+          "id": "senior-ment-01-r1",
+          "label": "Prioritizes high-impact review feedback",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-ment-01-r2",
+          "label": "Coaches sustainable PR decomposition",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-ment-02",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Mentoring & Review",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "How should a Senior Engineer structure an Architecture Decision Record (ADR) for a team?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only list the final chosen library name"
+        },
+        {
+          "id": "b",
+          "text": "Document context, decision, considered alternatives, consequences, and trade-offs"
+        },
+        {
+          "id": "c",
+          "text": "Write a 50-page specification after the project ends"
+        },
+        {
+          "id": "d",
+          "text": "Keep decisions verbal in Slack threads"
+        }
+      ],
+      "answerHash": "e0b039d3006e37a9dc55372f5705d2f37f62ceb60e26735cfafe08288a05dd48",
+      "answerObfuscated": "Kw==",
+      "explanation": "ADRs preserve the why behind decisions so future engineers understand constraints and trade-offs before reversing them.",
+      "rubric": [
+        {
+          "id": "senior-ment-02-r1",
+          "label": "Captures context, options, and trade-offs",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-ment-02-r2",
+          "label": "Creates durable institutional memory",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-ment-03",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Mentoring & Review",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A mid-level engineer consistently misses edge cases in async code. Which mentoring intervention is most effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove them from backend tasks permanently"
+        },
+        {
+          "id": "b",
+          "text": "Pair-program on writing failure-mode test cases (timeouts, retries, race conditions) and introduce a lightweight PR checklist"
+        },
+        {
+          "id": "c",
+          "text": "Tell them to be more careful"
+        },
+        {
+          "id": "d",
+          "text": "Disable async/await across the codebase"
+        }
+      ],
+      "answerHash": "be125a93e4a65d6e463b5bcc5b374430955be8f047b0f4751c586a012bc857c0",
+      "answerObfuscated": "Kw==",
+      "explanation": "Pairing on systematic failure-mode testing builds transferable mental models rather than relying on memory.",
+      "rubric": [
+        {
+          "id": "senior-ment-03-r1",
+          "label": "Uses pairing to build mental models",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-ment-03-r2",
+          "label": "Introduces repeatable verification habits",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "senior-ment-04",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Mentoring & Review",
+      "difficulty": "medium",
+      "type": "scenario",
+      "prompt": "A teammate proposes introducing a brand-new NoSQL database solely for a 5,000-row configuration table when your team already runs PostgreSQL. Write your constructive design-review feedback.",
+      "minWords": 25,
+      "keyPoints": [
+        "operational",
+        "complexity",
+        "postgresql",
+        "trade-off"
+      ],
+      "explanation": "Constructive review focuses on operational overhead, team expertise, data size, and whether existing infrastructure already satisfies requirements.",
+      "rubric": [
+        {
+          "id": "senior-ment-04-r1",
+          "label": "Evaluates operational and maintenance cost",
+          "weight": 0.5
+        },
+        {
+          "id": "senior-ment-04-r2",
+          "label": "Keeps feedback objective and respectful",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "senior-ment-05",
+      "role": "senior",
+      "levels": [
+        "senior",
+        "staff"
+      ],
+      "topic": "Mentoring & Review",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "Which signal best distinguishes a blocking code review comment from a non-blocking suggestion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Personal stylistic preference on brace placement"
+        },
+        {
+          "id": "b",
+          "text": "Correctness bug, data-loss risk, security vulnerability, or broken public contract"
+        },
+        {
+          "id": "c",
+          "text": "Disagreement over a minor helper function name"
+        },
+        {
+          "id": "d",
+          "text": "Preferring map over for-of loop"
+        }
+      ],
+      "answerHash": "74c677b93ece2f9d1cc952ed090ee44e785efd3d7e57f9a061779df89d76b93e",
+      "answerObfuscated": "Kw==",
+      "explanation": "Blocking comments should be reserved for defects, security/reliability risks, or architectural violations; style belongs in automated linters.",
+      "rubric": [
+        {
+          "id": "senior-ment-05-r1",
+          "label": "Distinguishes blocking defects from nits",
+          "weight": 0.6
+        },
+        {
+          "id": "senior-ment-05-r2",
+          "label": "Delegates formatting to automated tooling",
+          "weight": 0.4
+        }
+      ]
+    }
+  ]
+}

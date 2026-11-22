@@ -1,0 +1,35 @@
+{
+  "id": "qa",
+  "code": "QAE",
+  "name": "Quality Assurance",
+  "shortName": "QA Engineer",
+  "tagline": "Risk-based test design, Playwright/API automation, defect triage, and regression strategy.",
+  "focus": ["Test Design", "Automation", "Defect Triage", "Regression"],
+  "motif": "shield-matrix",
+  "accentHex": "#fb7185",
+  "rubricId": "rubric-qa-v1",
+  "levels": [
+    {
+      "id": "manual",
+      "label": "QA Analyst",
+      "summary": "Boundary/equivalence test design, exploratory testing, and S1–S4 defect triage.",
+      "durationMinutes": 35,
+      "questionCount": 8,
+      "passMark": 70
+    },
+    {
+      "id": "sdet",
+      "label": "QA Automation / SDET",
+      "summary": "Flake-resistant E2E suites, CI quality gates, contract testing, and regression selection.",
+      "durationMinutes": 45,
+      "questionCount": 10,
+      "passMark": 75
+    }
+  ],
+  "sections": [
+    { "topic": "Test Design", "weight": 0.3 },
+    { "topic": "Automation & CI", "weight": 0.25 },
+    { "topic": "Defect Triage", "weight": 0.25 },
+    { "topic": "Regression Strategy", "weight": 0.2 }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "sa",
+  "code": "SYA",
+  "name": "System Analyst",
+  "shortName": "System Analyst",
+  "tagline": "Requirements elicitation, BRD/FRD specifications, UML & flowcharts, UAT, and gap analysis.",
+  "focus": ["Requirements", "BRD / FRD", "UML / Flowcharts", "UAT", "Gap Analysis"],
+  "motif": "blueprint-nodes",
+  "accentHex": "#c084fc",
+  "rubricId": "rubric-sa-v1",
+  "levels": [
+    {
+      "id": "standard",
+      "label": "System Analyst",
+      "summary": "Functional specs, sequence/activity diagrams, UAT criteria, and traceability.",
+      "durationMinutes": 35,
+      "questionCount": 8,
+      "passMark": 70
+    },
+    {
+      "id": "lead",
+      "label": "Lead System Analyst",
+      "summary": "Enterprise integration mapping, legacy migration gap analysis, and sign-off governance.",
+      "durationMinutes": 45,
+      "questionCount": 10,
+      "passMark": 75
+    }
+  ],
+  "sections": [
+    { "topic": "Requirements & BRD/FRD", "weight": 0.3 },
+    { "topic": "UML & Process Modelling", "weight": 0.25 },
+    { "topic": "Gap Analysis", "weight": 0.25 },
+    { "topic": "UAT & Traceability", "weight": 0.2 }
+  ]
+}

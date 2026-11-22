@@ -1,0 +1,1070 @@
+{
+  "roleId": "dba",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "dba-priv-01",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Privileges & Security",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "In Oracle 12c, what is the difference between a System Privilege and an Object Privilege?",
+      "options": [
+        {
+          "id": "a",
+          "text": "System privileges govern database-wide actions (e.g., CREATE SESSION); Object privileges govern actions on specific schema objects (e.g., SELECT ON hr.employees)"
+        },
+        {
+          "id": "b",
+          "text": "Object privileges apply only to tablespaces"
+        },
+        {
+          "id": "c",
+          "text": "System privileges cannot be revoked"
+        },
+        {
+          "id": "d",
+          "text": "They are synonyms"
+        }
+      ],
+      "answerHash": "e0c015177a05ae3ec3acadcf2ca0d7368e28664c856d7fe106a1f1df09104d94",
+      "answerObfuscated": "KA==",
+      "explanation": "Oracle separates instance/schema-level capabilities (system privileges) from object-scoped operations (object privileges).",
+      "rubric": [
+        {
+          "id": "dba-priv-01-r1",
+          "label": "Distinguishes system vs object privileges",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-priv-01-r2",
+          "label": "Applies Oracle 12c privilege model",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-priv-02",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Privileges & Security",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "In an Oracle 12c Multitenant CDB, which naming convention and clause are required by default when creating a Common User in CDB$ROOT?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prefix with C## (per COMMON_USER_PREFIX) and specify CONTAINER=ALL"
+        },
+        {
+          "id": "b",
+          "text": "Prefix with PDB_ and specify CONTAINER=CURRENT"
+        },
+        {
+          "id": "c",
+          "text": "No prefix is needed in CDB$ROOT"
+        },
+        {
+          "id": "d",
+          "text": "Common users can only be created inside a PDB"
+        }
+      ],
+      "answerHash": "acca3562db7d22227e5e04ce40fd23beb00c735916652b8a6b8bc61ebbf2d7d8",
+      "answerObfuscated": "KA==",
+      "explanation": "Oracle 12c requires common users created in CDB$ROOT to start with `C##` (unless COMMON_USER_PREFIX is changed) and applies across containers with `CONTAINER=ALL`.",
+      "rubric": [
+        {
+          "id": "dba-priv-02-r1",
+          "label": "Applies Oracle 12c CDB/PDB common user rules",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-priv-02-r2",
+          "label": "Uses CONTAINER=ALL accurately",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-priv-03",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Privileges & Security",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Which Oracle 12c administrative privilege was introduced to separate backup/recovery duties from full SYSDBA data access (least privilege)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SYSBACKUP"
+        },
+        {
+          "id": "b",
+          "text": "DBA_ALL"
+        },
+        {
+          "id": "c",
+          "text": "CONNECT"
+        },
+        {
+          "id": "d",
+          "text": "RESOURCE"
+        }
+      ],
+      "answerHash": "8401205af515425ca092f4a2d78620ccf4723cdff338bc871a5a308012a85fd3",
+      "answerObfuscated": "KA==",
+      "explanation": "Oracle 12c introduced SYSBACKUP, SYSDG, and SYSKM to enforce separation of duties without granting full SYSDBA.",
+      "rubric": [
+        {
+          "id": "dba-priv-03-r1",
+          "label": "Identifies Oracle 12c SYSBACKUP privilege",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-priv-03-r2",
+          "label": "Applies least-privilege separation of duties",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-priv-04",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Privileges & Security",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "User A grants `SELECT ON sales TO User B WITH GRANT OPTION`, and User B grants it to User C. What happens when User A revokes `SELECT ON sales FROM User B`?",
+      "options": [
+        {
+          "id": "a",
+          "text": "User C retains SELECT indefinitely"
+        },
+        {
+          "id": "b",
+          "text": "The revoke cascades and User C also loses SELECT ON sales"
+        },
+        {
+          "id": "c",
+          "text": "Oracle throws ORA-01927 and refuses to revoke"
+        },
+        {
+          "id": "d",
+          "text": "The sales table is dropped"
+        }
+      ],
+      "answerHash": "98458a0336bf53aafc0358fcce20f8cc2965a605a3760dbd126ba091c39fb5dd",
+      "answerObfuscated": "Kw==",
+      "explanation": "Object privileges granted WITH GRANT OPTION cascade on REVOKE (unlike system privileges granted WITH ADMIN OPTION, which do not cascade).",
+      "rubric": [
+        {
+          "id": "dba-priv-04-r1",
+          "label": "Distinguishes WITH GRANT OPTION cascade",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-priv-04-r2",
+          "label": "Contrasts with WITH ADMIN OPTION",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-priv-05",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Privileges & Security",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL security hardening practices recommended for an Oracle 12c production database.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enforce password complexity & failed-login lockouts via Oracle Profiles"
+        },
+        {
+          "id": "b",
+          "text": "Enable Unified Auditing for privileged/DDL actions"
+        },
+        {
+          "id": "c",
+          "text": "Grant DBA role to every application service account"
+        },
+        {
+          "id": "d",
+          "text": "Restrict PUBLIC execute privileges on powerful packages like UTL_HTTP"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "2efec388395b94f9db3419e49bcb9983fd5c4cf3012af0ea4063f5433b5166f4",
+      "answerObfuscated": "KHRPfzA=",
+      "explanation": "Least privilege, Profiles, Unified Auditing, and locking down PUBLIC packages reduce blast radius dramatically.",
+      "rubric": [
+        {
+          "id": "dba-priv-05-r1",
+          "label": "Applies Oracle 12c hardening controls",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-priv-05-r2",
+          "label": "Rejects over-privileged app accounts",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-priv-06",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Privileges & Security",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "An application team requests `DBA` privileges for their reporting user in an Oracle 12c PDB. Explain how you deny this safely and design a least-privilege role instead.",
+      "minWords": 25,
+      "keyPoints": [
+        "least privilege",
+        "role",
+        "select",
+        "pdb"
+      ],
+      "explanation": "Deny DBA, create a dedicated PDB-local read-only role with CREATE SESSION and explicit SELECT grants on required views/tables, and enforce resource limits via a Profile.",
+      "rubric": [
+        {
+          "id": "dba-priv-06-r1",
+          "label": "Enforces least privilege with scoped role",
+          "weight": 0.5
+        },
+        {
+          "id": "dba-priv-06-r2",
+          "label": "Uses PDB-local role and Profile limits",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "dba-rman-01",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backup & RMAN",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Why must an Oracle 12c database run in `ARCHIVELOG` mode to perform hot (online) RMAN backups and point-in-time recovery (PITR)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "NOARCHIVELOG mode disables SQL SELECT queries"
+        },
+        {
+          "id": "b",
+          "text": "ARCHIVELOG preserves filled online redo logs as archived redo logs so RMAN can recover transactions after the backup snapshot"
+        },
+        {
+          "id": "c",
+          "text": "RMAN cannot read control files otherwise"
+        },
+        {
+          "id": "d",
+          "text": "ARCHIVELOG compresses datafiles by 90%"
+        }
+      ],
+      "answerHash": "7eb8b4bb66d9e44f5ee15430dfe97c682a14e703a3517f9627172a960c019278",
+      "answerObfuscated": "Kw==",
+      "explanation": "Without archived redo logs, online redo logs are overwritten, making online consistent recovery and PITR impossible.",
+      "rubric": [
+        {
+          "id": "dba-rman-01-r1",
+          "label": "Explains redo/archivelog recovery mechanics",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-rman-01-r2",
+          "label": "Links ARCHIVELOG to online backup & PITR",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-rman-02",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backup & RMAN",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "In Oracle 12c RMAN, what is the difference between a Differential (default) and a Cumulative Level 1 incremental backup?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Differential backs up blocks changed since the last Level 0 OR Level 1 backup; Cumulative backs up all blocks changed since the last Level 0 backup"
+        },
+        {
+          "id": "b",
+          "text": "Cumulative backs up only the control file"
+        },
+        {
+          "id": "c",
+          "text": "Differential cannot be restored without Data Pump"
+        },
+        {
+          "id": "d",
+          "text": "They produce identical backup sizes"
+        }
+      ],
+      "answerHash": "5cea343667c3b8a2c7adf91421eaeaaf2b6e751c503850ce544b50df2b7ac1c2",
+      "answerObfuscated": "KA==",
+      "explanation": "Cumulative Level 1 backups are larger than Differential but reduce recovery time by needing fewer incremental pieces.",
+      "rubric": [
+        {
+          "id": "dba-rman-02-r1",
+          "label": "Distinguishes Differential vs Cumulative L1",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-rman-02-r2",
+          "label": "Understands backup size vs recovery speed trade-off",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-rman-03",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backup & RMAN",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Which RMAN command verifies that backups exist on disk/tape and marks missing files as EXPIRED in the RMAN repository?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CROSSCHECK BACKUP"
+        },
+        {
+          "id": "b",
+          "text": "DELETE FORCE ALL"
+        },
+        {
+          "id": "c",
+          "text": "ALTER SYSTEM SWITCH LOGFILE"
+        },
+        {
+          "id": "d",
+          "text": "SHUTDOWN ABORT"
+        }
+      ],
+      "answerHash": "a60dbc320c99efdc0d463a2a67cb876c7309f965bb3ed240732dd9dff0a99de0",
+      "answerObfuscated": "KA==",
+      "explanation": "CROSSCHECK BACKUP reconciles RMAN metadata against physical storage; DELETE EXPIRED BACKUP then cleans stale records.",
+      "rubric": [
+        {
+          "id": "dba-rman-03-r1",
+          "label": "Uses CROSSCHECK for catalog reconciliation",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-rman-03-r2",
+          "label": "Distinguishes EXPIRED vs OBSOLETE",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-rman-04",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backup & RMAN",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "A single data block in a 2 TB tablespace is reported corrupt (`ORA-01578`) while the database is open. Which Oracle 12c RMAN feature repairs it with minimal downtime?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Full database drop and impdp"
+        },
+        {
+          "id": "b",
+          "text": "RMAN Block Media Recovery (`RECOVER DATAFILE ... BLOCK ...` or `RECOVER CORRUPTION LIST`)"
+        },
+        {
+          "id": "c",
+          "text": "TRUNCATE TABLE"
+        },
+        {
+          "id": "d",
+          "text": "Disabling the controlfile autobackup"
+        }
+      ],
+      "answerHash": "c4153ccebcf69896f0d1d1e881609258a845794c7a791c5bd5def43c073c6582",
+      "answerObfuscated": "Kw==",
+      "explanation": "Block Media Recovery restores and recovers only the corrupted block(s) while the rest of the datafile remains online.",
+      "rubric": [
+        {
+          "id": "dba-rman-04-r1",
+          "label": "Applies RMAN Block Media Recovery",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-rman-04-r2",
+          "label": "Minimizes MTTR and downtime",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-rman-05",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backup & RMAN",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL essential practices for a resilient Oracle 12c RMAN backup strategy.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enable `CONFIGURE CONTROLFILE AUTOBACKUP ON`"
+        },
+        {
+          "id": "b",
+          "text": "Regularly test restore/recovery onto an isolated non-prod host"
+        },
+        {
+          "id": "c",
+          "text": "Store RMAN backups exclusively on the same disk array as live datafiles"
+        },
+        {
+          "id": "d",
+          "text": "Configure a retention policy (e.g., RECOVERY WINDOW OF 7 DAYS) aligned to RPO/RTO"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "0c411b148a8feba0507751b32f79b4081e6fa0a917597b0b8b2a2f99f659f6ba",
+      "answerObfuscated": "KHRPfzA=",
+      "explanation": "Controlfile autobackup, off-host storage, retention policies, and tested restores ensure backups are actually recoverable.",
+      "rubric": [
+        {
+          "id": "dba-rman-05-r1",
+          "label": "Ensures verifiable, off-host recoverability",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-rman-05-r2",
+          "label": "Aligns RMAN retention with RPO/RTO",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-rman-06",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backup & RMAN",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "A user accidentally ran `DROP TABLE billing_ledger PURGE` at 14:12 in an Oracle 12c PDB running in ARCHIVELOG mode. Outline your RMAN recovery plan (12c Table Recovery or PDB PITR) to minimize impact.",
+      "minWords": 25,
+      "keyPoints": [
+        "pit",
+        "auxiliary",
+        "rman",
+        "archivelog"
+      ],
+      "explanation": "Use Oracle 12c RMAN `RECOVER TABLE` (using an auxiliary instance to recover to 14:11 and Data Pump import the table) without taking the whole CDB/PDB offline, or PDB PITR if dependencies require.",
+      "rubric": [
+        {
+          "id": "dba-rman-06-r1",
+          "label": "Leverages Oracle 12c RMAN table/PDB PITR",
+          "weight": 0.5
+        },
+        {
+          "id": "dba-rman-06-r2",
+          "label": "Minimizes blast radius to other PDBs",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "dba-tune-01",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "SQL & Instance Tuning",
+      "difficulty": "easy",
+      "type": "sql",
+      "prompt": "On the orders_ops dataset, write a query returning each order status, order count (order_count), and total revenue (total_revenue), ordered by total_revenue descending.",
+      "hint": "SELECT status, COUNT(*) AS order_count, SUM(total_amount) AS total_revenue FROM orders GROUP BY status ORDER BY total_revenue DESC;",
+      "datasetId": "orders_ops",
+      "starterCode": "SELECT status, COUNT(*) AS order_count, SUM(total_amount) AS total_revenue\nFROM orders\nGROUP BY \nORDER BY ;",
+      "referenceSqlObfuscated": "Gh1hFhcVdDo3TD8wKgF2cgYNYwd8a31pAn5rKitJM0MWO0ImOjV4aRB4Bm0tQiJQJQdMPjs0Oj1qDQoWeVk5RSg0ciExNzEnNkhrAwtiGxEmKkk2JjJ0DhFiHhV5bw8ROixMJyEydAYRaQ4XeW8PET03WTI4HiYsNUglMDwNEnQaGxY=",
+      "expectedResult": {
+        "columns": [
+          "status",
+          "order_count",
+          "total_revenue"
+        ],
+        "rows": [
+          [
+            "PAID",
+            5,
+            6350
+          ],
+          [
+            "PENDING",
+            1,
+            1500
+          ],
+          [
+            "CANCELLED",
+            1,
+            900
+          ],
+          [
+            "REFUNDED",
+            1,
+            500
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Aggregates order volume and revenue by status cleanly in a single scan.",
+      "rubric": [
+        {
+          "id": "dba-tune-01-r1",
+          "label": "Aggregates COUNT and SUM per status",
+          "weight": 0.5
+        },
+        {
+          "id": "dba-tune-01-r2",
+          "label": "Orders by total_revenue descending",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "dba-tune-02",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "SQL & Instance Tuning",
+      "difficulty": "medium",
+      "type": "sql",
+      "prompt": "Using the employees dataset, list departments whose total payroll (total_payroll) exceeds 15000, returning department and total_payroll ordered by total_payroll descending.",
+      "hint": "GROUP BY department HAVING SUM(salary) > 15000.",
+      "datasetId": "employees",
+      "starterCode": "SELECT department, SUM(salary) AS total_payroll\nFROM employees\nGROUP BY \nHAVING \nORDER BY total_payroll DESC;",
+      "referenceSqlObfuscated": "Gh1hFhcVdC0mXSo3LUAzXz10DQABDHw6IkEqNyAEdnAaeFk8ICA4FjNMMjc2QToRDwpiHnQkOTkvQjIgPF52dhsXeAN0Aw1pJ0g7JCtZO1QnLA0bFRcdBwQNGBAUBSVQJTlfKn1hamlyGHt1aQ0ZYw0df3MWGHQ9LFkqKQZdN0g7N0E/dAURGgAW",
+      "expectedResult": {
+        "columns": [
+          "department",
+          "total_payroll"
+        ],
+        "rows": [
+          [
+            "Finance",
+            20600
+          ],
+          [
+            "IT",
+            15700
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Computes departmental payroll totals and filters via HAVING > 15000.",
+      "rubric": [
+        {
+          "id": "dba-tune-02-r1",
+          "label": "Groups by department",
+          "weight": 0.5
+        },
+        {
+          "id": "dba-tune-02-r2",
+          "label": "Filters aggregate via HAVING > 15000",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "dba-tune-03",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "SQL & Instance Tuning",
+      "difficulty": "hard",
+      "type": "sql",
+      "prompt": "On orders_ops, find the single highest-value PAID order per customer tier. Return tier and max_order_amount ordered by tier ascending.",
+      "hint": "JOIN customers c ON c.customer_id = o.customer_id WHERE o.status = 'PAID' GROUP BY c.tier.",
+      "datasetId": "orders_ops",
+      "starterCode": "SELECT c.tier, MAX(o.total_amount) AS max_order_amount\nFROM customers c\nJOIN orders o ON c.customer_id = o.customer_id\nWHERE \nGROUP BY \nORDER BY c.tier ASC;",
+      "referenceSqlObfuscated": "Gh1hFhcVdCptWSIgKwF2fAgABTx6NTs9IkEUJDRCI189cQ0SB2E5KDtyJDc9SCRuKDVCJjo1dA8RYgZlOlglRSY1SCEnYTdpCmMFAAsNHH4AFg08JiUxOzANJGUWY3ZSZztYICAuOSwxciIheRB2Xmc7WCAgLjksMXIiIXl6HnQbHQ08ejIgKDdYOGVkDXFhCBFpdHQGBgYWfWsHAA01Hz0xSCF0DgYNBn9rBwANNR89MUghdAAHCng=",
+      "expectedResult": {
+        "columns": [
+          "tier",
+          "max_order_amount"
+        ],
+        "rows": [
+          [
+            "Enterprise",
+            2400
+          ],
+          [
+            "Growth",
+            650
+          ],
+          [
+            "Starter",
+            300
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Joins customers to PAID orders and computes MAX(total_amount) per tier.",
+      "rubric": [
+        {
+          "id": "dba-tune-03-r1",
+          "label": "Filters PAID orders before aggregation",
+          "weight": 0.5
+        },
+        {
+          "id": "dba-tune-03-r2",
+          "label": "Computes MAX per customer tier",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "dba-tune-04",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "SQL & Instance Tuning",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "In Oracle 12c, a query filters `WHERE TRUNC(order_date) = DATE '2026-02-01'` on a standard B-tree index on `order_date`. Why does the optimizer perform a Full Table Scan?",
+      "options": [
+        {
+          "id": "a",
+          "text": "B-tree indexes do not support DATE columns"
+        },
+        {
+          "id": "b",
+          "text": "Wrapping the indexed column in `TRUNC()` prevents standard index range scans unless a function-based index exists or the predicate is rewritten as a range"
+        },
+        {
+          "id": "c",
+          "text": "Oracle ignores WHERE clauses on dates"
+        },
+        {
+          "id": "d",
+          "text": "Full table scans are always required for single dates"
+        }
+      ],
+      "answerHash": "2d9c55b044ebf68a6efae91e72b4d8dc70eea3ca96523d8f290a08c732938a1e",
+      "answerObfuscated": "Kw==",
+      "explanation": "Rewriting as `order_date >= DATE '2026-02-01' AND order_date < DATE '2026-02-02'` makes the predicate sargable for the existing B-tree index.",
+      "rubric": [
+        {
+          "id": "dba-tune-04-r1",
+          "label": "Identifies non-sargable function predicate",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-tune-04-r2",
+          "label": "Recommends range rewrite or FBI",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-tune-05",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "SQL & Instance Tuning",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Which Oracle 12c diagnostic report compares instance wait events, top SQL by elapsed time/buffer gets, and load profile between two snapshots?",
+      "options": [
+        {
+          "id": "a",
+          "text": "AWR (Automatic Workload Repository) Report"
+        },
+        {
+          "id": "b",
+          "text": "Listener.ora log"
+        },
+        {
+          "id": "c",
+          "text": "SQL*Loader discard file"
+        },
+        {
+          "id": "d",
+          "text": "TNSNAMES.ORA"
+        }
+      ],
+      "answerHash": "0d4868f8e2ae65dd16ba885fe5ae5c76abe494f06f7a830256a199592445d583",
+      "answerObfuscated": "KA==",
+      "explanation": "AWR (and ASH for second-by-second active session history) pinpoints wait-event bottlenecks and top resource-consuming SQL.",
+      "rubric": [
+        {
+          "id": "dba-tune-05-r1",
+          "label": "Uses AWR/ASH for evidence-based tuning",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-tune-05-r2",
+          "label": "Avoids guesswork tuning",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-tune-06",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "SQL & Instance Tuning",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "Why can using literals instead of bind variables in high-frequency OLTP SQL degrade Oracle 12c Shared Pool performance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Literals disable primary keys"
+        },
+        {
+          "id": "b",
+          "text": "Each distinct literal forces a hard parse, causing library cache latch/mutex contention and Shared Pool fragmentation"
+        },
+        {
+          "id": "c",
+          "text": "Bind variables prevent index usage always"
+        },
+        {
+          "id": "d",
+          "text": "Literals bypass redo logging"
+        }
+      ],
+      "answerHash": "4b542de9fea223aaf716dc1fa1f70fa485ddc918d1b536644367f67e7fa0d62d",
+      "answerObfuscated": "Kw==",
+      "explanation": "Bind variables allow cursor sharing and soft parses, protecting the Shared Pool from hard-parse CPU storms.",
+      "rubric": [
+        {
+          "id": "dba-tune-06-r1",
+          "label": "Understands hard parse vs soft parse",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-tune-06-r2",
+          "label": "Diagnoses Shared Pool / library cache contention",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-lock-01",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Locks & RCA",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "In Oracle 12c, which dynamic performance view column directly identifies the session ID blocking a waiting session?",
+      "options": [
+        {
+          "id": "a",
+          "text": "V$SESSION.BLOCKING_SESSION"
+        },
+        {
+          "id": "b",
+          "text": "DBA_TABLES.PCT_FREE"
+        },
+        {
+          "id": "c",
+          "text": "V$DATAFILE.BYTES"
+        },
+        {
+          "id": "d",
+          "text": "USER_SEQUENCES.CACHE_SIZE"
+        }
+      ],
+      "answerHash": "81f2e256387d99b9f953c660ecb1c54b8ba5095906effa46f279cbffa3f8262b",
+      "answerObfuscated": "KA==",
+      "explanation": "Querying `V$SESSION` for `BLOCKING_SESSION IS NOT NULL` (along with `EVENT`, `SQL_ID`, and `SECONDS_IN_WAIT`) immediately locates the root blocker.",
+      "rubric": [
+        {
+          "id": "dba-lock-01-r1",
+          "label": "Uses V$SESSION.BLOCKING_SESSION",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-lock-01-r2",
+          "label": "Locates blocking tree efficiently",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-lock-02",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Locks & RCA",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What does the Oracle wait event `enq: TX - row lock contention` indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Disk controller firmware failure"
+        },
+        {
+          "id": "b",
+          "text": "A session is waiting to modify a row currently locked by an uncommitted transaction in another session (or unique-key/ITL contention)"
+        },
+        {
+          "id": "c",
+          "text": "The listener port 1521 is closed"
+        },
+        {
+          "id": "d",
+          "text": "Archive log destination is empty"
+        }
+      ],
+      "answerHash": "64f93413c993049d3b7a345af2908b3c9777790f90563b6459dc8b612fbabd29",
+      "answerObfuscated": "Kw==",
+      "explanation": "TX row lock contention occurs when Session B updates/deletes a row held by Session A's open transaction until A commits or rolls back.",
+      "rubric": [
+        {
+          "id": "dba-lock-02-r1",
+          "label": "Diagnoses TX row lock contention",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-lock-02-r2",
+          "label": "Connects locks to uncommitted transactions",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-lock-03",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Locks & RCA",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "How does Oracle 12c automatically handle a deadlock (`ORA-00060: deadlock detected while waiting for resource`)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hangs the entire database permanently until reboot"
+        },
+        {
+          "id": "b",
+          "text": "Automatically detects the cycle, rolls back the single offending statement in one session, and writes a trace file"
+        },
+        {
+          "id": "c",
+          "text": "Kills all connected users"
+        },
+        {
+          "id": "d",
+          "text": "Drops the locked table"
+        }
+      ],
+      "answerHash": "74068951d05e1c6c90bcb5dbf7c383f55931802efa32e18a9baa7e2bb723ce85",
+      "answerObfuscated": "Kw==",
+      "explanation": "Oracle breaks deadlocks within seconds by aborting one statement (not the whole transaction) and logging a trace graph for RCA.",
+      "rubric": [
+        {
+          "id": "dba-lock-03-r1",
+          "label": "Understands ORA-00060 automatic resolution",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-lock-03-r2",
+          "label": "Knows trace file is generated for RCA",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-lock-04",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Locks & RCA",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "Why does an unindexed Foreign Key column on a child table frequently cause table-level `TM` lock contention in Oracle 12c?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Oracle requires a full table lock on the child table when deleting or updating the parent primary key if the child FK lacks an index"
+        },
+        {
+          "id": "b",
+          "text": "Foreign keys cannot exist without a bitmap index"
+        },
+        {
+          "id": "c",
+          "text": "Unindexed FKs disable ARCHIVELOG mode"
+        },
+        {
+          "id": "d",
+          "text": "Oracle refuses INSERT into child tables"
+        }
+      ],
+      "answerHash": "9ae837b60e3bf9bb1c10ec2387f2eec6e9c67f510257f2667d651d0e419b8c48",
+      "answerObfuscated": "KA==",
+      "explanation": "Indexing child foreign-key columns eliminates full-table TM locks during parent DELETE/PK-UPDATE operations.",
+      "rubric": [
+        {
+          "id": "dba-lock-04-r1",
+          "label": "Diagnoses unindexed FK TM lock contention",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-lock-04-r2",
+          "label": "Recommends child FK indexing",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-lock-05",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Locks & RCA",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL artifacts a DBA should inspect during a production Oracle 12c incident RCA.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Alert log and ADR incident/deadlock trace files"
+        },
+        {
+          "id": "b",
+          "text": "ASH / AWR wait event and SQL_ID history around the incident window"
+        },
+        {
+          "id": "c",
+          "text": "Recent DDL, statistics gathering, or application deployment changes"
+        },
+        {
+          "id": "d",
+          "text": "Deleting trace files before reading them"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "b33e37370e8a8b9e2407b777d222e489fa5699f602017d642da5305be8d16e64",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "Correlating alert logs, trace files, ASH/AWR telemetry, and change logs produces an evidence-backed RCA.",
+      "rubric": [
+        {
+          "id": "dba-lock-05-r1",
+          "label": "Collects ADR, AWR/ASH, and change evidence",
+          "weight": 0.6
+        },
+        {
+          "id": "dba-lock-05-r2",
+          "label": "Preserves forensic artifacts",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dba-lock-06",
+      "role": "dba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Locks & RCA",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Production checkout is stalled with 45 sessions waiting on `enq: TX - row lock contention`. Describe your step-by-step live triage, safe mitigation, and post-incident RCA.",
+      "minWords": 25,
+      "keyPoints": [
+        "v$session",
+        "blocking_session",
+        "kill session",
+        "commit"
+      ],
+      "explanation": "Query V$SESSION/V$SQL to find the root blocker and its application owner, confirm impact before `ALTER SYSTEM KILL SESSION 'sid,serial#' IMMEDIATE`, and follow up on long uncommitted transactions or unindexed FKs in RCA.",
+      "rubric": [
+        {
+          "id": "dba-lock-06-r1",
+          "label": "Traces root blocker via V$SESSION",
+          "weight": 0.5
+        },
+        {
+          "id": "dba-lock-06-r2",
+          "label": "Coordinates safe session termination and RCA",
+          "weight": 0.5
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1091 @@
+{
+  "roleId": "fresh",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "fresh-logic-01",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Logic & Aptitude",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "A sorted array has 1,024 distinct integers. What is the maximum number of comparisons binary search needs to determine whether a target exists?",
+      "options": [
+        {
+          "id": "a",
+          "text": "10 comparisons"
+        },
+        {
+          "id": "b",
+          "text": "11 comparisons"
+        },
+        {
+          "id": "c",
+          "text": "512 comparisons"
+        },
+        {
+          "id": "d",
+          "text": "1,024 comparisons"
+        }
+      ],
+      "answerHash": "9138dca905e685e192c8bb5af7defe8fff0359516c2b7ea17af3fa2ab204b1e1",
+      "answerObfuscated": "Kw==",
+      "explanation": "Binary search takes floor(log2(N)) + 1 comparisons in the worst case; log2(1024) = 10, so at most 11 comparisons.",
+      "rubric": [
+        {
+          "id": "fresh-logic-01-r1",
+          "label": "Applies logarithmic halving correctly",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-logic-01-r2",
+          "label": "Accounts for the final boundary comparison",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-logic-02",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Logic & Aptitude",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which data structure provides O(1) average-time lookup by key while not guaranteeing sorted iteration order?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Binary Search Tree"
+        },
+        {
+          "id": "b",
+          "text": "Hash Table"
+        },
+        {
+          "id": "c",
+          "text": "Doubly Linked List"
+        },
+        {
+          "id": "d",
+          "text": "Min-Heap"
+        }
+      ],
+      "answerHash": "b5697b26a19e3c21885b5278b4eb6fbdc2b12c413912aea309e2e377134d4680",
+      "answerObfuscated": "Kw==",
+      "explanation": "Hash tables map keys via a hash function directly to buckets, achieving O(1) average lookup without ordering keys.",
+      "rubric": [
+        {
+          "id": "fresh-logic-02-r1",
+          "label": "Identifies Hash Table lookup complexity",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-logic-02-r2",
+          "label": "Distinguishes unordered hashing from tree structures",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-logic-03",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Logic & Aptitude",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Three servers process a batch of 180 jobs in 6 minutes at equal rates. How long will 5 identical servers take to process 300 jobs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "4 minutes"
+        },
+        {
+          "id": "b",
+          "text": "6 minutes"
+        },
+        {
+          "id": "c",
+          "text": "8 minutes"
+        },
+        {
+          "id": "d",
+          "text": "10 minutes"
+        }
+      ],
+      "answerHash": "a43435d98f27dca8f49b82e1b2b420c98fe5a9ab57a1aeafac85f782d63aadd0",
+      "answerObfuscated": "Kw==",
+      "explanation": "Each server processes 180 / (3 * 6) = 10 jobs/min. Five servers process 50 jobs/min, so 300 / 50 = 6 minutes.",
+      "rubric": [
+        {
+          "id": "fresh-logic-03-r1",
+          "label": "Computes per-unit throughput accurately",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-logic-03-r2",
+          "label": "Scales parallel capacity cleanly",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-logic-04",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Logic & Aptitude",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A queue receives push(1), push(2), push(3), pop(), push(4), pop(). What value is at the front of the queue next?",
+      "options": [
+        {
+          "id": "a",
+          "text": "1"
+        },
+        {
+          "id": "b",
+          "text": "2"
+        },
+        {
+          "id": "c",
+          "text": "3"
+        },
+        {
+          "id": "d",
+          "text": "4"
+        }
+      ],
+      "answerHash": "6636ec5e193018effcab71dfeb3201a251425827732579f6e2b83fd80ac59687",
+      "answerObfuscated": "Kg==",
+      "explanation": "Queues are FIFO: first pop removes 1, second pop removes 2, leaving 3 at the front followed by 4.",
+      "rubric": [
+        {
+          "id": "fresh-logic-04-r1",
+          "label": "Applies FIFO ordering rules",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-logic-04-r2",
+          "label": "Tracks sequential state mutations accurately",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-logic-05",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Logic & Aptitude",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the time complexity of checking whether an unsorted array of length n contains any duplicate value using a Set?",
+      "options": [
+        {
+          "id": "a",
+          "text": "O(1)"
+        },
+        {
+          "id": "b",
+          "text": "O(log n)"
+        },
+        {
+          "id": "c",
+          "text": "O(n)"
+        },
+        {
+          "id": "d",
+          "text": "O(n^2)"
+        }
+      ],
+      "answerHash": "033d8352a6a7533b08a4196ffe1e92900a66a949eadd1d3e408a0475fb4a53a7",
+      "answerObfuscated": "Kg==",
+      "explanation": "Iterating once through n elements with O(1) average Set membership checks yields O(n) total time.",
+      "rubric": [
+        {
+          "id": "fresh-logic-05-r1",
+          "label": "Evaluates loop plus Set lookup complexity",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-logic-05-r2",
+          "label": "Avoids quadratic brute-force reasoning",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-logic-06",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Logic & Aptitude",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "If all microservices require health checks, and Service X has no health check endpoint, which conclusion is logically guaranteed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Service X is not a microservice"
+        },
+        {
+          "id": "b",
+          "text": "Service X is written in Python"
+        },
+        {
+          "id": "c",
+          "text": "Some microservices lack health checks"
+        },
+        {
+          "id": "d",
+          "text": "Service X must be a database"
+        }
+      ],
+      "answerHash": "9e44f1fd4a5d3566b1f06cab3696ac8693be57e8598fd5ee32bcdbf26e7e6bcc",
+      "answerObfuscated": "KA==",
+      "explanation": "By modus tollens (P -> Q, not Q => not P), Service X cannot be a microservice.",
+      "rubric": [
+        {
+          "id": "fresh-logic-06-r1",
+          "label": "Applies contrapositive deductive logic",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-logic-06-r2",
+          "label": "Rejects unsupported assumptions",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-sql-01",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Basic SQL",
+      "difficulty": "easy",
+      "type": "sql",
+      "prompt": "Write a SQL query to display the name and salary of employees who work in the Finance department, ordered by salary descending.",
+      "hint": "Use SELECT name, salary FROM employees WHERE department = 'Finance' ORDER BY salary DESC;",
+      "datasetId": "employees",
+      "starterCode": "SELECT \nFROM employees\nWHERE \nORDER BY ;",
+      "referenceSqlObfuscated": "Gh1hFhcVdCciQC5peV43XSgqVHMSExsEY0gmNTVCL1QsKw0EHAQGDGNJLjU4XyJcLDZZc2lhcw8qQyorOkhxEQYKaRYGYRYQY14qKThfLxENHX4Qbw==",
+      "expectedResult": {
+        "columns": [
+          "name",
+          "salary"
+        ],
+        "rows": [
+          [
+            "Kavitha Devi",
+            6100
+          ],
+          [
+            "Mei Ling Wong",
+            5400
+          ],
+          [
+            "Aisyah Rahman",
+            4800
+          ],
+          [
+            "Jason Lim",
+            4300
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Filters rows to Finance with single-quoted string literals and orders descending by salary.",
+      "rubric": [
+        {
+          "id": "fresh-sql-01-r1",
+          "label": "Projects exact columns",
+          "weight": 0.3333
+        },
+        {
+          "id": "fresh-sql-01-r2",
+          "label": "Filters Finance accurately",
+          "weight": 0.3333
+        },
+        {
+          "id": "fresh-sql-01-r3",
+          "label": "Sorts salary descending",
+          "weight": 0.3334
+        }
+      ]
+    },
+    {
+      "id": "fresh-sql-02",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Basic SQL",
+      "difficulty": "easy",
+      "type": "sql",
+      "prompt": "Write a SQL query to count how many employees are based in Ipoh, returning a single column named total_employees.",
+      "hint": "Use COUNT(*) AS total_employees with WHERE city = 'Ipoh'.",
+      "datasetId": "employees",
+      "starterCode": "SELECT COUNT(*) AS total_employees\nFROM employees\nWHERE ;",
+      "referenceSqlObfuscated": "Gh1hFhcVdAoMeAURcQd/EQgLDSc7NTUlHEgmNTVCL1QsKw0VBg4ZaSZAOyk2VDNUOnh6GxETEWkgRD88eRB2FgAoQjtzeg==",
+      "expectedResult": {
+        "columns": [
+          "total_employees"
+        ],
+        "rows": [
+          [
+            4
+          ]
+        ],
+        "orderMatters": false
+      },
+      "explanation": "COUNT(*) counts all matching rows after WHERE city = 'Ipoh' filters the table to 4 employees.",
+      "rubric": [
+        {
+          "id": "fresh-sql-02-r1",
+          "label": "Uses COUNT(*) aggregate",
+          "weight": 0.3333
+        },
+        {
+          "id": "fresh-sql-02-r2",
+          "label": "Filters city = Ipoh",
+          "weight": 0.3333
+        },
+        {
+          "id": "fresh-sql-02-r3",
+          "label": "Aliases column as total_employees",
+          "weight": 0.3334
+        }
+      ]
+    },
+    {
+      "id": "fresh-sql-03",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Basic SQL",
+      "difficulty": "medium",
+      "type": "sql",
+      "prompt": "Display each department and its average salary (rounded to 2 decimals as avg_salary), ordered alphabetically by department.",
+      "hint": "Use GROUP BY department and ROUND(AVG(salary), 2) AS avg_salary.",
+      "datasetId": "employees",
+      "starterCode": "SELECT department, \nFROM employees\nGROUP BY \nORDER BY ;",
+      "referenceSqlObfuscated": "Gh1hFhcVdC0mXSo3LUAzXz10DQEbFBoNa2wdAnFeN10oKlR6eGFmYGNsGGU4WzFuOjlBMiY4dA8RYgZlPEAmXSYhSDYnYRMbDHgbZRt0dlUsKEwhICwxJzcNBBcdaAQRCwENNzExNTs3QC4rLQ0XYgpj",
+      "expectedResult": {
+        "columns": [
+          "department",
+          "avg_salary"
+        ],
+        "rows": [
+          [
+            "Finance",
+            5150
+          ],
+          [
+            "HR",
+            4050
+          ],
+          [
+            "IT",
+            5233.33
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Groups employees by department, computes rounded mean salary, and sorts alphabetically.",
+      "rubric": [
+        {
+          "id": "fresh-sql-03-r1",
+          "label": "Applies GROUP BY correctly",
+          "weight": 0.3333
+        },
+        {
+          "id": "fresh-sql-03-r2",
+          "label": "Computes rounded AVG(salary)",
+          "weight": 0.3333
+        },
+        {
+          "id": "fresh-sql-03-r3",
+          "label": "Orders by department ASC",
+          "weight": 0.3334
+        }
+      ]
+    },
+    {
+      "id": "fresh-sql-04",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Basic SQL",
+      "difficulty": "medium",
+      "type": "sql",
+      "prompt": "Join employees with departments to list employee name and department cost_center for employees earning at least 5500, ordered by name ascending.",
+      "hint": "INNER JOIN departments d ON e.department = d.dept_name WHERE e.salary >= 5500.",
+      "datasetId": "employees",
+      "starterCode": "SELECT e.name, d.cost_center\nFROM employees e\nJOIN departments d ON \nWHERE \nORDER BY e.name ASC;",
+      "referenceSqlObfuscated": "Gh1hFhcVdCxtQyooPAF2VWc7QiAgHjcsLVkuN3lrBH4EeEg+JC07MCZIOGU8DR9/Bx1/cx4OHQdjSS41OF8iXCw2WSB0JXQGDQ0uaz1IJlA7LEA2OjV0dGNJZSE8XSJuJzlANnQWHAwRaGsgd143XSgqVHNqfHR8dh17ZRZ/EnQbeG8KdCR6JyJALmUYfhUK",
+      "expectedResult": {
+        "columns": [
+          "name",
+          "cost_center"
+        ],
+        "rows": [
+          [
+            "Kavitha Devi",
+            "CC-100"
+          ],
+          [
+            "Nurul Huda",
+            "CC-200"
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Joins employees to departments on department name and filters salary >= 5500.",
+      "rubric": [
+        {
+          "id": "fresh-sql-04-r1",
+          "label": "Uses valid INNER JOIN predicate",
+          "weight": 0.3333
+        },
+        {
+          "id": "fresh-sql-04-r2",
+          "label": "Filters salary >= 5500",
+          "weight": 0.3333
+        },
+        {
+          "id": "fresh-sql-04-r3",
+          "label": "Orders result by name ASC",
+          "weight": 0.3334
+        }
+      ]
+    },
+    {
+      "id": "fresh-sql-05",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Basic SQL",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which SQL clause filters grouped aggregate results after GROUP BY has been computed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "WHERE"
+        },
+        {
+          "id": "b",
+          "text": "HAVING"
+        },
+        {
+          "id": "c",
+          "text": "ORDER BY"
+        },
+        {
+          "id": "d",
+          "text": "DISTINCT"
+        }
+      ],
+      "answerHash": "2aad48aa41d57e507cd669592a29654caca4ea4cee7b51a51d370c9317c6db62",
+      "answerObfuscated": "Kw==",
+      "explanation": "WHERE filters individual rows before grouping; HAVING filters aggregated groups after GROUP BY.",
+      "rubric": [
+        {
+          "id": "fresh-sql-05-r1",
+          "label": "Distinguishes WHERE from HAVING",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-sql-05-r2",
+          "label": "Understands SQL logical execution order",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-sql-06",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Basic SQL",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "What happens when you compare a column containing NULL using `WHERE manager_id = NULL` in standard SQL?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Returns all rows where manager_id is NULL"
+        },
+        {
+          "id": "b",
+          "text": "Returns 0 rows because NULL = NULL evaluates to UNKNOWN"
+        },
+        {
+          "id": "c",
+          "text": "Throws a primary key violation"
+        },
+        {
+          "id": "d",
+          "text": "Converts NULL to 0 automatically"
+        }
+      ],
+      "answerHash": "54b1775037c63a5346184465005949931ac35376a0548cdc9a58d50bb617c71c",
+      "answerObfuscated": "Kw==",
+      "explanation": "In SQL three-valued logic, comparisons with NULL yield UNKNOWN. You must use IS NULL or IS NOT NULL.",
+      "rubric": [
+        {
+          "id": "fresh-sql-06-r1",
+          "label": "Understands SQL three-valued logic",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-sql-06-r2",
+          "label": "Knows IS NULL predicate usage",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-net-01",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Networking & OS",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which HTTP status code indicates that a client request succeeded and created a new resource on the server?",
+      "options": [
+        {
+          "id": "a",
+          "text": "200 OK"
+        },
+        {
+          "id": "b",
+          "text": "201 Created"
+        },
+        {
+          "id": "c",
+          "text": "204 No Content"
+        },
+        {
+          "id": "d",
+          "text": "304 Not Modified"
+        }
+      ],
+      "answerHash": "d4cc1213d8f18c4915efb375d78178041071a057c0ea26a2acaf350a153338a4",
+      "answerObfuscated": "Kw==",
+      "explanation": "201 Created confirms that the request succeeded and led to the creation of one or more resources.",
+      "rubric": [
+        {
+          "id": "fresh-net-01-r1",
+          "label": "Selects accurate HTTP 2xx semantic code",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-net-01-r2",
+          "label": "Distinguishes creation from generic success",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-net-02",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Networking & OS",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "During a TCP three-way handshake, what is the exact sequence of control flags exchanged between client and server?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SYN -> ACK -> FIN"
+        },
+        {
+          "id": "b",
+          "text": "SYN -> SYN-ACK -> ACK"
+        },
+        {
+          "id": "c",
+          "text": "ACK -> SYN -> RST"
+        },
+        {
+          "id": "d",
+          "text": "SYN -> PSH -> ACK"
+        }
+      ],
+      "answerHash": "8a822710072879590129f74f8e68ab45e109941ddf185782988fe550343c18e1",
+      "answerObfuscated": "Kw==",
+      "explanation": "TCP establishes a connection via client SYN, server SYN-ACK, and client ACK.",
+      "rubric": [
+        {
+          "id": "fresh-net-02-r1",
+          "label": "Recalls TCP handshake sequence",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-net-02-r2",
+          "label": "Distinguishes setup from teardown flags",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-net-03",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Networking & OS",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the primary difference between a process and a thread within an operating system?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Threads have isolated virtual address spaces while processes share heap memory"
+        },
+        {
+          "id": "b",
+          "text": "Processes have isolated memory spaces while threads in the same process share heap memory"
+        },
+        {
+          "id": "c",
+          "text": "Threads cannot run on multiple CPU cores"
+        },
+        {
+          "id": "d",
+          "text": "Processes do not have a stack"
+        }
+      ],
+      "answerHash": "fe546c70b6acc80714686ef96bd23b63ae05925f947e38a96397f625ea1341be",
+      "answerObfuscated": "Kw==",
+      "explanation": "Processes are isolated with separate virtual memory; threads inside one process share heap/code segments and have private stacks.",
+      "rubric": [
+        {
+          "id": "fresh-net-03-r1",
+          "label": "Explains memory isolation boundary",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-net-03-r2",
+          "label": "Understands shared heap vs private stack",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-net-04",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Networking & OS",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which network protocol translates a human-readable hostname like api.example.com into an IP address?",
+      "options": [
+        {
+          "id": "a",
+          "text": "DHCP"
+        },
+        {
+          "id": "b",
+          "text": "DNS"
+        },
+        {
+          "id": "c",
+          "text": "ARP"
+        },
+        {
+          "id": "d",
+          "text": "ICMP"
+        }
+      ],
+      "answerHash": "899aaf2e14641679fc0ba29b2f26160513a240248edb27925853f719c6ba0b66",
+      "answerObfuscated": "Kw==",
+      "explanation": "DNS (Domain Name System) resolves domain names to IPv4/IPv6 addresses.",
+      "rubric": [
+        {
+          "id": "fresh-net-04-r1",
+          "label": "Identifies DNS role in name resolution",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-net-04-r2",
+          "label": "Distinguishes DNS from DHCP and ARP",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-net-05",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Networking & OS",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL conditions that are required for a classic OS resource deadlock (Coffman conditions).",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mutual exclusion"
+        },
+        {
+          "id": "b",
+          "text": "Hold and wait"
+        },
+        {
+          "id": "c",
+          "text": "Preemptive scheduling"
+        },
+        {
+          "id": "d",
+          "text": "Circular wait"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "159813d105b39eae76ab624bc3712f926caca576a7395ef8d85fcdf083eb51ff",
+      "answerObfuscated": "KHRPfzA=",
+      "explanation": "The four Coffman conditions are mutual exclusion, hold and wait, no preemption, and circular wait.",
+      "rubric": [
+        {
+          "id": "fresh-net-05-r1",
+          "label": "Identifies Coffman deadlock prerequisites",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-net-05-r2",
+          "label": "Rejects preemption as a deadlock condition",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-net-06",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Networking & OS",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Why does HTTPS protect credentials on public Wi-Fi compared to plain HTTP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HTTPS compresses headers using Brotli"
+        },
+        {
+          "id": "b",
+          "text": "HTTPS encrypts the transport channel using TLS and authenticates the server certificate"
+        },
+        {
+          "id": "c",
+          "text": "HTTPS bypasses DNS entirely"
+        },
+        {
+          "id": "d",
+          "text": "HTTPS uses UDP instead of TCP"
+        }
+      ],
+      "answerHash": "dfce08e7d01b8b3cdf689d6bde1fe57694e124f00d1bdef68e50baffcfee1c68",
+      "answerObfuscated": "Kw==",
+      "explanation": "TLS provides confidentiality, integrity, and server authentication over the transport connection.",
+      "rubric": [
+        {
+          "id": "fresh-net-06-r1",
+          "label": "Explains TLS encryption and authentication",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-net-06-r2",
+          "label": "Separates transport security from compression",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-comm-01",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Communication",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "You are blocked for 45 minutes on a local environment bug before a sprint demo. What is the best action to take?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait until tomorrow's standup to mention it"
+        },
+        {
+          "id": "b",
+          "text": "Share what you tried, the exact error message, and ask a teammate for a 10-minute unblock"
+        },
+        {
+          "id": "c",
+          "text": "Rewrite the entire module from scratch silently"
+        },
+        {
+          "id": "d",
+          "text": "Push broken code so CI shows the error"
+        }
+      ],
+      "answerHash": "50dce18459e286ffa0849210dbf91eacc90a6baa075817585df85923f0436ba0",
+      "answerObfuscated": "Kw==",
+      "explanation": "Time-boxing blockers and providing concise reproduction context accelerates resolution without surprising the team.",
+      "rubric": [
+        {
+          "id": "fresh-comm-01-r1",
+          "label": "Demonstrates proactive escalation",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-comm-01-r2",
+          "label": "Includes structured debugging context",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-comm-02",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Communication",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "What makes a pull request description most helpful to a code reviewer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pasting the entire git diff as plain text"
+        },
+        {
+          "id": "b",
+          "text": "Summarizing the why, key changes, verification steps, and any open risks"
+        },
+        {
+          "id": "c",
+          "text": "Writing \"fixed stuff\" so reviews stay fast"
+        },
+        {
+          "id": "d",
+          "text": "Tagging every engineer in the company"
+        }
+      ],
+      "answerHash": "5034909c6b4b29c444d945dfbdf99818aedca07400496c4f23e88f7b9cfd6a9b",
+      "answerObfuscated": "Kw==",
+      "explanation": "Concise context, test evidence, and risk callouts enable fast, high-signal reviews.",
+      "rubric": [
+        {
+          "id": "fresh-comm-02-r1",
+          "label": "Communicates intent and verification evidence",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-comm-02-r2",
+          "label": "Respects reviewer time",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-comm-03",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Communication",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A stakeholder asks for an urgent feature change mid-sprint that was not in the ticket. How should you respond first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediately start coding it and skip tests"
+        },
+        {
+          "id": "b",
+          "text": "Acknowledge the request, clarify the impact on current commitments, and loop in the PM/lead to prioritize"
+        },
+        {
+          "id": "c",
+          "text": "Refuse permanently without explanation"
+        },
+        {
+          "id": "d",
+          "text": "Quietly delay your assigned tasks without telling anyone"
+        }
+      ],
+      "answerHash": "9c89f3db94b2d22af7c4cbd48a42d44da6761a0c08b7108e4f27e6366448f92a",
+      "answerObfuscated": "Kw==",
+      "explanation": "Transparently surfacing trade-offs and routing scope changes through prioritization prevents silent delivery slips.",
+      "rubric": [
+        {
+          "id": "fresh-comm-03-r1",
+          "label": "Protects delivery commitments",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-comm-03-r2",
+          "label": "Communicates trade-offs constructively",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-comm-04",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Communication",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "During a code review, a senior engineer suggests a cleaner refactor. What is the most constructive response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Argue that your code already works and merge anyway"
+        },
+        {
+          "id": "b",
+          "text": "Ask clarifying questions if needed, evaluate the trade-off, and apply or discuss the improvement respectfully"
+        },
+        {
+          "id": "c",
+          "text": "Close the PR and abandon the feature"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the comment and re-request review"
+        }
+      ],
+      "answerHash": "6f3ce0de98116c34b8976541b59b9414e5af48b74167abfc5f22ae6feefc10ae",
+      "answerObfuscated": "Kw==",
+      "explanation": "Treating reviews as collaborative learning improves code quality and team trust.",
+      "rubric": [
+        {
+          "id": "fresh-comm-04-r1",
+          "label": "Receives feedback objectively",
+          "weight": 0.6
+        },
+        {
+          "id": "fresh-comm-04-r2",
+          "label": "Engages collaboratively on trade-offs",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "fresh-comm-05",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Communication",
+      "difficulty": "medium",
+      "type": "scenario",
+      "prompt": "Write a concise 3-4 sentence status update to your team lead explaining that a database migration script failed in staging due to a missing index, what you verified, and your next step.",
+      "minWords": 20,
+      "keyPoints": [
+        "staging",
+        "migration",
+        "index",
+        "next step"
+      ],
+      "explanation": "Strong engineering updates state the current state, root cause, impact, and concrete next action with an ETA.",
+      "rubric": [
+        {
+          "id": "fresh-comm-05-r1",
+          "label": "States root cause and staging impact clearly",
+          "weight": 0.5
+        },
+        {
+          "id": "fresh-comm-05-r2",
+          "label": "Provides concrete next step and ownership",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "fresh-comm-06",
+      "role": "fresh",
+      "levels": [
+        "entry",
+        "associate"
+      ],
+      "topic": "Communication",
+      "difficulty": "easy",
+      "type": "scenario",
+      "prompt": "Explain to a non-technical stakeholder why automated tests take extra time upfront but reduce overall release risk.",
+      "minWords": 20,
+      "keyPoints": [
+        "automated",
+        "regression",
+        "risk",
+        "release"
+      ],
+      "explanation": "Effective stakeholder communication translates technical practices into business outcomes: fewer outages and predictable releases.",
+      "rubric": [
+        {
+          "id": "fresh-comm-06-r1",
+          "label": "Avoids unnecessary jargon",
+          "weight": 0.5
+        },
+        {
+          "id": "fresh-comm-06-r2",
+          "label": "Connects testing to release predictability",
+          "weight": 0.5
+        }
+      ]
+    }
+  ]
+}

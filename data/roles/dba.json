@@ -1,0 +1,35 @@
+{
+  "id": "dba",
+  "code": "DBA",
+  "name": "Database Admin (Oracle 12c)",
+  "shortName": "Oracle DBA",
+  "tagline": "Oracle 12c privileges, RMAN backup & recovery, SQL tuning, lock contention, and production RCA.",
+  "focus": ["Privileges", "Backup / RMAN", "Tuning", "Locks", "RCA"],
+  "motif": "cylinder-vault",
+  "accentHex": "#fb923c",
+  "rubricId": "rubric-dba-v1",
+  "levels": [
+    {
+      "id": "standard",
+      "label": "Oracle 12c DBA",
+      "summary": "Users/roles, RMAN recovery, execution plans, and blocking session diagnostics.",
+      "durationMinutes": 40,
+      "questionCount": 8,
+      "passMark": 75
+    },
+    {
+      "id": "senior",
+      "label": "Senior Oracle DBA",
+      "summary": "CDB/PDB multitenant administration, AWR/ASH tuning, deadlock RCA, and zero-RPO recovery.",
+      "durationMinutes": 50,
+      "questionCount": 10,
+      "passMark": 80
+    }
+  ],
+  "sections": [
+    { "topic": "Privileges & Security", "weight": 0.2 },
+    { "topic": "Backup & RMAN", "weight": 0.25 },
+    { "topic": "SQL & Instance Tuning", "weight": 0.25 },
+    { "topic": "Locks & RCA", "weight": 0.3 }
+  ]
+}

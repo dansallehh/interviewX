@@ -39,8 +39,11 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Unit tests
-        run: npm run test
+      - name: Question bank integrity (schema, 2x pool, sql.js)
+        run: npm run validate:bank
+
+      - name: Unit & integration tests (>= 85% coverage)
+        run: npm run test:coverage
 
       - name: Production build
         run: npm run build

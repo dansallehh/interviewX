@@ -46,14 +46,10 @@ npm ci
 # 2. Start local dev server
 npm run dev
 
-# 3. Run Phase 1 quality gate
-npm run lint
-npm run typecheck
-npm run test
-npm run build
-npm run check:budget
-npx playwright install chromium
-npm run test:a11y
+# 3. Run quality gates (Phase 2 includes bank integrity + >=85% coverage)
+npm run validate:bank
+npm run test:coverage
+npm run gate:p2
 ```
 
 ## Privacy & Security
@@ -61,11 +57,12 @@ npm run test:a11y
 - **100% client-side**: All progress and diagnostics stay in your browser. No tracking or backend calls.
 - **Clear All My Data**: Available in the footer to wipe `localStorage`, `sessionStorage`, `IndexedDB`, and browser caches.
 - **Strict CSP**: Enforced via `<meta http-equiv="Content-Security-Policy">` with zero inline scripts or styles and self-hosted fonts.
+- **Answer-key hygiene**: MCQ/multi-select answers use SHA-256 hashes and reference SQL/code keys are obfuscated. Because a static site cannot be fully cheat-proof against determined inspection, supervised interviews should use Interviewer Mode (Phase 4).
 
 ## Roadmap Status
 
 - [x] **Phase 1**: Audit, strict MVC architecture, design system, 7-role selector & brief shell, hash router, error boundary, CI skeleton
-- [ ] **Phase 2**: Role profiles, question bank schema, weighted assessment engine, IndexedDB/localStorage persistence, automated content QA
+- [x] **Phase 2**: 7 JSON role profiles, 168 tagged questions (2× pool enforced), weighted assessment engine, timer & persistence/multi-tab services, automated Content QA (`sql.js` verified), ≥ 85% unit coverage
 - [ ] **Phase 3**: Lazy-loaded SQL (`sql.js`) & sandboxed Code runners, scoring, SVG radar chart, PDF/JSON round-trip export, signed share code
 - [ ] **Phase 4**: Lazy-loaded Three.js per-role scenes + 2D fallback, Interviewer Mode, PWA/offline, security hardening, Lighthouse ≥ 90
 - [ ] **Phase 5**: Full UAT checklist, runbook, documentation, `v1.0.0` release tag

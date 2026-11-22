@@ -1,0 +1,1134 @@
+{
+  "roleId": "dev",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "dev-js-01",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "JS / Node & Debugging",
+      "difficulty": "easy",
+      "type": "code",
+      "prompt": "Implement `groupByTopic(items)` that takes an array of `{ topic, score }` objects and returns an object mapping each `topic` to the array of its numeric `score` values.",
+      "hint": "Initialize an empty object and push each score into acc[item.topic].",
+      "language": "javascript",
+      "functionName": "groupByTopic",
+      "starterCode": "function groupByTopic(items) {\n  // Return { [topic]: number[] }\n}\n",
+      "referenceCodeObfuscated": "Ly1DMCAoOydjSjkqLF0USB03XTo3aT09JkA4bHlWXBFpO0I9JzV0LjFCPjU8SXYMaSNQaF5hdC8sX2ttOkI4Qj14RCcxLHQmJQ0iMTxAJRhpIydzdGF0ICUNY2Q+XzlEOT1JCD01MSRtWSQ1ME4LGGk/XzwhMTEtGEQ/IDQDIl45MU4OdHx0Eh4WQWV5DXZWOzdYIzElDyA3SCZrLUImWCoFAyMhMjxhKlkuKHdeNV47PQRoXmF0NEkNazc8WSNDJ3hKITs0JCwnFkE4",
+      "testCases": [
+        {
+          "args": [
+            [
+              {
+                "topic": "sql",
+                "score": 80
+              },
+              {
+                "topic": "api",
+                "score": 90
+              },
+              {
+                "topic": "sql",
+                "score": 100
+              }
+            ]
+          ],
+          "expected": {
+            "sql": [
+              80,
+              100
+            ],
+            "api": [
+              90
+            ]
+          }
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": {}
+        }
+      ],
+      "explanation": "Iterates once in O(n) time, grouping scores by topic key cleanly.",
+      "rubric": [
+        {
+          "id": "dev-js-01-r1",
+          "label": "Groups records accurately in O(n)",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-js-01-r2",
+          "label": "Handles empty input cleanly",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-js-02",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "JS / Node & Debugging",
+      "difficulty": "medium",
+      "type": "code",
+      "prompt": "Implement `clampScore(value, min, max)` that coerces numeric strings/numbers, returns `min` for NaN/null/undefined, and clamps valid finite numbers within `[min, max]`.",
+      "hint": "Use Number(value) and Number.isFinite(n) before Math.min/Math.max.",
+      "language": "javascript",
+      "functionName": "clampScore",
+      "starterCode": "function clampScore(value, min, max) {\n  // Coerce safely and clamp within [min, max]\n}\n",
+      "referenceCodeObfuscated": "Ly1DMCAoOydjTickNF0FUiYqSHsiIDg8JgFrKDBDehEkOVV6dDpeaWNELWVxWzddPD0Nbml8dCc2QSdlJVF2Ryg0WDZ0fGl0Y1glITxLP18sPA0vKGEiKC9YLmVkEGsRa3oEcyYkIDwxQ2soMENtO2l4Tjw6MiBpLQ12ZRdYO1MsKgUlNS0hLGoWQWV5RDARYXljJjkjMTttRDgDMEM/RSxwQ3p9YSYsN1g5K3lAP19yUg1zJiQgPDFDawg4WT4fJDFDezkgLGVjYCoxMQM7UDFwQDo6bXQnagRwTyQ=",
+      "testCases": [
+        {
+          "args": [
+            120,
+            0,
+            100
+          ],
+          "expected": 100
+        },
+        {
+          "args": [
+            "-5",
+            0,
+            100
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            "abc",
+            0,
+            100
+          ],
+          "expected": 0
+        },
+        {
+          "args": [
+            null,
+            10,
+            50
+          ],
+          "expected": 10
+        },
+        {
+          "args": [
+            42,
+            0,
+            100
+          ],
+          "expected": 42
+        }
+      ],
+      "explanation": "Defensive numeric coercion prevents NaN propagation and handles null/empty strings cleanly.",
+      "rubric": [
+        {
+          "id": "dev-js-02-r1",
+          "label": "Handles NaN/null/empty safely",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-js-02-r2",
+          "label": "Clamps bounds accurately",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-js-03",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "JS / Node & Debugging",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "In JavaScript's event loop, which queue executes immediately after the current call stack finishes and BEFORE the next `setTimeout(..., 0)` callback?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Macrotask / timer queue"
+        },
+        {
+          "id": "b",
+          "text": "Microtask queue (Promise callbacks)"
+        },
+        {
+          "id": "c",
+          "text": "Idle callback queue"
+        },
+        {
+          "id": "d",
+          "text": "WebGL animation queue"
+        }
+      ],
+      "answerHash": "01e4e5ea79d0f675a17b446cf3b962056035e80a2327070c40cc6ebacafaf4e0",
+      "answerObfuscated": "Kw==",
+      "explanation": "Promise `.then`/`.catch`/await continuations run in the microtask queue, which drains completely before the next macrotask.",
+      "rubric": [
+        {
+          "id": "dev-js-03-r1",
+          "label": "Distinguishes microtasks from macrotasks",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-js-03-r2",
+          "label": "Predicts Promise vs setTimeout ordering",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-js-04",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "JS / Node & Debugging",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the difference between `Promise.all` and `Promise.allSettled` when one of five promises rejects?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both wait for all five to finish"
+        },
+        {
+          "id": "b",
+          "text": "Promise.all rejects immediately on the first rejection; Promise.allSettled waits for all five and reports each status"
+        },
+        {
+          "id": "c",
+          "text": "Promise.allSettled cancels pending HTTP requests"
+        },
+        {
+          "id": "d",
+          "text": "Promise.all ignores rejections"
+        }
+      ],
+      "answerHash": "8f74c878c125c96ffcd6b1edf6898dfa34aacda06659e7d44ce8c0fc3882588b",
+      "answerObfuscated": "Kw==",
+      "explanation": "Promise.all is fail-fast; Promise.allSettled resolves with `{ status, value | reason }` for every promise.",
+      "rubric": [
+        {
+          "id": "dev-js-04-r1",
+          "label": "Selects right concurrency combinator",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-js-04-r2",
+          "label": "Handles partial failures deliberately",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-js-05",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "JS / Node & Debugging",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A Node.js worker leaks memory steadily over 12 hours. Which diagnostic approach most directly pinpoints the retained objects?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adding more console.log statements"
+        },
+        {
+          "id": "b",
+          "text": "Capturing and comparing two V8 heap snapshots over time to inspect growing retainer trees"
+        },
+        {
+          "id": "c",
+          "text": "Increasing JSON indentation"
+        },
+        {
+          "id": "d",
+          "text": "Switching let to var"
+        }
+      ],
+      "answerHash": "71a48388ac8454a42f44c5e3e869fea7415269ad2732809aa791a8e063027997",
+      "answerObfuscated": "Kw==",
+      "explanation": "Heap snapshot diffs reveal objects allocated between snapshots that remain strongly referenced (e.g., unbounded Maps or listeners).",
+      "rubric": [
+        {
+          "id": "dev-js-05-r1",
+          "label": "Uses V8 heap snapshot comparison",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-js-05-r2",
+          "label": "Inspects retainer paths systematically",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-js-06",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "JS / Node & Debugging",
+      "difficulty": "easy",
+      "type": "multi",
+      "prompt": "Select ALL common causes of XSS vulnerabilities in browser JavaScript applications.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assigning untrusted user input directly to element.innerHTML"
+        },
+        {
+          "id": "b",
+          "text": "Rendering user input with element.textContent"
+        },
+        {
+          "id": "c",
+          "text": "Interpolating raw URL parameters into inline event handlers"
+        },
+        {
+          "id": "d",
+          "text": "Using a strict Content Security Policy"
+        }
+      ],
+      "minSelections": 2,
+      "answerHash": "bb7be827e0d74b297f0d4a6b519d91ff971fde9f4f15d341ab0f64438068ad5b",
+      "answerObfuscated": "KHRO",
+      "explanation": "innerHTML and raw inline handlers execute injected markup/script; textContent and strict CSP prevent script injection.",
+      "rubric": [
+        {
+          "id": "dev-js-06-r1",
+          "label": "Identifies DOM XSS sinks",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-js-06-r2",
+          "label": "Recognizes safe textContent and CSP defenses",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-api-01",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Web / Backend & APIs",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which HTTP methods are defined by RFC 9110 as idempotent (repeating the exact request produces the same server state)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "POST only"
+        },
+        {
+          "id": "b",
+          "text": "GET, PUT, and DELETE"
+        },
+        {
+          "id": "c",
+          "text": "POST and PATCH only"
+        },
+        {
+          "id": "d",
+          "text": "CONNECT and POST"
+        }
+      ],
+      "answerHash": "55eab267f0b70bc094e4479663bf7fe7bedb6c9fb0b7dde3e25bac932d482de3",
+      "answerObfuscated": "Kw==",
+      "explanation": "GET, PUT, and DELETE are idempotent; POST is non-idempotent unless protected by an explicit idempotency key.",
+      "rubric": [
+        {
+          "id": "dev-api-01-r1",
+          "label": "Understands HTTP idempotency semantics",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-api-01-r2",
+          "label": "Designs retry-safe endpoints",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-api-02",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Web / Backend & APIs",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which HTTP status code should an API return when an authenticated user lacks permission to access an admin resource?",
+      "options": [
+        {
+          "id": "a",
+          "text": "401 Unauthorized"
+        },
+        {
+          "id": "b",
+          "text": "403 Forbidden"
+        },
+        {
+          "id": "c",
+          "text": "404 Not Found"
+        },
+        {
+          "id": "d",
+          "text": "409 Conflict"
+        }
+      ],
+      "answerHash": "22e8f921976e5ad7ddd766759825b2f8b1e620e41703e6fe1c59e28737d1cb4e",
+      "answerObfuscated": "Kw==",
+      "explanation": "401 means authentication is missing or invalid; 403 means the identity is known but lacks authorization.",
+      "rubric": [
+        {
+          "id": "dev-api-02-r1",
+          "label": "Distinguishes 401 authentication vs 403 authorization",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-api-02-r2",
+          "label": "Applies REST status semantics",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-api-03",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Web / Backend & APIs",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Why is cursor-based pagination preferred over `OFFSET/LIMIT` for rapidly changing, large API feeds?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cursors require no database index"
+        },
+        {
+          "id": "b",
+          "text": "Offset pagination skips or duplicates rows when new items are inserted and degrades linearly at high offsets"
+        },
+        {
+          "id": "c",
+          "text": "OFFSET is unsupported in SQL"
+        },
+        {
+          "id": "d",
+          "text": "Cursors automatically cache responses in localStorage"
+        }
+      ],
+      "answerHash": "4d171d331518e71158390b19f3759a1d52df9114cd457cea46a04f484983927c",
+      "answerObfuscated": "Kw==",
+      "explanation": "Keyset/cursor pagination uses indexed range scans for constant speed and stable page boundaries during concurrent writes.",
+      "rubric": [
+        {
+          "id": "dev-api-03-r1",
+          "label": "Explains offset drift and scan cost",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-api-03-r2",
+          "label": "Applies keyset pagination benefits",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-api-04",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Web / Backend & APIs",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the purpose of an `ETag` response header paired with `If-None-Match` on subsequent GET requests?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypting cookies in transit"
+        },
+        {
+          "id": "b",
+          "text": "Conditional caching so unchanged resources return 304 Not Modified without resending the body"
+        },
+        {
+          "id": "c",
+          "text": "Rate-limiting abusive IPs"
+        },
+        {
+          "id": "d",
+          "text": "Enabling CORS preflight"
+        }
+      ],
+      "answerHash": "ecc236ff5887398da7c724e36b7d786180706f95c8f29243d96e1732664a73e4",
+      "answerObfuscated": "Kw==",
+      "explanation": "ETags let clients validate cached representations and save bandwidth via 304 responses.",
+      "rubric": [
+        {
+          "id": "dev-api-04-r1",
+          "label": "Understands HTTP conditional requests",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-api-04-r2",
+          "label": "Optimizes bandwidth with 304 Not Modified",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-api-05",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Web / Backend & APIs",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Why should sensitive session tokens be stored in `HttpOnly; Secure; SameSite=Lax` cookies rather than `localStorage` when a backend is present?",
+      "options": [
+        {
+          "id": "a",
+          "text": "localStorage is limited to 1 KB"
+        },
+        {
+          "id": "b",
+          "text": "HttpOnly cookies cannot be read by JavaScript, mitigating token theft if an XSS bug occurs"
+        },
+        {
+          "id": "c",
+          "text": "Cookies never expire"
+        },
+        {
+          "id": "d",
+          "text": "localStorage cannot store strings"
+        }
+      ],
+      "answerHash": "7878ee51e9e3501af36105428aa739dcd479d5486dc0171c23b56302a28f2078",
+      "answerObfuscated": "Kw==",
+      "explanation": "HttpOnly blocks `document.cookie` access from JS, while Secure and SameSite mitigate eavesdropping and CSRF.",
+      "rubric": [
+        {
+          "id": "dev-api-05-r1",
+          "label": "Protects tokens against XSS exfiltration",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-api-05-r2",
+          "label": "Configures Secure and SameSite flags",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-api-06",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Web / Backend & APIs",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "When a browser sends a cross-origin `PUT` request with `Content-Type: application/json`, what happens first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The browser sends an OPTIONS CORS preflight request to verify allowed origin, method, and headers"
+        },
+        {
+          "id": "b",
+          "text": "The server automatically upgrades to WebSockets"
+        },
+        {
+          "id": "c",
+          "text": "The browser strips the JSON body"
+        },
+        {
+          "id": "d",
+          "text": "Nothing; PUT is a CORS simple request"
+        }
+      ],
+      "answerHash": "fb3ce1275f712d1a37bcec5d985e709a93d62e165d56501826f9266ae7bdf4dd",
+      "answerObfuscated": "KA==",
+      "explanation": "Non-simple methods/headers trigger an OPTIONS preflight check enforced by the browser.",
+      "rubric": [
+        {
+          "id": "dev-api-06-r1",
+          "label": "Understands CORS preflight triggers",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-api-06-r2",
+          "label": "Distinguishes simple vs preflighted requests",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-mvc-01",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "MVC & Code Review",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "In strict MVC architecture, where should business validation rules and domain state transitions live?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Inside CSS stylesheets"
+        },
+        {
+          "id": "b",
+          "text": "Inside Models / Domain Services, not inside View rendering code"
+        },
+        {
+          "id": "c",
+          "text": "Inside inline HTML onclick attributes"
+        },
+        {
+          "id": "d",
+          "text": "Inside browser console logs"
+        }
+      ],
+      "answerHash": "860fa025eb8ecbdd6a29a7912a7b773143c63fe4c1a9c547b63337ab11ef35c7",
+      "answerObfuscated": "Kw==",
+      "explanation": "Keeping domain logic in Models/Services keeps Views declarative, testable, and decoupled from storage or routing.",
+      "rubric": [
+        {
+          "id": "dev-mvc-01-r1",
+          "label": "Enforces MVC separation of concerns",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-mvc-01-r2",
+          "label": "Keeps Views free of business logic",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-mvc-02",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "MVC & Code Review",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Why is parameterizing SQL queries (prepared statements) mandatory in code review?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It makes SQL keywords uppercase"
+        },
+        {
+          "id": "b",
+          "text": "It separates SQL syntax from untrusted user data, preventing SQL injection"
+        },
+        {
+          "id": "c",
+          "text": "It removes the need for database indexes"
+        },
+        {
+          "id": "d",
+          "text": "It compresses network packets"
+        }
+      ],
+      "answerHash": "4b3579284a3cb1d5f88374eff976bb66ac55b8cc3c1fcac074a7dd2cc0fb0f01",
+      "answerObfuscated": "Kw==",
+      "explanation": "Bind parameters ensure user input is never parsed as executable SQL tokens.",
+      "rubric": [
+        {
+          "id": "dev-mvc-02-r1",
+          "label": "Prevents SQL injection vulnerabilities",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-mvc-02-r2",
+          "label": "Enforces bind-parameter hygiene in review",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-mvc-03",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "MVC & Code Review",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A PR catches an exception in a `try/catch` block and does nothing (`catch (e) {}`). Why should a reviewer flag this?",
+      "options": [
+        {
+          "id": "a",
+          "text": "JavaScript does not allow empty catch blocks"
+        },
+        {
+          "id": "b",
+          "text": "Swallowing errors hides failures, makes debugging impossible, and can leave application state corrupted"
+        },
+        {
+          "id": "c",
+          "text": "Empty catch blocks double memory usage"
+        },
+        {
+          "id": "d",
+          "text": "It breaks JSON.stringify"
+        }
+      ],
+      "answerHash": "f76d9540925923c339b15bb304a5c0dc26d533baf699db6a3fea809570319b13",
+      "answerObfuscated": "Kw==",
+      "explanation": "Exceptions should be handled intentionally, surfaced to callers/users, or logged with context.",
+      "rubric": [
+        {
+          "id": "dev-mvc-03-r1",
+          "label": "Flags silent error swallowing",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-mvc-03-r2",
+          "label": "Preserves observability and state integrity",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-mvc-04",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "MVC & Code Review",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL high-value checks a developer should perform during a pull request review.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verify boundary conditions and error handling paths"
+        },
+        {
+          "id": "b",
+          "text": "Confirm security hygiene (input validation, output encoding, no secrets)"
+        },
+        {
+          "id": "c",
+          "text": "Check that tests validate behavior rather than implementation trivia"
+        },
+        {
+          "id": "d",
+          "text": "Enforce personal formatting preferences manually instead of using a linter"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "3d6b660ed7642ef184e0068b1264be83a295678c88b667b65721f3abd20fa97f",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "Effective code review focuses on correctness, security, maintainability, and meaningful tests while automating formatting.",
+      "rubric": [
+        {
+          "id": "dev-mvc-04-r1",
+          "label": "Prioritizes correctness and security in review",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-mvc-04-r2",
+          "label": "Delegates style to automated linters",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-mvc-05",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "MVC & Code Review",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the main benefit of dependency injection (e.g., passing a StorageService or RNG into an Engine)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It makes bundle sizes larger"
+        },
+        {
+          "id": "b",
+          "text": "It enables deterministic unit testing with fakes/stubs without hitting real browser APIs or randomness"
+        },
+        {
+          "id": "c",
+          "text": "It eliminates TypeScript types"
+        },
+        {
+          "id": "d",
+          "text": "It forces global singletons"
+        }
+      ],
+      "answerHash": "06ceb234d79bbcc6a65784720ea51825705dc03b180e940022d1eb1411ccd72b",
+      "answerObfuscated": "Kw==",
+      "explanation": "Injected collaborators make unit tests fast, isolated, and deterministic.",
+      "rubric": [
+        {
+          "id": "dev-mvc-05-r1",
+          "label": "Applies dependency inversion for testability",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-mvc-05-r2",
+          "label": "Avoids brittle global coupling",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-mvc-06",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "MVC & Code Review",
+      "difficulty": "medium",
+      "type": "scenario",
+      "prompt": "A controller directly queries `localStorage`, builds raw HTML strings with user input, and computes tax math in one 200-line function. Explain how you would refactor it into strict MVC.",
+      "minWords": 20,
+      "keyPoints": [
+        "model",
+        "view",
+        "service",
+        "sanitize"
+      ],
+      "explanation": "Extract tax calculations into a Model, persistence into a StorageService, safe DOM rendering into a View, and keep the Controller focused on orchestration.",
+      "rubric": [
+        {
+          "id": "dev-mvc-06-r1",
+          "label": "Separates Model, View, Controller, and Service",
+          "weight": 0.5
+        },
+        {
+          "id": "dev-mvc-06-r2",
+          "label": "Addresses XSS/raw HTML risk",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "dev-sql-01",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Data & SQL",
+      "difficulty": "easy",
+      "type": "sql",
+      "prompt": "Query the orders_ops dataset to return each customer full_name and their total PAID spend (aliased as total_paid), ordered by total_paid descending.",
+      "hint": "JOIN customers and orders, filter WHERE o.status = 'PAID', GROUP BY c.customer_id, c.full_name.",
+      "datasetId": "orders_ops",
+      "starterCode": "SELECT c.full_name, SUM(o.total_amount) AS total_paid\nFROM customers c\nJOIN orders o ON \nWHERE \nGROUP BY \nORDER BY total_paid DESC;",
+      "referenceSqlObfuscated": "Gh1hFhcVdCptSz4pNXI4UCQ9AXMHFBlhLAM/Ki1MOm4oNUImOjV9aQJ+azE2WTddFihMOjBhEhsMYGsmLF4iXiQ9XyB0InQADWMOF3lnGXgHeEIhMCQmOmNCawoXDTUfKi1eJzssMTscRC9lZA05HyotXic7LDE7HEQvZQ5lE2MMeEJ9JzU1PTZea3h5CgZwABwKcxMTGxwTDQkceU54UjwrWTw5JCYWKklnZToDMEQlNHI9NSwxaQx/DwALDRRoaSxCJzUtCzkiRC9lHWgFcnI=",
+      "expectedResult": {
+        "columns": [
+          "full_name",
+          "total_paid"
+        ],
+        "rows": [
+          [
+            "Amina Yusof",
+            3000
+          ],
+          [
+            "Priya Nair",
+            2400
+          ],
+          [
+            "Wei Jie Lim",
+            650
+          ],
+          [
+            "Marcus Chen",
+            300
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Joins customers with PAID orders, aggregates SUM(total_amount) per customer, and sorts highest first.",
+      "rubric": [
+        {
+          "id": "dev-sql-01-r1",
+          "label": "Joins customers and orders accurately",
+          "weight": 0.3333
+        },
+        {
+          "id": "dev-sql-01-r2",
+          "label": "Filters PAID status before summing",
+          "weight": 0.3333
+        },
+        {
+          "id": "dev-sql-01-r3",
+          "label": "Sorts total_paid descending",
+          "weight": 0.3334
+        }
+      ]
+    },
+    {
+      "id": "dev-sql-02",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Data & SQL",
+      "difficulty": "medium",
+      "type": "sql",
+      "prompt": "Find all customers in orders_ops who have placed ZERO orders. Return their customer_id and full_name ordered by customer_id.",
+      "hint": "Use LEFT JOIN orders o ON c.customer_id = o.customer_id WHERE o.order_id IS NULL.",
+      "datasetId": "orders_ops",
+      "starterCode": "SELECT c.customer_id, c.full_name\nFROM customers c\nLEFT JOIN orders o ON \nWHERE \nORDER BY c.customer_id;",
+      "referenceSqlObfuscated": "Gh1hFhcVdCptTj42LUI7VDsHRDd4YTdnJVgnKQZDN1wseGsBGwx0KjZePyo0SCRCaTsNHxEHAGkJYgILeUIkVSwqXnM7YRsHY05lJixeIl4kPV8MPSV0dGNCZSYsXiJeJD1fDD0ldB4LaBkAeUJ4Xjs8SCELKDBpCn5rCwxhGhEGCmkWBmEWEGNOZSYsXiJeJD1fDD0ldAgQbnA=",
+      "expectedResult": {
+        "columns": [
+          "customer_id",
+          "full_name"
+        ],
+        "rows": [
+          [
+            5,
+            "Hana Sofea"
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "An anti-join using LEFT JOIN + IS NULL cleanly identifies customers with no matching order rows.",
+      "rubric": [
+        {
+          "id": "dev-sql-02-r1",
+          "label": "Uses LEFT JOIN anti-join pattern",
+          "weight": 0.5
+        },
+        {
+          "id": "dev-sql-02-r2",
+          "label": "Tests o.order_id IS NULL",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "dev-sql-03",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Data & SQL",
+      "difficulty": "medium",
+      "type": "sql",
+      "prompt": "List each customer region and count of PAID orders (aliased as paid_orders) where paid_orders >= 2, ordered by region ascending.",
+      "hint": "JOIN customers & orders, WHERE status = 'PAID', GROUP BY c.region HAVING COUNT(*) >= 2.",
+      "datasetId": "orders_ops",
+      "starterCode": "SELECT c.region, COUNT(*) AS paid_orders\nFROM customers c\nJOIN orders o ON c.customer_id = o.customer_id\nWHERE \nGROUP BY \nHAVING \nORDER BY c.region ASC;",
+      "referenceSqlObfuscated": "Gh1hFhcVdCptXy4iMEI4HWkbYgYaFXxjag0KFnldN1gtB0IhMCQmOmNrGQoUDTVEOixCPjEzJ2kgDQILF2gEEQMXZB10LiYtJl84ZTYNGX9pOwMwITIgJi5IORowSXYMaTcDMCEyICYuSDkaMEl2ZgEdfxZ0Lno6N0w/MCoNaxFuCGwaEGZ0DhFiHhV5bw8RKnZfNjMoOydjZQoTEGMREQoXeB0AaX5gYxN2ZWsNGWMNHX9zFhh0Km1fLiIwQjgRCAtuaA==",
+      "expectedResult": {
+        "columns": [
+          "region",
+          "paid_orders"
+        ],
+        "rows": [
+          [
+            "MY",
+            3
+          ],
+          [
+            "SG",
+            2
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Combines WHERE filtering for PAID orders with GROUP BY region and HAVING COUNT(*) >= 2.",
+      "rubric": [
+        {
+          "id": "dev-sql-03-r1",
+          "label": "Filters PAID rows prior to grouping",
+          "weight": 0.5
+        },
+        {
+          "id": "dev-sql-03-r2",
+          "label": "Uses HAVING for post-aggregation threshold",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "dev-sql-04",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Data & SQL",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "What is the N+1 query problem in backend web applications?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Running 1 query to fetch N parent records followed by N separate queries to fetch child records"
+        },
+        {
+          "id": "b",
+          "text": "Having more than N columns in a table"
+        },
+        {
+          "id": "c",
+          "text": "Creating N indexes on a single primary key"
+        },
+        {
+          "id": "d",
+          "text": "Using LIMIT N+1 for pagination"
+        }
+      ],
+      "answerHash": "625273a073001875f2b0288f7de8dd860663163350cb43b6b009523cb9b66cff",
+      "answerObfuscated": "KA==",
+      "explanation": "N+1 queries multiply database round-trips; resolve them with JOINs, IN-clause batching, or eager loading.",
+      "rubric": [
+        {
+          "id": "dev-sql-04-r1",
+          "label": "Recognizes N+1 round-trip bottleneck",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-sql-04-r2",
+          "label": "Knows JOIN/batching mitigation",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-sql-05",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Data & SQL",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Which ACID property guarantees that a fund transfer either debits AND credits both accounts, or does neither on failure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Atomicity"
+        },
+        {
+          "id": "b",
+          "text": "Isolation"
+        },
+        {
+          "id": "c",
+          "text": "Consistency"
+        },
+        {
+          "id": "d",
+          "text": "Availability"
+        }
+      ],
+      "answerHash": "99c3c64e65a1d154b5b8f411bd8fb95cda38289d86f48cd2573eff7341657a8d",
+      "answerObfuscated": "KA==",
+      "explanation": "Atomicity ensures an all-or-nothing transaction outcome.",
+      "rubric": [
+        {
+          "id": "dev-sql-05-r1",
+          "label": "Maps Atomicity to all-or-nothing semantics",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-sql-05-r2",
+          "label": "Distinguishes ACID properties",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "dev-sql-06",
+      "role": "dev",
+      "levels": [
+        "junior",
+        "mid"
+      ],
+      "topic": "Data & SQL",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "When is a database index likely to HURT overall performance rather than help?",
+      "options": [
+        {
+          "id": "a",
+          "text": "On a foreign key used in frequent JOINs"
+        },
+        {
+          "id": "b",
+          "text": "When adding many redundant indexes on a write-heavy table with rare reads on those columns"
+        },
+        {
+          "id": "c",
+          "text": "On a primary key column"
+        },
+        {
+          "id": "d",
+          "text": "On a high-cardinality lookup column"
+        }
+      ],
+      "answerHash": "743a1c1f4685336ba0a6a12328967d72f9c8a3ac12cd7cfe2922497b453cff5b",
+      "answerObfuscated": "Kw==",
+      "explanation": "Every INSERT/UPDATE/DELETE must maintain all indexes on the table, adding write amplification and storage overhead.",
+      "rubric": [
+        {
+          "id": "dev-sql-06-r1",
+          "label": "Understands index write overhead",
+          "weight": 0.6
+        },
+        {
+          "id": "dev-sql-06-r2",
+          "label": "Balances read speedup against write cost",
+          "weight": 0.4
+        }
+      ]
+    }
+  ]
+}
