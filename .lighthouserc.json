@@ -8,7 +8,10 @@
         "http://127.0.0.1:4173/#/brief/dba/standard",
         "http://127.0.0.1:4173/#/interviewer"
       ],
-      "numberOfRuns": 1
+      "numberOfRuns": 1,
+      "settings": {
+        "chromeFlags": "--no-sandbox --disable-dev-shm-usage"
+      }
     },
     "assert": {
       "assertions": {
