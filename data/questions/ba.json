@@ -1,0 +1,1056 @@
+{
+  "roleId": "ba",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "ba-disc-01",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Discovery & Elicitation",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "A regional sales VP opens a discovery call by demanding \"Build us a mobile CRM app by Q3.\" What is the Business Analyst's highest-leverage first question?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Which iOS SDK version do you prefer?"
+        },
+        {
+          "id": "b",
+          "text": "What underlying business problem or revenue bottleneck are we trying to solve, and how will we measure success?"
+        },
+        {
+          "id": "c",
+          "text": "How many buttons should be on the home screen?"
+        },
+        {
+          "id": "d",
+          "text": "Can we skip user interviews to save time?"
+        }
+      ],
+      "answerHash": "904ac68fb636f82742f24ed5897b56500a20d123b392a21f237e0940aa6246de",
+      "answerObfuscated": "Kw==",
+      "explanation": "Strong BAs move stakeholders from premature solutions back to root business problems and measurable outcomes before scoping features.",
+      "rubric": [
+        {
+          "id": "ba-disc-01-r1",
+          "label": "Reframes solution requests into problem statements",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-disc-01-r2",
+          "label": "Anchors discovery on measurable business outcomes",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-disc-02",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Discovery & Elicitation",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "Which elicitation technique is most effective for uncovering tacit operational steps and manual spreadsheet workarounds that staff forget to mention in interviews?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Emailing a 5-question yes/no survey"
+        },
+        {
+          "id": "b",
+          "text": "Job shadowing / direct observation in the live work environment"
+        },
+        {
+          "id": "c",
+          "text": "Reading a 3-year-old org chart"
+        },
+        {
+          "id": "d",
+          "text": "Reviewing server CPU graphs"
+        }
+      ],
+      "answerHash": "390e9b30ef6f57d2a67ebfa2378732d645f07601e8765d3942bae78535ec69dc",
+      "answerObfuscated": "Kw==",
+      "explanation": "Observation / shadowing exposes real-world workarounds, exception paths, and friction points that verbal interviews frequently miss.",
+      "rubric": [
+        {
+          "id": "ba-disc-02-r1",
+          "label": "Matches elicitation technique to tacit knowledge",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-disc-02-r2",
+          "label": "Captures real operational behavior",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-disc-03",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Discovery & Elicitation",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "During a cross-functional discovery workshop, Finance and Operations define \"Active Customer\" differently (billed in 90 days vs logged in within 30 days). What should the BA do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pick whichever definition is easier to query in SQL"
+        },
+        {
+          "id": "b",
+          "text": "Document both definitions in a shared Business Glossary, quantify the KPI variance, and facilitate executive alignment on a canonical definition"
+        },
+        {
+          "id": "c",
+          "text": "Use Finance's definition in odd months and Operations' in even months"
+        },
+        {
+          "id": "d",
+          "text": "Leave the definition ambiguous in the charter"
+        }
+      ],
+      "answerHash": "e148ee5f515611ce4a6af954a3d7776d931d310b91e2c646953a51ab7cafba09",
+      "answerObfuscated": "Kw==",
+      "explanation": "A shared Business Glossary eliminates conflicting dashboards and misaligned incentives across departments.",
+      "rubric": [
+        {
+          "id": "ba-disc-03-r1",
+          "label": "Establishes canonical domain terminology",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-disc-03-r2",
+          "label": "Quantifies variance to drive alignment",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-disc-04",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Discovery & Elicitation",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL core components of a BABOK-aligned Current-State / Problem Analysis before proposing a solution.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Quantified pain points and baseline metrics"
+        },
+        {
+          "id": "b",
+          "text": "Root-cause analysis (e.g., 5 Whys or Fishbone diagram)"
+        },
+        {
+          "id": "c",
+          "text": "Impacted stakeholder groups and process bottlenecks"
+        },
+        {
+          "id": "d",
+          "text": "Final database indexing DDL script"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "429e739ad62390795e98bae31acde5ac80a1279585c1323091db5565da6db021",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "Discovery establishes quantified baselines, root causes, and stakeholder impacts before technical solution design begins.",
+      "rubric": [
+        {
+          "id": "ba-disc-04-r1",
+          "label": "Applies structured root-cause discovery",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-disc-04-r2",
+          "label": "Separates problem analysis from low-level implementation",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-disc-05",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Discovery & Elicitation",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Why should a Business Analyst interview frontline operational staff in addition to senior sponsors during discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Senior sponsors do not know the company name"
+        },
+        {
+          "id": "b",
+          "text": "Sponsors clarify strategic goals and budget, while frontline users reveal edge cases, compliance friction, and adoption barriers"
+        },
+        {
+          "id": "c",
+          "text": "Frontline staff approve capital budgets"
+        },
+        {
+          "id": "d",
+          "text": "To increase meeting count"
+        }
+      ],
+      "answerHash": "4d209896cb71a069afc30fb46b1a085ac4a8dbe190ad5b7603dbbf8355a07bed",
+      "answerObfuscated": "Kw==",
+      "explanation": "Combining executive intent with frontline operational reality prevents building solutions that fail adoption after launch.",
+      "rubric": [
+        {
+          "id": "ba-disc-05-r1",
+          "label": "Balances strategic intent with operational reality",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-disc-05-r2",
+          "label": "Identifies adoption risks early",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-disc-06",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Discovery & Elicitation",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "Customer support ticket volume rose 35% after a billing portal redesign, yet leadership assumes customers just need a FAQ PDF. Outline a concise 4-step discovery plan to validate the true root cause.",
+      "minWords": 25,
+      "keyPoints": [
+        "ticket",
+        "funnel",
+        "interview",
+        "hypothesis"
+      ],
+      "explanation": "Segment support tickets by reason code, analyze portal drop-off funnel analytics, run 5–8 contextual customer/agent interviews, and test root-cause hypotheses before prescribing a solution.",
+      "rubric": [
+        {
+          "id": "ba-disc-06-r1",
+          "label": "Combines quantitative ticket/funnel data with qualitative interviews",
+          "weight": 0.5
+        },
+        {
+          "id": "ba-disc-06-r2",
+          "label": "Validates hypotheses before jumping to solutions",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "ba-roi-01",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Business Case & ROI",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "An automation initiative costs $120,000 upfront and saves $15,000 per month in operating expenses starting immediately after launch. What is the simple Payback Period?",
+      "options": [
+        {
+          "id": "a",
+          "text": "6 months"
+        },
+        {
+          "id": "b",
+          "text": "8 months"
+        },
+        {
+          "id": "c",
+          "text": "12 months"
+        },
+        {
+          "id": "d",
+          "text": "15 months"
+        }
+      ],
+      "answerHash": "f8b664a561adaddef08ffb36c5a5af86788923813c0a080800e1e46097b181c2",
+      "answerObfuscated": "Kw==",
+      "explanation": "Payback Period = Initial Investment / Monthly Net Savings = $120,000 / $15,000 = 8 months.",
+      "rubric": [
+        {
+          "id": "ba-roi-01-r1",
+          "label": "Computes simple payback period accurately",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-roi-01-r2",
+          "label": "Quantifies capital recovery timeline",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-roi-02",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Business Case & ROI",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "Why is Net Present Value (NPV) preferred over simple undiscounted ROI when evaluating a 4-year enterprise transformation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "NPV ignores implementation costs"
+        },
+        {
+          "id": "b",
+          "text": "NPV accounts for the time value of money by discounting future cash flows back to today's value using the cost of capital"
+        },
+        {
+          "id": "c",
+          "text": "NPV always produces a higher number"
+        },
+        {
+          "id": "d",
+          "text": "Simple ROI cannot be expressed as a percentage"
+        }
+      ],
+      "answerHash": "fbca2c7506aa685276bdcaa462531893119ce8bc7f97b9a2443fb85d7e0c2575",
+      "answerObfuscated": "Kw==",
+      "explanation": "Discounting multi-year cash flows reflects capital cost and risk; a positive NPV indicates value creation above the hurdle rate.",
+      "rubric": [
+        {
+          "id": "ba-roi-02-r1",
+          "label": "Applies time value of money via NPV",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-roi-02-r2",
+          "label": "Distinguishes multi-year discounting from static ROI",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-roi-03",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Business Case & ROI",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "When comparing Build vs. Buy options in a Business Case, which cost category is MOST frequently underestimated in Total Cost of Ownership (TCO)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Initial domain name registration"
+        },
+        {
+          "id": "b",
+          "text": "Ongoing maintenance, security patching, integration upkeep, and internal engineering opportunity cost over 3–5 years"
+        },
+        {
+          "id": "c",
+          "text": "One-time kickoff meeting snacks"
+        },
+        {
+          "id": "d",
+          "text": "Printing the project charter"
+        }
+      ],
+      "answerHash": "5b78797b599547b6ec9cc992de5014616c917e9e34e361a3c05110b5217e67b8",
+      "answerObfuscated": "Kw==",
+      "explanation": "Custom software carries compounding 3–5 year maintenance and opportunity costs that must be weighed honestly against SaaS licensing.",
+      "rubric": [
+        {
+          "id": "ba-roi-03-r1",
+          "label": "Evaluates full multi-year TCO",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-roi-03-r2",
+          "label": "Accounts for engineering opportunity cost",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-roi-04",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Business Case & ROI",
+      "difficulty": "medium",
+      "type": "multi",
+      "prompt": "Select ALL essential sections of an executive-ready Business Case.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Strategic alignment and problem statement"
+        },
+        {
+          "id": "b",
+          "text": "Options analysis (including \"Do Nothing\" baseline)"
+        },
+        {
+          "id": "c",
+          "text": "Financial appraisal (costs, quantified benefits, payback/NPV, sensitivity assumptions)"
+        },
+        {
+          "id": "d",
+          "text": "Line-by-line CSS styling rules"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "b20aa9f42cdf4e7f223a79888858ecd7c7871dcc2eeffa5f7cdbaaab58c612a9",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "Decision-ready business cases compare realistic options against Do Nothing using transparent financial assumptions and sensitivity ranges.",
+      "rubric": [
+        {
+          "id": "ba-roi-04-r1",
+          "label": "Includes Do-Nothing baseline and options analysis",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-roi-04-r2",
+          "label": "Grounds benefits in transparent financial assumptions",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-roi-05",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Business Case & ROI",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "A vendor claims their tool saves \"10 hours per week across 50 analysts\" ($50/hr = $130k/yr), yet no headcount is reduced and backlog revenue stays flat. How should a Senior BA classify this benefit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hard cash-flow cost reduction immediately bookable to P&L"
+        },
+        {
+          "id": "b",
+          "text": "Soft productivity / capacity-reallocation benefit unless tied to concrete avoided hiring or incremental revenue"
+        },
+        {
+          "id": "c",
+          "text": "Sunk cost"
+        },
+        {
+          "id": "d",
+          "text": "Capital expenditure"
+        }
+      ],
+      "answerHash": "5c5333ac0f58443ab3cf0acee73c577da5f40fb3917909b1d81d57377f72d579",
+      "answerObfuscated": "Kw==",
+      "explanation": "Distinguishing hard P&L savings from soft capacity gains protects BA credibility with Finance and the CFO.",
+      "rubric": [
+        {
+          "id": "ba-roi-05-r1",
+          "label": "Separates hard P&L savings from soft capacity gains",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-roi-05-r2",
+          "label": "Applies CFO-grade benefit rigor",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-roi-06",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Business Case & ROI",
+      "difficulty": "hard",
+      "type": "scenario",
+      "prompt": "A VP proposes spending $250k on an AI chatbot to cut call-center volume by 20%. List the 4 key financial and risk assumptions you must stress-test in a sensitivity analysis before recommending approval.",
+      "minWords": 25,
+      "keyPoints": [
+        "deflection",
+        "cost",
+        "adoption",
+        "maintenance"
+      ],
+      "explanation": "Stress-test true containment/deflection rate, cost per deflected call, customer adoption/escalation rate, and ongoing LLM/training/maintenance costs under conservative, base, and optimistic scenarios.",
+      "rubric": [
+        {
+          "id": "ba-roi-06-r1",
+          "label": "Identifies high-leverage sensitivity variables",
+          "weight": 0.5
+        },
+        {
+          "id": "ba-roi-06-r2",
+          "label": "Applies conservative/base/upside scenario modelling",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "ba-kpi-01",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "KPI & Data Analysis",
+      "difficulty": "easy",
+      "type": "sql",
+      "prompt": "Using the orders_ops dataset, calculate the Average Order Value (rounded to 2 decimals as avg_order_value) for PAID orders per customer region, ordered by avg_order_value descending.",
+      "hint": "JOIN customers c and orders o, filter WHERE o.status = 'PAID', GROUP BY c.region, and compute ROUND(AVG(o.total_amount), 2) AS avg_order_value.",
+      "datasetId": "orders_ops",
+      "starterCode": "SELECT c.region, ROUND(AVG(o.total_amount), 2) AS avg_order_value\nFROM customers c\nJOIN orders o ON c.customer_id = o.customer_id\nWHERE \nGROUP BY \nORDER BY avg_order_value DESC;",
+      "referenceSqlObfuscated": "Gh1hFhcVdCptXy4iMEI4HWkKYgYaBXwIFWpjKndZOUUoNHIyOS4hJzcEZ2VrBHZwGnhMJTMeOzsnSDkaL0w6RCx4awEbDHQqNl4/KjRIJEJpOw0aGg8RG2NnBAwXDTlDLT1fIHQudAYNDShrOlglRSY1SCELKDBpfg0kazpYJUUmNUghCygwaRRlDhccDTkfOixMJyEydHRjChsEEGlxEQ4KYgYEYRYQY05lNzxKP14neGIBEAQGaQF0ayQvSgleOzxIIQs3NSU2SGsBHH4VCg==",
+      "expectedResult": {
+        "columns": [
+          "region",
+          "avg_order_value"
+        ],
+        "rows": [
+          [
+            "MY",
+            1800
+          ],
+          [
+            "SG",
+            475
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Computes regional Average Order Value (AOV) strictly over PAID orders so cancelled/refunded orders do not distort revenue KPIs.",
+      "rubric": [
+        {
+          "id": "ba-kpi-01-r1",
+          "label": "Filters PAID orders before averaging",
+          "weight": 0.3333
+        },
+        {
+          "id": "ba-kpi-01-r2",
+          "label": "Groups by region accurately",
+          "weight": 0.3333
+        },
+        {
+          "id": "ba-kpi-01-r3",
+          "label": "Orders AOV descending",
+          "weight": 0.3334
+        }
+      ]
+    },
+    {
+      "id": "ba-kpi-02",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "KPI & Data Analysis",
+      "difficulty": "easy",
+      "type": "sql",
+      "prompt": "Segment the customer base in orders_ops by tier, returning tier and customer_count ordered by customer_count descending, then tier ascending.",
+      "hint": "SELECT tier, COUNT(*) AS customer_count FROM customers GROUP BY tier ORDER BY customer_count DESC, tier ASC;",
+      "datasetId": "orders_ops",
+      "starterCode": "SELECT tier, COUNT(*) AS customer_count\nFROM customers\nGROUP BY \nORDER BY ;",
+      "referenceSqlObfuscated": "Gh1hFhcVdD0qSDlpeW4ZZAcMBXl9YRUaY04+Ni1CO1Q7B048IS8gaQV/BAh5TiNCPTdANiYydA4RYh4VeW8PET0xSCF0DgYNBn9rBwANNUQ6LEI+MTMLKixYJTF5aRNiCnQNJz0kJmkCfgh+",
+      "expectedResult": {
+        "columns": [
+          "tier",
+          "customer_count"
+        ],
+        "rows": [
+          [
+            "Enterprise",
+            2
+          ],
+          [
+            "Growth",
+            2
+          ],
+          [
+            "Starter",
+            1
+          ]
+        ],
+        "orderMatters": true
+      },
+      "explanation": "Provides an exact customer tier mix breakdown with deterministic tie-breaking by tier name.",
+      "rubric": [
+        {
+          "id": "ba-kpi-02-r1",
+          "label": "Groups customers by tier",
+          "weight": 0.5
+        },
+        {
+          "id": "ba-kpi-02-r2",
+          "label": "Applies deterministic secondary sort",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "ba-kpi-03",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "KPI & Data Analysis",
+      "difficulty": "medium",
+      "type": "sql",
+      "prompt": "Quantify total non-PAID (at-risk or lost) order value in orders_ops as a single column named at_risk_revenue.",
+      "hint": "SELECT SUM(total_amount) AS at_risk_revenue FROM orders WHERE status != 'PAID';",
+      "datasetId": "orders_ops",
+      "starterCode": "SELECT SUM(total_amount) AS at_risk_revenue\nFROM orders\nWHERE ;",
+      "referenceSqlObfuscated": "Gh1hFhcVdBoWYGMxNlk3XRY5QDwhLyBgY2wYZThZCUMgK0YMJiQiLC1YLmUffxl8aTdfNzEzJ2kUZQ4XHA0lRSgsWCB0YGlpZH0KDB0KbQ==",
+      "expectedResult": {
+        "columns": [
+          "at_risk_revenue"
+        ],
+        "rows": [
+          [
+            2900
+          ]
+        ],
+        "orderMatters": false
+      },
+      "explanation": "Sums CANCELLED ($900), PENDING ($1,500), and REFUNDED ($500) orders to highlight $2,900 in non-realized revenue.",
+      "rubric": [
+        {
+          "id": "ba-kpi-03-r1",
+          "label": "Filters non-PAID order statuses accurately",
+          "weight": 0.5
+        },
+        {
+          "id": "ba-kpi-03-r2",
+          "label": "Computes exact revenue-at-risk total",
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": "ba-kpi-04",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "KPI & Data Analysis",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "A support team is incentivized solely on minimizing Average Handle Time (AHT). Agents begin hanging up early or splitting single issues into 3 tickets. What phenomenon does this illustrate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Goodhart's Law — when a measure becomes a target without guardrail metrics, it ceases to be a good measure"
+        },
+        {
+          "id": "b",
+          "text": "Pareto Optimality"
+        },
+        {
+          "id": "c",
+          "text": "Moore's Law"
+        },
+        {
+          "id": "d",
+          "text": "Statistical significance"
+        }
+      ],
+      "answerHash": "970f6788f9337e9127bfe74a8cd86bbd89918fb92bceeb471a85828fdfaab670",
+      "answerObfuscated": "KA==",
+      "explanation": "Always pair efficiency KPIs (AHT) with quality guardrails (First-Contact Resolution, CSAT, reopen rate) to prevent gaming.",
+      "rubric": [
+        {
+          "id": "ba-kpi-04-r1",
+          "label": "Recognizes Goodhart's Law metric gaming",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-kpi-04-r2",
+          "label": "Pairs primary KPIs with guardrail metrics",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-kpi-05",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "KPI & Data Analysis",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the difference between a Leading Indicator and a Lagging Indicator in business performance tracking?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lagging indicators measure past outcomes (e.g., quarterly churn); leading indicators predict future outcomes early enough to act (e.g., weekly feature adoption)"
+        },
+        {
+          "id": "b",
+          "text": "Leading indicators are always financial revenue totals"
+        },
+        {
+          "id": "c",
+          "text": "Lagging indicators cannot be charted"
+        },
+        {
+          "id": "d",
+          "text": "They are interchangeable"
+        }
+      ],
+      "answerHash": "bad6ffb8f03bd9e28714e0a6531d1921a4ad1aec3399fa4a9666a17952f8eb8b",
+      "answerObfuscated": "KA==",
+      "explanation": "Combining leading behavioral indicators with lagging financial outcomes allows teams to intervene before quarterly targets slip.",
+      "rubric": [
+        {
+          "id": "ba-kpi-05-r1",
+          "label": "Distinguishes leading vs lagging KPIs",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-kpi-05-r2",
+          "label": "Connects leading signals to proactive action",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-kpi-06",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "KPI & Data Analysis",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "An A/B test on checkout pricing shows +4% conversion after only 12 hours and 80 visitors. Why should the BA advise against shipping immediately?",
+      "options": [
+        {
+          "id": "a",
+          "text": "12 hours is too long for an experiment"
+        },
+        {
+          "id": "b",
+          "text": "Stopping early (\"peeking\") on an underpowered sample inflates false-positive rates and misses day-of-week seasonality"
+        },
+        {
+          "id": "c",
+          "text": "Conversion rate should never increase"
+        },
+        {
+          "id": "d",
+          "text": "A/B tests only work on mobile apps"
+        }
+      ],
+      "answerHash": "545608d848353f179757144180b4cbe2685cfa6269893ce70c0f0b599f622286",
+      "answerObfuscated": "Kw==",
+      "explanation": "Pre-committing to sample size, statistical power, and at least one full weekly cycle prevents shipping noisy false positives.",
+      "rubric": [
+        {
+          "id": "ba-kpi-06-r1",
+          "label": "Prevents peeking and underpowered conclusions",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-kpi-06-r2",
+          "label": "Accounts for weekly traffic seasonality",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-val-01",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backlog & Value Delivery",
+      "difficulty": "easy",
+      "type": "mcq",
+      "prompt": "In WSJF (Weighted Shortest Job First) prioritization, how is a backlog item's priority score calculated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cost of Delay divided by Job Size (Duration)"
+        },
+        {
+          "id": "b",
+          "text": "Job Size multiplied by Team Headcount"
+        },
+        {
+          "id": "c",
+          "text": "Lines of Code divided by Sprint Number"
+        },
+        {
+          "id": "d",
+          "text": "Budget minus Actual Cost"
+        }
+      ],
+      "answerHash": "fd8859f32538e0fa423438b40a79102f041f2b9294969cc03810cbc3fa06af6d",
+      "answerObfuscated": "KA==",
+      "explanation": "WSJF = Cost of Delay / Job Size, maximizing economic value delivered per unit of scarce engineering capacity.",
+      "rubric": [
+        {
+          "id": "ba-val-01-r1",
+          "label": "Applies WSJF formula accurately",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-val-01-r2",
+          "label": "Optimizes economic value per unit effort",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-val-02",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backlog & Value Delivery",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "In the Kano Model, how does a \"Basic / Must-Be\" attribute (such as accurate billing totals) behave regarding customer satisfaction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Delivering it delights users exponentially"
+        },
+        {
+          "id": "b",
+          "text": "Its absence causes severe dissatisfaction, while delivering it merely prevents complaints rather than creating delight"
+        },
+        {
+          "id": "c",
+          "text": "Customers ignore it completely"
+        },
+        {
+          "id": "d",
+          "text": "It should always be deferred to Phase 3"
+        }
+      ],
+      "answerHash": "bb588f40d12b8c4afd82125a16d442e4d265c16947aa97b09d26681e127b9854",
+      "answerObfuscated": "Kw==",
+      "explanation": "Must-Be hygiene expectations must be met reliably before investing heavily in Performance or Delighter features.",
+      "rubric": [
+        {
+          "id": "ba-val-02-r1",
+          "label": "Applies Kano Model categories accurately",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-val-02-r2",
+          "label": "Protects hygiene/must-be expectations",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-val-03",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backlog & Value Delivery",
+      "difficulty": "medium",
+      "type": "mcq",
+      "prompt": "What is the primary advantage of \"vertical slicing\" a user story over \"horizontal slicing\" (e.g., DB layer Sprint 1, API Sprint 2, UI Sprint 3)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Horizontal slicing ships user value faster"
+        },
+        {
+          "id": "b",
+          "text": "Vertical slices deliver a thin, testable end-to-end increment of user value quickly, enabling early feedback and de-risking integration"
+        },
+        {
+          "id": "c",
+          "text": "Vertical slicing eliminates backend work"
+        },
+        {
+          "id": "d",
+          "text": "Horizontal slicing requires no QA"
+        }
+      ],
+      "answerHash": "fc9152e99bd7f584381c6918d06020d163560252fe856dda54d804805c0a028f",
+      "answerObfuscated": "Kw==",
+      "explanation": "Thin vertical slices validate assumptions with real users early and avoid late big-bang integration surprises.",
+      "rubric": [
+        {
+          "id": "ba-val-03-r1",
+          "label": "Slices stories vertically for early feedback",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-val-03-r2",
+          "label": "Reduces late integration risk",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-val-04",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backlog & Value Delivery",
+      "difficulty": "easy",
+      "type": "multi",
+      "prompt": "Select ALL elements of the RICE prioritization framework.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reach (how many users/transactions impacted in a period)"
+        },
+        {
+          "id": "b",
+          "text": "Impact (magnitude of goal movement per user)"
+        },
+        {
+          "id": "c",
+          "text": "Confidence & Effort (certainty % divided by person-months)"
+        },
+        {
+          "id": "d",
+          "text": "Random alphabetical sorting"
+        }
+      ],
+      "minSelections": 3,
+      "answerHash": "9e62314416d2fcec7c515b84ebd5da4d065e98d42e90b4967437bf960b620c30",
+      "answerObfuscated": "KHRPfzc=",
+      "explanation": "RICE = (Reach × Impact × Confidence) / Effort, providing a transparent, comparable backlog ranking.",
+      "rubric": [
+        {
+          "id": "ba-val-04-r1",
+          "label": "Applies RICE scoring dimensions",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-val-04-r2",
+          "label": "Balances impact against confidence and effort",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-val-05",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backlog & Value Delivery",
+      "difficulty": "hard",
+      "type": "mcq",
+      "prompt": "Two months after launching a new self-service onboarding flow, how should a Business Analyst conduct Benefits Realization?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Close the project because all Jira tickets are Done"
+        },
+        {
+          "id": "b",
+          "text": "Measure actual post-launch KPIs against the Business Case baseline, diagnose adoption gaps, and recommend follow-up optimizations"
+        },
+        {
+          "id": "c",
+          "text": "Delete the original Business Case"
+        },
+        {
+          "id": "d",
+          "text": "Only count how many commits were merged"
+        }
+      ],
+      "answerHash": "93fb6b9c5aa11a10560203be0671c7701b83fb87485653a6c286adacabe05669",
+      "answerObfuscated": "Kw==",
+      "explanation": "Output (shipped code) is not outcome (realized value); Benefits Realization closes the loop against the original business case.",
+      "rubric": [
+        {
+          "id": "ba-val-05-r1",
+          "label": "Measures post-launch outcomes vs baseline",
+          "weight": 0.6
+        },
+        {
+          "id": "ba-val-05-r2",
+          "label": "Distinguishes output from business value",
+          "weight": 0.4
+        }
+      ]
+    },
+    {
+      "id": "ba-val-06",
+      "role": "ba",
+      "levels": [
+        "standard",
+        "senior"
+      ],
+      "topic": "Backlog & Value Delivery",
+      "difficulty": "medium",
+      "type": "scenario",
+      "prompt": "You have 1 sprint of capacity and three competing requests: (A) a regulatory compliance fix due in 14 days, (B) a high-reach checkout friction fix worth $40k/mo, and (C) an executive's cosmetic dashboard theme. Explain your prioritization and stakeholder communication plan.",
+      "minWords": 25,
+      "keyPoints": [
+        "compliance",
+        "cost of delay",
+        "revenue",
+        "trade-off"
+      ],
+      "explanation": "Prioritize (A) mandatory compliance deadline first, start thin vertical slice of (B) high Cost-of-Delay revenue fix with remaining capacity, and transparently defer (C) with economic rationale.",
+      "rubric": [
+        {
+          "id": "ba-val-06-r1",
+          "label": "Ranks by regulatory risk and Cost of Delay",
+          "weight": 0.5
+        },
+        {
+          "id": "ba-val-06-r2",
+          "label": "Communicates trade-offs transparently to executives",
+          "weight": 0.5
+        }
+      ]
+    }
+  ]
+}

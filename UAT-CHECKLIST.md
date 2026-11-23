@@ -13,6 +13,7 @@ Run by a human tester / SME prior to signing off a production release.
 | **System Analyst (`sa`)** | [ ] Pass | BRD/FRD, UML Sequence/State, Fit-Gap, and UAT RTM items accurate | [ ] |
 | **Quality Assurance (`qa`)** | [ ] Pass | BVA/equivalence, Playwright automation, S1–S4 triage, and flaky-test code task verified by QA SME | [ ] |
 | **Oracle 12c DBA (`dba`)** | [ ] Pass | CDB/PDB `C##`, `SYSBACKUP`, RMAN PITR/BMR, `V$SESSION` locks, and SQL tuning verified by Oracle DBA SME | [ ] |
+| **Business Analyst (`ba`)** | [ ] Pass | BABOK discovery, NPV/payback ROI modelling, live `orders_ops` KPI SQL analytics, and WSJF/Kano/RICE prioritization verified by BA SME | [ ] |
 
 ### Cross-Cutting Functional UAT
 - [ ] Mid-test refresh resumes exact remaining timer and saved answers.

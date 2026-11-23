@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 
-const ROLE_IDS = ['fresh', 'senior', 'pm', 'dev', 'sa', 'qa', 'dba'] as const;
+const ROLE_IDS = ['fresh', 'senior', 'pm', 'dev', 'sa', 'qa', 'dba', 'ba'] as const;
 
 type AxePage = ConstructorParameters<typeof AxeBuilder>[0]['page'];
 
@@ -48,17 +48,17 @@ test.describe('Phase 1 Quality Gate: Accessibility, Keyboard Nav & CSP', () => {
       await expect(page.locator(`#role-card-${ROLE_IDS[i]}`)).toBeFocused();
     }
 
-    // Press Enter on the 7th card (Oracle 12c DBA)
+    // Press Enter on the 8th card (Business Analyst)
     await page.keyboard.press('Enter');
-    await expect(page).toHaveURL(/#\/role\/dba$/);
+    await expect(page).toHaveURL(/#\/role\/ba$/);
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Select assessment level');
 
     // Select standard level via keyboard
     const levelBtn = page.locator('#level-card-standard');
     await levelBtn.focus();
     await page.keyboard.press('Enter');
-    await expect(page).toHaveURL(/#\/brief\/dba\/standard$/);
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Database Admin (Oracle 12c) Brief');
+    await expect(page).toHaveURL(/#\/brief\/ba\/standard$/);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Business Analyst Brief');
 
     // Run axe on Brief page
     const briefAxe = await runAxe(page);

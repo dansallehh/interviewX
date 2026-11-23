@@ -20,6 +20,8 @@ async function importRoleBank(roleId: RoleId): Promise<QuestionBank> {
       return (await import('../data/questions/qa.json')).default as unknown as QuestionBank;
     case 'dba':
       return (await import('../data/questions/dba.json')).default as unknown as QuestionBank;
+    case 'ba':
+      return (await import('../data/questions/ba.json')).default as unknown as QuestionBank;
   }
 }
 

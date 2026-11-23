@@ -2,6 +2,14 @@
 
 All notable changes to InterviewX are documented in this file. This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-11-22
+
+### Added
+- **Business Analyst (`ba`) Assessment Track**:
+  - New role profile (`data/roles/ba.json`) with **Business Analyst** (35 min, 8 questions) and **Senior / Lead Business Analyst** (45 min, 10 questions) levels across 4 weighted sections (`Discovery & Elicitation`, `Business Case & ROI`, `KPI & Data Analysis`, `Backlog & Value Delivery`).
+  - 24 tagged SME-grade questions (`data/questions/ba.json`, 2× topic pool enforced), including **3 live `sql.js`-verified KPI analytics queries** (regional AOV, tier segmentation, revenue-at-risk), NPV/Payback/TCO financial scenarios, Goodhart's Law & A/B testing guardrails, and WSJF/RICE/Kano prioritization.
+  - Sky-blue per-role accent tokens (`#38bdf8` dark / `#0369a1` light), 2D SVG compass prism motif, lazy Three.js `TetrahedronGeometry` 3D scene, Interviewer Mode support, and full Playwright E2E + keyboard accessibility coverage.
+
 ## [1.0.0] - 2026-11-22
 
 ### Added

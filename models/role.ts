@@ -1,3 +1,4 @@
+import baProfile from '../data/roles/ba.json';
 import dbaProfile from '../data/roles/dba.json';
 import devProfile from '../data/roles/dev.json';
 import freshProfile from '../data/roles/fresh.json';
@@ -6,7 +7,7 @@ import qaProfile from '../data/roles/qa.json';
 import saProfile from '../data/roles/sa.json';
 import seniorProfile from '../data/roles/senior.json';
 
-export type RoleId = 'fresh' | 'senior' | 'pm' | 'dev' | 'sa' | 'qa' | 'dba';
+export type RoleId = 'fresh' | 'senior' | 'pm' | 'dev' | 'sa' | 'qa' | 'dba' | 'ba';
 
 export interface RoleLevel {
   id: string;
@@ -44,6 +45,7 @@ export const ROLES: readonly RoleDefinition[] = [
   saProfile as RoleDefinition,
   qaProfile as RoleDefinition,
   dbaProfile as RoleDefinition,
+  baProfile as RoleDefinition,
 ] as const;
 
 export function getRoleById(id: string): RoleDefinition | undefined {

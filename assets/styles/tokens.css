@@ -163,6 +163,12 @@
   --role-accent-border: rgba(251, 146, 60, 0.42);
 }
 
+[data-role='ba'] {
+  --role-accent: #38bdf8;
+  --role-accent-soft: rgba(56, 189, 248, 0.13);
+  --role-accent-border: rgba(56, 189, 248, 0.42);
+}
+
 /* Higher-contrast role accents in light theme */
 [data-theme='light'] [data-role='fresh'] { --role-accent: #047857; }
 [data-theme='light'] [data-role='senior'] { --role-accent: #4338ca; }
@@ -171,3 +177,4 @@
 [data-theme='light'] [data-role='sa'] { --role-accent: #7e22ce; }
 [data-theme='light'] [data-role='qa'] { --role-accent: #be123c; }
 [data-theme='light'] [data-role='dba'] { --role-accent: #c2410c; }
+[data-theme='light'] [data-role='ba'] { --role-accent: #0369a1; }

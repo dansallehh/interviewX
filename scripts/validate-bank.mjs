@@ -101,8 +101,8 @@ async function main() {
   const roleFiles = readdirSync(ROLES_DIR)
     .filter((f) => f.endsWith('.json'))
     .sort();
-  if (roleFiles.length !== 7) {
-    errors.push(`Expected 7 role profiles in data/roles/, found ${roleFiles.length}.`);
+  if (roleFiles.length !== 8) {
+    errors.push(`Expected 8 role profiles in data/roles/, found ${roleFiles.length}.`);
   }
 
   const profiles = new Map();

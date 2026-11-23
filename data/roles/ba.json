@@ -1,0 +1,35 @@
+{
+  "id": "ba",
+  "code": "BSA",
+  "name": "Business Analyst",
+  "shortName": "Business Analyst",
+  "tagline": "Discovery & stakeholder elicitation, business case & ROI modelling, KPI/SQL analytics, and value-driven backlog prioritization.",
+  "focus": ["Discovery & Elicitation", "Business Case & ROI", "KPI & SQL Analytics", "Value Prioritization"],
+  "motif": "compass-prism",
+  "accentHex": "#38bdf8",
+  "rubricId": "rubric-ba-v1",
+  "levels": [
+    {
+      "id": "standard",
+      "label": "Business Analyst",
+      "summary": "Stakeholder discovery, KPI/SQL reporting, story slicing, and business case fundamentals.",
+      "durationMinutes": 35,
+      "questionCount": 8,
+      "passMark": 70
+    },
+    {
+      "id": "senior",
+      "label": "Senior / Lead Business Analyst",
+      "summary": "Enterprise ROI/NPV modelling, experimentation guardrails, WSJF prioritization, and value realization.",
+      "durationMinutes": 45,
+      "questionCount": 10,
+      "passMark": 75
+    }
+  ],
+  "sections": [
+    { "topic": "Discovery & Elicitation", "weight": 0.25 },
+    { "topic": "Business Case & ROI", "weight": 0.25 },
+    { "topic": "KPI & Data Analysis", "weight": 0.3 },
+    { "topic": "Backlog & Value Delivery", "weight": 0.2 }
+  ]
+}

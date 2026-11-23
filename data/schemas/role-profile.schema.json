@@ -20,7 +20,7 @@
   "properties": {
     "id": {
       "type": "string",
-      "enum": ["fresh", "senior", "pm", "dev", "sa", "qa", "dba"]
+      "enum": ["fresh", "senior", "pm", "dev", "sa", "qa", "dba", "ba"]
     },
     "code": {
       "type": "string",

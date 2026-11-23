@@ -2,10 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { getRoleById, getRoleLevel, ROLES } from '../../models/role';
 
 describe('Role model', () => {
-  it('defines exactly 7 distinct roles matching the required IDs', () => {
+  it('defines exactly 8 distinct roles matching the required IDs', () => {
     const ids = ROLES.map((r) => r.id);
-    expect(ids).toEqual(['fresh', 'senior', 'pm', 'dev', 'sa', 'qa', 'dba']);
-    expect(new Set(ids).size).toBe(7);
+    expect(ids).toEqual(['fresh', 'senior', 'pm', 'dev', 'sa', 'qa', 'dba', 'ba']);
+    expect(new Set(ids).size).toBe(8);
   });
 
   it('has section weights summing to 1.0 for every role', () => {

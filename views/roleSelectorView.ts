@@ -10,7 +10,7 @@ export interface RoleSelectorOptions {
 export function renderRoleSelectorSkeleton(container: HTMLElement): void {
   clear(container);
   const grid = h('div', { className: 'role-grid', ariaLabel: 'Loading role tracks' });
-  for (let i = 0; i < 7; i += 1) {
+  for (let i = 0; i < 8; i += 1) {
     grid.appendChild(
       h('div', { className: 'panel skeleton', ariaLabel: 'Loading track' }, h('div', null, ' ')),
     );
@@ -41,7 +41,7 @@ export function renderRoleSelectorView(
     h(
       'p',
       { className: 'hero-lead' },
-      'Structured, weighted evaluations across 7 engineering, product, QA, and Oracle 12c DBA roles. Every attempt runs locally in your browser with full privacy.',
+      'Structured, weighted evaluations across 8 engineering, business analysis, product, QA, and Oracle 12c DBA roles. Every attempt runs locally in your browser with full privacy.',
     ),
     stepper,
   );

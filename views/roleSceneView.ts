@@ -142,5 +142,7 @@ function createRoleGeometry(
       return new THREE.DodecahedronGeometry(1.15, 0);
     case 'dba':
       return new THREE.CylinderGeometry(0.95, 0.95, 1.65, 16, 3);
+    case 'ba':
+      return new THREE.TetrahedronGeometry(1.25, 1);
   }
 }

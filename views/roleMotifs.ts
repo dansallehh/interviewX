@@ -78,5 +78,13 @@ export function renderRoleMotifSvg(roleId: RoleId, size = 24): SVGElement {
         svgEl('path', { d: 'M4.5 6v12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3V6' }),
         svgEl('path', { d: 'M4.5 12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3' }),
       );
+    case 'ba':
+      return svgEl(
+        'svg',
+        baseAttrs,
+        svgEl('circle', { cx: 12, cy: 12, r: 9 }),
+        svgEl('polygon', { points: '15.5 8.5 13.5 13.5 8.5 15.5 10.5 10.5 15.5 8.5' }),
+        svgEl('circle', { cx: 12, cy: 12, r: 1, fill: 'currentColor' }),
+      );
   }
 }

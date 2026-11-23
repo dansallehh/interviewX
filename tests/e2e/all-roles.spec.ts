@@ -8,9 +8,10 @@ const ROLES: ReadonlyArray<{ id: string; levelId: string; titleFragment: string 
   { id: 'sa', levelId: 'standard', titleFragment: 'System Analyst' },
   { id: 'qa', levelId: 'manual', titleFragment: 'Quality Assurance' },
   { id: 'dba', levelId: 'standard', titleFragment: 'Database Admin (Oracle 12c)' },
+  { id: 'ba', levelId: 'standard', titleFragment: 'Business Analyst' },
 ];
 
-test.describe('Phase 3 E2E: All 7 Roles Happy Path + 3 Negative Paths', () => {
+test.describe('E2E: All 8 Roles Happy Path + 3 Negative Paths', () => {
   for (const role of ROLES) {
     test(`happy path: ${role.id} (select -> level -> brief -> answer -> submit -> report -> verify)`, async ({ page }) => {
       await page.goto('/#/');

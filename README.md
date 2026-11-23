@@ -1,8 +1,8 @@
 # InterviewX
 
-**InterviewX** is a static, privacy-first, role-based technical interview assessment platform hosted on GitHub Pages. It evaluates candidates across **7 specialized tracks** with weighted question assembly, interactive in-browser SQL (`sql.js`) and sandboxed Web Worker JavaScript runners, SVG radar competency reports, checksummed JSON/PDF export, tamper-evident shareable result codes, lazy-loaded Three.js per-role motifs (with 2D fallback), and a PIN-gated Interviewer Mode.
+**InterviewX** is a static, privacy-first, role-based technical interview assessment platform hosted on GitHub Pages. It evaluates candidates across **8 specialized tracks** with weighted question assembly, interactive in-browser SQL (`sql.js`) and sandboxed Web Worker JavaScript runners, SVG radar competency reports, checksummed JSON/PDF export, tamper-evident shareable result codes, lazy-loaded Three.js per-role motifs (with 2D fallback), and a PIN-gated Interviewer Mode.
 
-## Supported Roles (168 Verified Questions · 2× Pool Enforced)
+## Supported Roles (192 Verified Questions · 2× Pool Enforced)
 
 | ID | Role | Focus |
 |---|---|---|
@@ -13,6 +13,7 @@
 | `sa` | System Analyst | Requirements, BRD/FRD, UML/flowcharts, UAT, gap analysis |
 | `qa` | Quality Assurance | Test design, automation, defect triage, regression |
 | `dba` | Database Admin (Oracle 12c) | Privileges, backup/RMAN, tuning, locks, RCA |
+| `ba` | Business Analyst | Discovery & elicitation, business case & ROI, KPI/SQL analytics, backlog prioritization |
 
 ## Architecture (Strict MVC)
 
